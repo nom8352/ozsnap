@@ -1336,6 +1336,9 @@ function showToast(message) {
 }
 
 function readStoredCity() {
+    const requestedCity = new URLSearchParams(window.location.search).get("city");
+    if (CITIES.some((city) => city.id === requestedCity)) return requestedCity;
+
     try {
         const cityId = localStorage.getItem("ozsnap-city");
         return CITIES.some((city) => city.id === cityId) ? cityId : "brisbane";

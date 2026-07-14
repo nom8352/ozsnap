@@ -2239,6 +2239,11 @@ input[type="date"] {
     background: var(--warm);
 }
 
+.guide-directory-grid > a:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    min-height: 220px;
+}
+
 .guide-directory-grid > a > span {
     color: var(--coral-text);
     font-size: 10px;
@@ -2286,6 +2291,160 @@ input[type="date"] {
 .guide-data-grid p a {
     color: var(--forest-2);
     font-weight: 750;
+    text-underline-offset: 3px;
+}
+
+.city-search-guides {
+    display: grid;
+    gap: 1px;
+    margin-top: 28px;
+    border: 1px solid var(--line);
+    background: var(--line);
+}
+
+.city-search-guides > a {
+    min-height: 190px;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    padding: 26px 28px;
+    color: var(--ink);
+    background: var(--white);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+}
+
+.city-search-guides > a:hover {
+    background: var(--warm);
+}
+
+.city-search-guides span,
+.result-region,
+.search-summary span {
+    color: var(--coral-text);
+    font-size: 10px;
+    font-weight: 850;
+    text-transform: uppercase;
+}
+
+.city-search-guides h3 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.city-search-guides p {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+.city-search-guides strong {
+    color: var(--forest-2);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.compact-guide-hero .guide-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.58fr);
+}
+
+.compact-guide-hero h1 {
+    font-size: 58px;
+}
+
+.search-summary {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr);
+    align-content: center;
+    gap: 0 18px;
+    min-height: 360px;
+    padding: 34px;
+    border-radius: 7px;
+    color: var(--white);
+    background: var(--forest);
+}
+
+.search-summary span,
+.search-summary strong {
+    display: flex;
+    align-items: center;
+    min-height: 61px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.search-summary span {
+    color: #f7ce63;
+}
+
+.search-summary strong {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.search-method {
+    margin-top: 28px;
+    border-top: 1px solid var(--line-dark);
+}
+
+.search-method > div {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    min-height: 58px;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+}
+
+.search-method dt {
+    color: var(--forest-2);
+    font-size: 10px;
+    font-weight: 850;
+    text-transform: uppercase;
+}
+
+.search-method dd {
+    color: var(--ink-soft);
+    font-size: 13px;
+}
+
+.search-ranking {
+    margin-top: 30px;
+    border-top: 1px solid var(--line-dark);
+}
+
+.search-ranking article {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 24px;
+    padding-block: 30px;
+    border-bottom: 1px solid var(--line);
+}
+
+.search-rank {
+    color: var(--forest-2);
+    font-family: "Newsreader", serif;
+    font-size: 38px;
+    line-height: 1;
+}
+
+.search-ranking h3 {
+    margin: 6px 0 8px;
+    font-size: 29px;
+}
+
+.search-ranking p {
+    max-width: 690px;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.search-ranking a {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+    color: var(--forest-2);
+    font-size: 11px;
+    font-weight: 850;
     text-underline-offset: 3px;
 }
 
@@ -2585,6 +2744,10 @@ input[type="date"] {
     .guide-hero-inner {
         grid-template-columns: 1fr;
         gap: 42px;
+    }
+
+    .compact-guide-hero .guide-hero-inner {
+        grid-template-columns: 1fr;
     }
 
     .guide-hero-visual {
@@ -3023,6 +3186,10 @@ input[type="date"] {
         padding: 24px 20px;
     }
 
+    .guide-directory-grid > a:last-child:nth-child(odd) {
+        grid-column: auto;
+    }
+
     .guide-directory-grid h3 {
         font-size: 27px;
     }
@@ -3030,6 +3197,61 @@ input[type="date"] {
     .photography-resources {
         grid-template-columns: 1fr;
         gap: 8px;
+    }
+
+    .city-search-guides > a {
+        min-height: 220px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 24px 20px;
+    }
+
+    .city-search-guides h3 {
+        font-size: 26px;
+    }
+
+    .city-search-guides strong {
+        margin-top: 12px;
+        white-space: normal;
+    }
+
+    .compact-guide-hero h1 {
+        font-size: 43px;
+    }
+
+    .search-summary {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding: 24px 20px;
+    }
+
+    .search-summary span {
+        min-height: 32px;
+        border-bottom: 0;
+    }
+
+    .search-summary strong {
+        min-height: 44px;
+    }
+
+    .search-method > div {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding-block: 12px;
+    }
+
+    .search-ranking article {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px;
+        padding-block: 24px;
+    }
+
+    .search-rank {
+        font-size: 30px;
+    }
+
+    .search-ranking h3 {
+        font-size: 24px;
     }
 }
 

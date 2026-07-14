@@ -2,6 +2,8 @@
 
 Last updated: 2026-07-15
 
+Detailed implementation decisions, research methodology, verification commands and the release process are preserved in `docs/project-handoff.md`.
+
 ## Completed
 
 - Rebuilt the homepage as an Australian editorial decision guide using generated coastal photography.

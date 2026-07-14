@@ -27,10 +27,13 @@ Last updated: 2026-07-14
 
 ## Current release state
 
-- Source changes are implemented locally on `main`.
+- Release commit `20591a7` is pushed to GitHub `main` and deployed by Cloudflare Pages.
 - Minified CSS and JS are current at query version `20260714-7`.
 - Generated photos live under `assets/photos/`.
+- Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.
+- All four canonical URLs return `200`; the custom 404 returns `404`; HSTS and immutable asset caching are live.
+- Cloudflare Managed Content prepends search/AI content signals to `robots.txt`; search remains allowed and the OZSNAP sitemap declaration remains present.
 
 ## Next practical step
 
-Commit and push the redesign to GitHub, then verify the four canonical URLs, Cloudflare response headers, sitemap and live mobile rendering after deployment.
+Use production analytics and search data to decide whether the next content expansion should be city guides or a multi-day trip capsule packer.

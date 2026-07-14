@@ -42,14 +42,13 @@ Last updated: 2026-07-15
 
 ## Current release state
 
-- Release commit `33b20dc` is currently live on GitHub `main`; it contains the information-architecture and contextual-link release.
-- The family-photographer search cluster is ready for the next GitHub `main` release and Cloudflare Pages deployment.
+- The family-photographer search cluster is released from GitHub `main` and deployed by Cloudflare Pages.
 - Minified CSS and JavaScript are current at query version `20260715-2`.
 - Generated photos live under `assets/photos/`.
 - Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.
-- All nine local canonical routes return `200`; the four new family-photographer routes remain local until the next push and Cloudflare deployment.
+- All nine local canonical routes return `200`; all four family-photographer routes also return `200` in production.
 - Cloudflare Managed Content prepends search/AI content signals to `robots.txt`; search remains allowed and the OZSNAP sitemap declaration remains present.
 
 ## Next practical step
 
-Commit and push the three-city search-guide release for Cloudflare Pages deployment, then refresh the documented result order periodically rather than adding more cities without sufficient original content.
+Refresh the documented result order periodically rather than adding more cities without sufficient original content.

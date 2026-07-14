@@ -300,6 +300,9 @@ const state = {
     cityId: readStoredCity(),
     weather: null,
     selectedForecastIndex: 0,
+    comfort: readStoredPreference("ozsnap-comfort", ["cold", "neutral", "warm"], "neutral"),
+    activity: readStoredPreference("ozsnap-activity", ["still", "walking", "active"], "still"),
+    packingItems: [],
     loadToken: 0,
     toastTimer: null
 };
@@ -311,6 +314,7 @@ document.addEventListener("DOMContentLoaded", initialise);
 function initialise() {
     cacheElements();
     populateCityControls();
+    restorePreferenceControls();
     bindEvents();
     renderForecastSkeletons();
     configurePlannerDate();
@@ -332,7 +336,9 @@ function cacheElements() {
         "photo-advice-title", "photo-advice-copy", "golden-cloud", "sunset-rain", "photo-condition",
         "planner-form", "planner-date", "planner-duration", "result-location", "result-light-type",
         "recommended-start", "result-summary", "arrival-time", "shoot-time", "finish-time",
-        "result-note", "menu-toggle", "site-nav", "copyright-year", "toast"
+        "result-note", "menu-toggle", "site-nav", "copyright-year", "toast", "hero-golden-time",
+        "daypart-grid", "day-kit-date", "day-kit-context", "packing-items", "copy-kit-button",
+        "best-days-list"
     ];
 
     ids.forEach((id) => {
@@ -356,6 +362,27 @@ function populateCityControls() {
     )).join("");
 }
 
+function restorePreferenceControls() {
+    const comfort = document.querySelector(`input[name="comfort"][value="${state.comfort}"]`);
+    const activity = document.querySelector(`input[name="activity"][value="${state.activity}"]`);
+    if (comfort) comfort.checked = true;
+    if (activity) activity.checked = true;
+}
+
+function updatePersonalPreferences() {
+    state.comfort = document.querySelector('input[name="comfort"]:checked')?.value || "neutral";
+    state.activity = document.querySelector('input[name="activity"]:checked')?.value || "still";
+
+    try {
+        localStorage.setItem("ozsnap-comfort", state.comfort);
+        localStorage.setItem("ozsnap-activity", state.activity);
+    } catch (_) {
+        // Personalisation still works when storage is blocked.
+    }
+
+    renderDayKit();
+}
+
 function bindEvents() {
     elements.citySelect.addEventListener("change", (event) => {
         selectCity(event.target.value, { syncPlanner: true });
@@ -368,6 +395,14 @@ function bindEvents() {
 
     elements.locationButton.addEventListener("click", useCurrentLocation);
     elements.forecastGrid.addEventListener("click", selectForecastDay);
+    elements.bestDaysList.addEventListener("click", selectBestDay);
+    elements.copyKitButton.addEventListener("click", copyDayKit);
+    document.querySelectorAll('input[name="comfort"], input[name="activity"]').forEach((input) => {
+        input.addEventListener("change", updatePersonalPreferences);
+    });
+    document.querySelectorAll('input[name="photo-goal"]').forEach((input) => {
+        input.addEventListener("change", renderBestDays);
+    });
     elements.plannerForm.addEventListener("submit", (event) => {
         event.preventDefault();
         calculatePlanner();
@@ -379,7 +414,14 @@ function bindEvents() {
     });
 
     window.addEventListener("resize", () => {
-        if (window.innerWidth > 820) closeNavigation();
+        if (window.innerWidth > 920) closeNavigation();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && elements.siteNav.classList.contains("open")) {
+            closeNavigation();
+            elements.menuToggle.focus();
+        }
     });
 }
 
@@ -477,7 +519,19 @@ function buildWeatherUrl(city) {
         "wind_speed_10m",
         "wind_gusts_10m"
     ].join(","));
-    url.searchParams.set("hourly", "cloud_cover,precipitation_probability");
+    url.searchParams.set("hourly", [
+        "temperature_2m",
+        "apparent_temperature",
+        "weather_code",
+        "precipitation_probability",
+        "cloud_cover",
+        "cloud_cover_low",
+        "cloud_cover_mid",
+        "cloud_cover_high",
+        "wind_speed_10m",
+        "wind_gusts_10m",
+        "uv_index"
+    ].join(","));
     url.searchParams.set("daily", [
         "weather_code",
         "temperature_2m_max",
@@ -544,7 +598,9 @@ function renderWeather(data) {
     elements.localNote.textContent = city.note;
 
     renderForecast(data);
+    renderDayKit();
     renderLightForecast();
+    renderBestDays();
     calculatePlanner();
 }
 
@@ -570,6 +626,9 @@ function renderWeatherUnavailable(city) {
     elements.dayRange.textContent = "--° / --°";
     elements.localNote.textContent = city.note;
     elements.forecastGrid.innerHTML = `<div class="forecast-error">The seven-day forecast could not be loaded. Your saved city and shoot planner are still available.</div>`;
+    elements.daypartGrid.innerHTML = `<div class="forecast-error">Personal day outfits will return with the live forecast.</div>`;
+    elements.packingItems.innerHTML = "";
+    elements.bestDaysList.innerHTML = `<div class="forecast-error">Weekly light rankings need the live forecast.</div>`;
     renderLightForecast();
 }
 
@@ -604,7 +663,7 @@ function renderForecast(data) {
                 <span class="visually-hidden">${getWeatherLabel(day.weatherCode)}</span>
                 <span class="forecast-icon" aria-hidden="true">${getWeatherSymbol(day.weatherCode)}</span>
                 <strong class="forecast-temp">${formatDegrees(day.maximum)} <small>${formatDegrees(day.minimum)}</small></strong>
-                <span class="forecast-outfit">L${outfit.level} · ${outfit.short}</span>
+                <span class="forecast-outfit">${outfit.short}<small>Outfit level ${outfit.level} of 10</small></span>
                 <p class="forecast-rain">Rain ${formatPercent(day.rain)}</p>
             </button>
         `;
@@ -620,16 +679,34 @@ function renderForecastSkeletons() {
 function selectForecastDay(event) {
     const card = event.target.closest("[data-forecast-index]");
     if (!card || !state.weather) return;
+    selectForecastIndex(Number(card.dataset.forecastIndex), { restoreForecastFocus: true });
+}
 
-    state.selectedForecastIndex = Number(card.dataset.forecastIndex);
+function selectBestDay(event) {
+    const row = event.target.closest("[data-best-day-index]");
+    if (!row || !state.weather) return;
+    selectForecastIndex(Number(row.dataset.bestDayIndex));
+}
+
+function selectForecastIndex(index, options = {}) {
+    state.selectedForecastIndex = clamp(index, 0, state.weather.daily.time.length - 1);
     renderForecast(state.weather);
+    renderDayKit();
     renderLightForecast();
+    renderBestDays();
 
     const selectedDate = state.weather.daily.time[state.selectedForecastIndex];
     elements.plannerCity.value = state.cityId;
     elements.plannerDate.value = selectedDate;
     calculatePlanner();
-    showToast(`${state.selectedForecastIndex === 0 ? "Today’s" : `${formatWeekday(selectedDate)}’s`} light forecast selected.`);
+
+    if (options.restoreForecastFocus) {
+        window.requestAnimationFrame(() => {
+            elements.forecastGrid.querySelector(`[data-forecast-index="${state.selectedForecastIndex}"]`)?.focus();
+        });
+    }
+
+    showToast(`${state.selectedForecastIndex === 0 ? "Today’s" : `${formatWeekday(selectedDate)}’s`} outfit and light plan selected.`);
 }
 
 function renderLightForecast() {
@@ -651,6 +728,11 @@ function renderLightForecast() {
     elements.goldenHourTime.textContent = `${formatTime(solar.goldenStart, city.timezone)}–${formatTime(solar.sunset, city.timezone)}`;
     elements.sunsetTime.textContent = formatTime(solar.sunset, city.timezone);
     elements.blueHourTime.textContent = formatTime(solar.blueEnd, city.timezone);
+    if (elements.heroGoldenTime) {
+        const todayDate = state.weather?.daily?.time?.[0] || getTodayInZone(city.timezone);
+        const todaySolar = calculateSolarTimes(todayDate, city.latitude, city.longitude);
+        elements.heroGoldenTime.textContent = `${formatTime(todaySolar.goldenStart, city.timezone)}–${formatTime(todaySolar.sunset, city.timezone)}`;
+    }
     elements.lightIntro.textContent = `${advice.lead} Golden light begins at ${formatTime(solar.goldenStart, city.timezone)} in ${city.name}.`;
     elements.photoScoreLabel.textContent = advice.label;
     elements.photoAdviceTitle.textContent = advice.title;
@@ -659,12 +741,226 @@ function renderLightForecast() {
     elements.sunsetRain.textContent = sunsetRain === null ? "Forecast pending" : formatPercent(sunsetRain);
 
     const cloudAmount = cloud === null ? 45 : clamp(cloud, 0, 100);
-    const cloudOne = document.querySelector(".cloud-one");
-    const cloudTwo = document.querySelector(".cloud-two");
-    const sun = document.querySelector(".sun-shape");
-    cloudOne.style.opacity = String(0.25 + cloudAmount / 135);
-    cloudTwo.style.opacity = String(0.15 + cloudAmount / 180);
-    sun.style.opacity = String(1 - cloudAmount / 150);
+    const cloudOne = document.querySelector(".sky-diagram span");
+    const cloudTwo = document.querySelector(".sky-diagram i");
+    const sun = document.querySelector(".sky-diagram b");
+    if (cloudOne && cloudTwo && sun) {
+        cloudOne.style.opacity = String(0.25 + cloudAmount / 135);
+        cloudTwo.style.opacity = String(0.15 + cloudAmount / 180);
+        sun.style.opacity = String(1 - cloudAmount / 150);
+    }
+}
+
+function renderDayKit() {
+    if (!state.weather) return;
+
+    const city = getCity(state.cityId);
+    const date = state.weather.daily.time[state.selectedForecastIndex];
+    const day = dailyAt(state.weather, state.selectedForecastIndex);
+    const comfortAdjustment = { cold: -1, neutral: 0, warm: 1 }[state.comfort] || 0;
+    const activityAdjustment = { still: 0, walking: 1, active: 2 }[state.activity] || 0;
+    const periods = [
+        { label: "Morning", hour: 8, fallbackRatio: 0.28 },
+        { label: "Afternoon", hour: 14, fallbackRatio: 0.9 },
+        { label: "Evening", hour: 19, fallbackRatio: 0.42 }
+    ];
+
+    const periodResults = periods.map((period) => {
+        const fallbackApparent = interpolate(
+            numberOr(day.apparentMinimum, day.minimum),
+            numberOr(day.apparentMaximum, day.maximum),
+            period.fallbackRatio
+        );
+        const apparent = numberOr(
+            getHourlyValueAtHour(state.weather, date, period.hour, "apparent_temperature"),
+            fallbackApparent
+        );
+        const temperature = numberOr(
+            getHourlyValueAtHour(state.weather, date, period.hour, "temperature_2m"),
+            interpolate(day.minimum, day.maximum, period.fallbackRatio)
+        );
+        const rain = numberOr(
+            getHourlyValueAtHour(state.weather, date, period.hour, "precipitation_probability"),
+            day.rain
+        );
+        const wind = numberOr(
+            getHourlyValueAtHour(state.weather, date, period.hour, "wind_speed_10m"),
+            day.wind
+        );
+        const weatherCode = getHourlyValueAtHour(state.weather, date, period.hour, "weather_code") ?? day.weatherCode;
+        const base = getOutfitAdvice({
+            apparent,
+            maximum: day.maximum,
+            minimum: day.minimum,
+            rain,
+            wind,
+            uv: day.uv,
+            weatherCode
+        });
+        const personalLevel = clamp(base.level + comfortAdjustment + activityAdjustment, 1, 10);
+        const personalBand = OUTFIT_BANDS[personalLevel - 1];
+        const wet = rain >= 45 || isRainCode(weatherCode);
+        const levelNote = personalLevel === base.level
+            ? `Forecast and your profile both sit at level ${personalLevel}.`
+            : `Forecast level ${base.level} → your level ${personalLevel}.`;
+        const detail = wet
+            ? `${levelNote} Add a compact rain shell and shoes that handle wet ground.`
+            : `${levelNote} ${personalBand.detail}`;
+
+        return {
+            ...period,
+            temperature,
+            apparent,
+            rain,
+            wind,
+            baseLevel: base.level,
+            personalLevel,
+            personalBand,
+            detail
+        };
+    });
+
+    const dayName = state.selectedForecastIndex === 0 ? "Today" : formatWeekday(date);
+    elements.dayKitDate.textContent = `${dayName} in ${city.name}`;
+    elements.dayKitContext.textContent = `${formatComfort(state.comfort)} · ${formatActivity(state.activity)}`;
+    elements.daypartGrid.innerHTML = periodResults.map((period) => `
+        <article class="daypart-card">
+            <div class="daypart-topline">
+                <span>${period.label}</span>
+                <strong>${formatDegrees(period.temperature)}</strong>
+            </div>
+            <p class="daypart-level">Your level ${period.personalLevel} of 10</p>
+            <h3>${period.personalBand.short}</h3>
+            <p>${period.detail}</p>
+        </article>
+    `).join("");
+
+    state.packingItems = buildPackingItems(day, periodResults);
+    elements.packingItems.innerHTML = state.packingItems.map((item) => `<li>${item}</li>`).join("");
+}
+
+function buildPackingItems(day, periods) {
+    const levels = periods.map((period) => period.personalLevel);
+    const minimumLevel = Math.min(...levels);
+    const maximumLevel = Math.max(...levels);
+    const maximumApparent = Math.max(...periods.map((period) => period.apparent));
+    const items = [];
+
+    if (minimumLevel <= 2) items.push("Warm coat or insulated jacket");
+    else if (minimumLevel <= 4) items.push("Warm jumper or light jacket");
+    else if (minimumLevel <= 6) items.push("One removable light layer");
+
+    if (maximumLevel >= 7) items.push("Breathable base layer");
+    if (numberOr(day.rain, 0) >= 45) items.push("Compact rain shell or umbrella");
+    if (numberOr(day.wind, 0) >= 30) items.push("Wind-resistant outer layer");
+    if (numberOr(day.uv, 0) >= 3) items.push("SPF 30+ sunscreen, hat and sunglasses");
+    if (maximumApparent >= 28 || numberOr(day.uv, 0) >= 8) items.push("Refillable water bottle");
+    items.push("Comfortable closed shoes");
+
+    return [...new Set(items)];
+}
+
+async function copyDayKit() {
+    if (!state.packingItems.length) return;
+
+    const city = getCity(state.cityId);
+    const date = state.weather?.daily?.time?.[state.selectedForecastIndex];
+    const heading = `OZSNAP day kit · ${city.name} · ${formatLongDate(date)}`;
+    const text = `${heading}\n${state.packingItems.map((item) => `- ${item}`).join("\n")}`;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        showToast("Day checklist copied.");
+    } catch (_) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+        showToast("Day checklist copied.");
+    }
+}
+
+function renderBestDays() {
+    if (!state.weather) return;
+
+    const city = getCity(state.cityId);
+    const goal = document.querySelector('input[name="photo-goal"]:checked')?.value || "portraits";
+    const ranked = state.weather.daily.time.map((date, index) => {
+        const day = dailyAt(state.weather, index);
+        const solar = calculateSolarTimes(date, city.latitude, city.longitude);
+        const goldenMidpoint = midpoint(solar.goldenStart, solar.sunset);
+        const cloud = numberOr(
+            getHourlyValue(state.weather, date, goldenMidpoint, "cloud_cover", city.timezone),
+            50
+        );
+        const rain = numberOr(
+            getHourlyValue(state.weather, date, solar.sunset, "precipitation_probability", city.timezone),
+            day.rain
+        );
+        const wind = numberOr(day.wind, 0);
+        const apparent = average(day.apparentMaximum, day.apparentMinimum);
+        const targetCloud = goal === "sunset" ? 42 : 70;
+        const lightScore = clamp(100 - Math.abs(cloud - targetCloud) * (goal === "sunset" ? 1.65 : 1.25), 0, 100);
+        const rainScore = clamp(100 - rain * 1.35, 0, 100);
+        const windScore = clamp(110 - wind * 2.7, 0, 100);
+        const comfortScore = clamp(100 - Math.abs(numberOr(apparent, 21) - 21) * 7, 0, 100);
+        const total = lightScore * 0.46 + rainScore * 0.25 + windScore * 0.16 + comfortScore * 0.13;
+        const label = rain >= 60 || wind >= 45
+            ? "Weather watch"
+            : total >= 78
+                ? "Best bet"
+                : total >= 62
+                    ? "Good option"
+                    : "Changeable";
+
+        return {
+            index,
+            date,
+            label,
+            total,
+            lightScore,
+            rainScore,
+            windScore,
+            comfortScore,
+            golden: `${formatTime(solar.goldenStart, city.timezone)}–${formatTime(solar.sunset, city.timezone)}`
+        };
+    }).sort((first, second) => second.total - first.total);
+
+    elements.bestDaysList.innerHTML = ranked.map((result, rank) => {
+        const active = result.index === state.selectedForecastIndex;
+        const dayName = result.index === 0 ? "Today" : formatWeekday(result.date);
+        return `
+            <button class="best-day-row${active ? " active" : ""}" type="button" data-best-day-index="${result.index}" aria-pressed="${active}">
+                <span class="best-day-rank">${String(rank + 1).padStart(2, "0")}</span>
+                <span class="best-day-name"><strong>${dayName} · ${result.label}</strong><span>${result.golden}</span></span>
+                <span class="score-part light-part"><span>Light</span><strong>${scoreWord(result.lightScore)}</strong></span>
+                <span class="score-part rain-part"><span>Rain</span><strong>${scoreWord(result.rainScore)}</strong></span>
+                <span class="score-part wind-part"><span>Wind</span><strong>${scoreWord(result.windScore)}</strong></span>
+                <span class="score-part comfort-part"><span>Comfort</span><strong>${scoreWord(result.comfortScore)}</strong></span>
+                <span class="best-day-action">${active ? "Selected" : "View day →"}</span>
+            </button>
+        `;
+    }).join("");
+}
+
+function scoreWord(score) {
+    if (score >= 82) return "Strong";
+    if (score >= 64) return "Good";
+    if (score >= 44) return "Fair";
+    return "Low";
+}
+
+function formatComfort(value) {
+    return { cold: "Runs cold", neutral: "Neutral comfort", warm: "Runs warm" }[value] || "Neutral comfort";
+}
+
+function formatActivity(value) {
+    return { still: "Mostly still", walking: "Walking", active: "Active day" }[value] || "Mostly still";
 }
 
 function calculatePlanner() {
@@ -914,6 +1210,21 @@ function getHourlyValue(data, date, targetDate, key, timezone) {
     return bestIndex >= 0 && Number.isFinite(values[bestIndex]) ? values[bestIndex] : null;
 }
 
+function getHourlyValueAtHour(data, date, targetHour, key) {
+    const values = data.hourly?.[key];
+    const times = data.hourly?.time;
+    if (!Array.isArray(values) || !Array.isArray(times)) return null;
+
+    const target = `${date}T${String(targetHour).padStart(2, "0")}:00`;
+    let index = times.indexOf(target);
+
+    if (index < 0) {
+        index = times.findIndex((time) => time.startsWith(`${date}T${String(targetHour).padStart(2, "0")}:`));
+    }
+
+    return index >= 0 && Number.isFinite(values[index]) ? values[index] : null;
+}
+
 function getMinutesInZone(date, timezone) {
     const parts = new Intl.DateTimeFormat("en-AU", {
         timeZone: timezone,
@@ -995,7 +1306,7 @@ function updateActiveCityChip() {
 }
 
 function setStatus(type, text) {
-    elements.weatherStatus.className = `weather-status page-shell${type ? ` ${type}` : ""}`;
+    elements.weatherStatus.className = `weather-status${type ? ` ${type}` : ""}`;
     elements.statusText.textContent = text;
     elements.weatherStatus.setAttribute("aria-busy", String(!type));
 }
@@ -1030,6 +1341,15 @@ function readStoredCity() {
         return CITIES.some((city) => city.id === cityId) ? cityId : "brisbane";
     } catch (_) {
         return "brisbane";
+    }
+}
+
+function readStoredPreference(key, allowed, fallback) {
+    try {
+        const value = localStorage.getItem(key);
+        return allowed.includes(value) ? value : fallback;
+    } catch (_) {
+        return fallback;
     }
 }
 
@@ -1145,6 +1465,12 @@ function average(first, second) {
     if (Number.isFinite(a)) return a;
     if (Number.isFinite(b)) return b;
     return 20;
+}
+
+function interpolate(start, end, ratio) {
+    const first = numberOr(start, 0);
+    const second = numberOr(end, first);
+    return first + (second - first) * ratio;
 }
 
 function numberOr(value, fallback) {

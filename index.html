@@ -28,7 +28,7 @@
     <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/photos/coastal-hero.webp" as="image" type="image/webp" imagesrcset="/assets/photos/coastal-hero-960.webp 960w, /assets/photos/coastal-hero.webp 1920w" imagesizes="100vw" fetchpriority="high">
-    <link rel="stylesheet" href="/style.min.css?v=20260714-7">
+    <link rel="stylesheet" href="/style.min.css?v=20260715-1">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -55,7 +55,7 @@
           "@id": "https://ozsnap.com/#webpage",
           "url": "https://ozsnap.com/",
           "name": "Australian Outfit & Golden Hour Planner",
-          "dateModified": "2026-07-14",
+          "dateModified": "2026-07-15",
           "isPartOf": { "@id": "https://ozsnap.com/#website" },
           "mainEntity": { "@id": "https://ozsnap.com/#app" },
           "inLanguage": "en-AU"
@@ -90,7 +90,7 @@
 
     <header class="site-header" id="top">
         <div class="header-inner page-shell">
-            <a class="brand" href="#today" aria-label="OZSNAP home">
+            <a class="brand" href="/" aria-label="OZSNAP home">
                 <img class="brand-logo" src="/assets/brand/ozsnap-logo-320.webp" srcset="/assets/brand/ozsnap-logo-320.webp 320w, /assets/brand/ozsnap-logo.webp 480w" sizes="158px" width="480" height="160" alt="OZSNAP AU">
             </a>
 
@@ -99,11 +99,11 @@
             </button>
 
             <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-                <a href="#today">Today</a>
-                <a href="#forecast">This week</a>
-                <a href="#day-kit">Day kit</a>
-                <a href="#best-light">Best light</a>
-                <a href="#shoot-planner" class="nav-action">Plan a shoot</a>
+                <a href="/" aria-current="page">Today</a>
+                <a href="/what-to-wear-by-temperature/">What to wear</a>
+                <a href="/photography-weather-guide/">Photo weather</a>
+                <a href="/australia-city-guides/">City guides</a>
+                <a href="/golden-hour-calculator/" class="nav-action">Shoot planner</a>
             </nav>
         </div>
     </header>
@@ -412,42 +412,22 @@
             </div>
         </section>
 
-        <section class="field-guide-section" aria-labelledby="field-guide-title">
+        <section class="guide-directory-section" aria-labelledby="guide-directory-title">
             <div class="page-shell">
                 <div class="section-heading-row">
-                    <div><p class="section-label">Read the sky</p><h2 id="field-guide-title">Cloud is part of the light</h2></div>
-                    <p>The useful question is not whether cloud is good or bad. It is what the sky lets you photograph.</p>
+                    <div><p class="section-label">Plan with context</p><h2 id="guide-directory-title">Practical guides, off the dashboard</h2></div>
+                    <p>Keep today’s tools quick. Open a guide when you need the reasoning, seasonal context or a more detailed plan.</p>
                 </div>
-                <div class="field-guide-grid">
-                    <article class="field-card clear-card"><span class="field-icon" aria-hidden="true">01</span><p>Clear sky</p><h3>Wait for shape and colour</h3><p>Backlight your subject late, or use open shade while the sun is still high.</p></article>
-                    <article class="field-card broken-card"><span class="field-icon" aria-hidden="true">02</span><p>Broken cloud</p><h3>Watch the western gap</h3><p>High cloud can hold colour when a clear strip near the horizon lets warm light through.</p></article>
-                    <article class="field-card overcast-card"><span class="field-icon" aria-hidden="true">03</span><p>Overcast</p><h3>Use soft portrait light</h3><p>Faces stay even with fewer hard shadows. Find colour and a clean background for separation.</p></article>
-                    <article class="field-card rain-card"><span class="field-icon" aria-hidden="true">04</span><p>After rain</p><h3>Look for reflection</h3><p>Wet pavement carries signs and sky into the frame. Work from a sheltered edge and keep the lens dry.</p></article>
+                <div class="guide-directory-grid">
+                    <a href="/what-to-wear-by-temperature/"><span>01 · Outfit guide</span><h3>Dress by feels-like temperature</h3><p>Use the complete 10-level scale, then adjust for wind, rain, UV and the shape of your day.</p><strong>Read the guide <span aria-hidden="true">→</span></strong></a>
+                    <a href="/photography-weather-guide/"><span>02 · Sky guide</span><h3>Turn weather into photographs</h3><p>Match clear, broken, overcast and wet conditions to portraits, colour, reflections and shelter.</p><strong>Read the guide <span aria-hidden="true">→</span></strong></a>
+                    <a href="/golden-hour-calculator/"><span>03 · Light guide</span><h3>Build a shoot around the sun</h3><p>Choose golden, soft or blue-hour light and work backwards to arrival, start and finish times.</p><strong>Plan the light <span aria-hidden="true">→</span></strong></a>
+                    <a href="/australia-city-guides/"><span>04 · City guides</span><h3>Know the local weather rhythm</h3><p>Compare seasonal clothing, daylight and practical photo conditions across ten Australian cities.</p><strong>Explore cities <span aria-hidden="true">→</span></strong></a>
                 </div>
-                <a class="text-link field-guide-link" href="/photography-weather-guide/">Read the complete photography weather guide <span aria-hidden="true">→</span></a>
-            </div>
-        </section>
-
-        <section class="method-section" aria-labelledby="method-title">
-            <div class="page-shell method-layout">
-                <div>
-                    <p class="section-label">How recommendations work</p>
-                    <h2 id="method-title">Forecast data, translated honestly</h2>
-                </div>
-                <div class="method-copy">
-                    <p>OZSNAP starts with apparent temperature rather than the headline temperature, then checks rain, wind, UV and the day’s temperature range. The ten outfit levels are practical guidance, not a safety rule: activity, exposure time and personal comfort still change what feels right.</p>
-                    <p>Photography advice combines calculated sun angles with forecast cloud, rain and wind. It describes potential rather than promising a sunset. Conditions are refreshed after 30 minutes, and saved forecast data is shown when the weather service is temporarily unavailable.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="questions-section page-shell" aria-labelledby="questions-title">
-            <div class="questions-intro"><p class="section-label">Good to know</p><h2 id="questions-title">Before you head out</h2></div>
-            <div class="question-list">
-                <details><summary>Is golden hour always exactly one hour?</summary><p>No. Its length changes with latitude and season. OZSNAP calculates the evening window from the sun’s angle for the selected city and date.</p></details>
-                <details><summary>Why can cloudy weather be better for portraits?</summary><p>Cloud scatters direct sunlight, reducing hard shadows under the eyes and nose. Heavy cloud can soften colour, so stronger clothing or background colour often helps.</p></details>
-                <details><summary>Does “Use my location” give exact local weather?</summary><p>It selects the nearest OZSNAP city forecast. It does not replace official local observations, warnings or emergency advice.</p></details>
-                <details><summary>How fresh is the weather?</summary><p>Forecast conditions are checked when the page opens and refreshed after 30 minutes. A recent saved forecast is used if the weather service is temporarily unavailable.</p></details>
+                <aside class="photography-resources" aria-labelledby="photography-resources-title">
+                    <p class="section-label" id="photography-resources-title">Studio resources</p>
+                    <p>Planning an indoor baby or family session instead? Explore <a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">Sweetlife Photography in North Lakes</a> or <a href="https://www.lookylooky.com.au/" target="_blank" rel="noopener noreferrer">LookyLooky Photography in Sydney</a>.</p>
+                </aside>
             </div>
         </section>
     </main>
@@ -457,11 +437,6 @@
             <div class="footer-brand">
                 <a class="brand footer-logo" href="#top" aria-label="Back to top"><img class="brand-logo" src="/assets/brand/ozsnap-logo-light.webp" width="480" height="160" alt="OZSNAP AU"></a>
                 <p>Weather, wardrobe and better light across Australia.</p>
-            </div>
-            <div class="footer-links">
-                <p>Photography partners</p>
-                <a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">Sweetlife Photography <span aria-hidden="true">↗</span></a>
-                <a href="https://www.lookylooky.com.au/" target="_blank" rel="noopener noreferrer">LookyLooky <span aria-hidden="true">↗</span></a>
             </div>
             <div class="footer-meta">
                 <p>Forecast data: Open-Meteo</p>

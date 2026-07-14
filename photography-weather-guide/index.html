@@ -16,7 +16,7 @@
     <link rel="icon" href="/assets/brand/favicon-48.png" sizes="48x48" type="image/png">
     <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/style.min.css?v=20260714-7">
+    <link rel="stylesheet" href="/style.min.css?v=20260715-1">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,7 +26,7 @@
           "@id": "https://ozsnap.com/photography-weather-guide/#article",
           "headline": "Photography Weather Guide: Cloud, Rain and Light",
           "description": "A practical Australian guide to reading weather for portraits, landscapes and sunset photography.",
-          "dateModified": "2026-07-14",
+          "dateModified": "2026-07-15",
           "inLanguage": "en-AU",
           "image": "https://ozsnap.com/assets/photos/cloud-photographer.webp",
           "mainEntityOfPage": "https://ozsnap.com/photography-weather-guide/",
@@ -48,7 +48,14 @@
     <header class="site-header">
         <div class="header-inner page-shell">
             <a class="brand" href="/" aria-label="OZSNAP home"><img class="brand-logo" src="/assets/brand/ozsnap-logo-320.webp" srcset="/assets/brand/ozsnap-logo-320.webp 320w, /assets/brand/ozsnap-logo.webp 480w" sizes="158px" width="480" height="160" alt="OZSNAP AU"></a>
-            <a class="guide-header-link" href="/#best-light">Open this week’s light <span aria-hidden="true">→</span></a>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+                <a href="/">Home</a>
+                <a href="/what-to-wear-by-temperature/">What to wear</a>
+                <a href="/photography-weather-guide/" aria-current="page">Photo weather</a>
+                <a href="/golden-hour-calculator/" class="nav-action">Shoot planner</a>
+                <a href="/australia-city-guides/">City guides</a>
+            </nav>
         </div>
     </header>
 
@@ -75,7 +82,10 @@
                 <a href="#portraits">Portrait light</a>
                 <a href="#sunset-potential">Sunset potential</a>
                 <a href="#rain-wind">Rain and wind</a>
+                <a href="#location-reading">Read the location</a>
+                <a href="#field-checklist">Field checklist</a>
                 <a href="#forecast-limits">Forecast limits</a>
+                <a href="#common-questions">Common questions</a>
             </nav>
 
             <article class="guide-article">
@@ -96,6 +106,7 @@
                     <h2>Soft light and good light are not the same thing</h2>
                     <p>Overcast light is forgiving because it reduces hard shadows under the eyes and nose. It also removes the natural direction that gives a face shape. Place your subject near an open edge of shade or turn them toward the brightest part of the sky to keep the light intentional.</p>
                     <p>In a clear sky, avoid facing a subject directly into a low sun. Backlight them, expose for the face and use the darker landscape or architecture behind them for separation. In broken cloud, be ready for rapid changes: a scene can move from flat to directional in seconds.</p>
+                    <p>Outdoor forecasts matter less in a controlled studio, where temperature and light remain consistent. For a local example, see this <a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">North Lakes baby and family portrait studio</a>.</p>
                     <div class="guide-note"><strong>Wind changes portrait quality before it changes exposure.</strong>At exposed coastal locations, shelter and subject comfort often matter more than the cloud score. Move behind a wall, dune or vegetation edge before changing camera settings.</div>
                 </section>
 
@@ -113,6 +124,31 @@
                     <p>Wind above roughly 35 km/h becomes a composition problem for hair, clothing, tripods and long exposures. A technically beautiful light forecast is not a good portrait window when the subject cannot settle. Use the forecast to choose a sheltered location, shorten the session or switch to a subject that benefits from movement.</p>
                 </section>
 
+                <section id="location-reading">
+                    <p class="section-label">Forecast meets geography</p>
+                    <h2>Read the direction of light, weather and shelter</h2>
+                    <p>A city forecast covers a broad area. The useful conditions at a beach, riverbank, laneway or elevated lookout can differ because the horizon and wind exposure are different. Before committing to a location, identify where the sun sets, what blocks the western sky and which direction offers shelter.</p>
+                    <div class="guide-data-grid">
+                        <article><span>Coast</span><h3>Watch the exposed wind</h3><p>Headlands offer a clean horizon but little shelter. A nearby bay, dune edge or building line can keep similar light with better control for people and equipment.</p></article>
+                        <article><span>City</span><h3>Expect an earlier visual sunset</h3><p>Tall buildings can remove direct light well before the listed sunset. Use reflected light between pale buildings or plan blue-hour frames once street lighting begins.</p></article>
+                        <article><span>Ranges and hills</span><h3>Check the real horizon</h3><p>A ridge to the west can end golden light early. Higher ground may keep sun longer, but it can also increase wind and reduce easy access after dark.</p></article>
+                        <article><span>Rain route</span><h3>Choose a workable retreat</h3><p>Know where people and equipment can move if a shower arrives. Covered walkways and sheltered street edges let a short weather break become part of the plan.</p></article>
+                    </div>
+                </section>
+
+                <section id="field-checklist">
+                    <p class="section-label">Before leaving</p>
+                    <h2>A five-minute photography weather check</h2>
+                    <ol>
+                        <li><strong>Choose the photographic goal.</strong> Portrait softness, sunset colour and a clear cityscape favour different skies.</li>
+                        <li><strong>Check the selected hour.</strong> Daily averages can hide a shower or wind change during the actual session.</li>
+                        <li><strong>Read cloud and rain separately.</strong> Useful cloud texture does not mean the session will remain dry.</li>
+                        <li><strong>Check wind against the subject.</strong> Hair, long clothing, foliage, audio and tripod work all have different tolerances.</li>
+                        <li><strong>Plan the fallback frame.</strong> If the western sky closes, photograph faces in soft light, reflections after rain or the blue-hour city instead.</li>
+                    </ol>
+                    <div class="guide-note"><strong>Do not use OZSNAP for warnings or hazardous-condition decisions.</strong>Forecast guidance helps compare ordinary shooting conditions. Check official local warnings and access advice when weather, fire, surf, flood or heat may affect safety.</div>
+                </section>
+
                 <section id="forecast-limits">
                     <p class="section-label">Use honest language</p>
                     <h2>What a light forecast can and cannot know</h2>
@@ -125,6 +161,17 @@
                     <p>OZSNAP therefore ranks “potential” and shows rain, wind and cloud separately. The score helps compare days; the final decision still belongs to the sky in front of you.</p>
                     <div class="guide-cta"><h2>Compare the next seven evenings</h2><p>Switch between portrait and sunset-colour goals, then send the selected day directly to the shoot planner.</p><a href="/#best-light">Open the weekly light forecast <span aria-hidden="true">→</span></a></div>
                 </section>
+
+                <section id="common-questions">
+                    <p class="section-label">Quick answers</p>
+                    <h2>Common photography weather questions</h2>
+                    <h3>What cloud cover is best for sunset photography?</h3>
+                    <p>Broken cloud often offers the best balance of texture and open light, but the western horizon must remain clear enough for sunlight to reach the cloud. A percentage alone cannot show that gap.</p>
+                    <h3>Is overcast weather good for portraits?</h3>
+                    <p>Yes. It reduces hard facial shadows and gives more freedom to choose a background. Turn the subject towards the brightest open sky to keep shape in the face.</p>
+                    <h3>How much wind is too much for a portrait session?</h3>
+                    <p>There is no single threshold for every location. Around 35 km/h, exposed sessions often become difficult, but gusts, shelter, hair, clothing and subject comfort matter as much as the average.</p>
+                </section>
             </article>
         </div>
     </main>
@@ -132,9 +179,19 @@
     <footer class="site-footer">
         <div class="footer-inner page-shell">
             <div class="footer-brand"><a class="brand footer-logo" href="/" aria-label="OZSNAP home"><img class="brand-logo" src="/assets/brand/ozsnap-logo-light.webp" width="480" height="160" alt="OZSNAP AU"></a><p>Weather, wardrobe and better light across Australia.</p></div>
-            <div class="footer-links"><p>Photography partners</p><a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">Sweetlife Photography <span aria-hidden="true">↗</span></a><a href="https://www.lookylooky.com.au/" target="_blank" rel="noopener noreferrer">LookyLooky <span aria-hidden="true">↗</span></a></div>
             <div class="footer-meta"><p>Forecast data: Open-Meteo</p><p>Times shown in each city’s local time.</p><p>&copy; 2026 OZSNAP</p></div>
         </div>
     </footer>
+    <script>
+    (() => {
+        const button = document.getElementById("menu-toggle");
+        const nav = document.getElementById("site-nav");
+        const close = () => { button.setAttribute("aria-expanded", "false"); button.setAttribute("aria-label", "Open navigation"); nav.classList.remove("open"); document.body.classList.remove("nav-open"); };
+        button.addEventListener("click", () => { const open = button.getAttribute("aria-expanded") !== "true"; button.setAttribute("aria-expanded", String(open)); button.setAttribute("aria-label", open ? "Close navigation" : "Open navigation"); nav.classList.toggle("open", open); document.body.classList.toggle("nav-open", open); });
+        nav.addEventListener("click", event => { if (event.target.closest("a")) close(); });
+        window.addEventListener("resize", () => { if (window.innerWidth > 920) close(); });
+        document.addEventListener("keydown", event => { if (event.key === "Escape" && nav.classList.contains("open")) { close(); button.focus(); } });
+    })();
+    </script>
 </body>
 </html>

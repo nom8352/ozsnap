@@ -6,6 +6,7 @@
 - `https://ozsnap.com/what-to-wear-by-temperature/` - complete 10-level outfit methodology
 - `https://ozsnap.com/photography-weather-guide/` - cloud, rain and wind field guide
 - `https://ozsnap.com/golden-hour-calculator/` - golden, soft and blue-hour timing guide
+- `https://ozsnap.com/australia-city-guides/` - seasonal and practical context for the ten supported cities
 
 ## Homepage sections
 
@@ -19,14 +20,16 @@ Hash sections are interaction states, not separate indexable URLs.
 
 ## Search files
 
-- `sitemap.xml` lists the four canonical pages.
+- `sitemap.xml` lists the five canonical pages.
 - `robots.txt` allows crawling and declares the sitemap.
 - `404.html` is excluded from search with `noindex`.
 - Live forecast containers use `data-nosnippet` so volatile values are not favoured as search snippets.
 
 ## External destinations
 
-Only these partner destinations should be linked externally:
+Only these studio-resource destinations should be linked externally:
 
 - `https://sweetlifephotography.com.au/`
 - `https://www.lookylooky.com.au/`
+
+These links belong in visible, relevant body copy rather than repeated site-wide footers.

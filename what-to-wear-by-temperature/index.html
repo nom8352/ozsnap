@@ -16,7 +16,7 @@
     <link rel="icon" href="/assets/brand/favicon-48.png" sizes="48x48" type="image/png">
     <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/style.min.css?v=20260714-7">
+    <link rel="stylesheet" href="/style.min.css?v=20260715-1">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,7 +26,7 @@
           "@id": "https://ozsnap.com/what-to-wear-by-temperature/#article",
           "headline": "What to Wear by Temperature in Australia",
           "description": "A ten-level Australian outfit guide based on feels-like temperature, rain, wind and UV.",
-          "dateModified": "2026-07-14",
+          "dateModified": "2026-07-15",
           "inLanguage": "en-AU",
           "mainEntityOfPage": "https://ozsnap.com/what-to-wear-by-temperature/",
           "publisher": { "@type": "Organization", "name": "OZSNAP", "url": "https://ozsnap.com/", "logo": { "@type": "ImageObject", "url": "https://ozsnap.com/assets/brand/ozsnap-logo.png" } }
@@ -47,7 +47,14 @@
     <header class="site-header">
         <div class="header-inner page-shell">
             <a class="brand" href="/" aria-label="OZSNAP home"><img class="brand-logo" src="/assets/brand/ozsnap-logo-320.webp" srcset="/assets/brand/ozsnap-logo-320.webp 320w, /assets/brand/ozsnap-logo.webp 480w" sizes="158px" width="480" height="160" alt="OZSNAP AU"></a>
-            <a class="guide-header-link" href="/#today">Open today’s planner <span aria-hidden="true">→</span></a>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+                <a href="/">Home</a>
+                <a href="/what-to-wear-by-temperature/" aria-current="page">What to wear</a>
+                <a href="/photography-weather-guide/">Photo weather</a>
+                <a href="/golden-hour-calculator/" class="nav-action">Shoot planner</a>
+                <a href="/australia-city-guides/">City guides</a>
+            </nav>
         </div>
     </header>
 
@@ -75,7 +82,10 @@
                 <a href="#feels-like">Feels-like first</a>
                 <a href="#ten-levels">The 10 levels</a>
                 <a href="#weather-adjustments">Weather adjustments</a>
+                <a href="#australian-conditions">Australian conditions</a>
+                <a href="#fabric-and-packing">Fabric and packing</a>
                 <a href="#day-planning">Plan the whole day</a>
+                <a href="#common-questions">Common questions</a>
             </nav>
 
             <article class="guide-article">
@@ -116,11 +126,47 @@
                     </div>
                 </section>
 
+                <section id="australian-conditions">
+                    <p class="section-label">Same number, different day</p>
+                    <h2>Adjust the level for where you will actually be</h2>
+                    <p>A feels-like temperature is the best starting point, but the setting decides which layer earns a place in your bag. Think about exposure, shade, humidity and how quickly the temperature will change rather than dressing for a city-wide label.</p>
+                    <div class="guide-data-grid">
+                        <article><span>Tropical north</span><h3>Prioritise airflow and quick drying</h3><p>In Cairns or Darwin, humidity can make a warm day feel persistent after sunset. Loose, breathable clothes and a compact rain layer are usually more useful than a thick jumper.</p></article>
+                        <article><span>Southern coast</span><h3>Carry a wind-blocking layer</h3><p>Melbourne, Hobart and exposed Sydney edges can cool quickly when the wind changes. A light shell over the base outfit often works better than adding a bulky knit.</p></article>
+                        <article><span>Dry inland air</span><h3>Plan for the daily range</h3><p>Canberra and inland trips can move from a cold morning to a comfortable afternoon. Wear two light layers that can be removed and carried without becoming a burden.</p></article>
+                        <article><span>Beach and headland</span><h3>Expect more exposure</h3><p>Gold Coast and Perth coastal plans may feel windier than nearby streets. Secure hats, choose a layer that closes at the front and keep dry clothing for after the water.</p></article>
+                    </div>
+                </section>
+
+                <section id="fabric-and-packing">
+                    <p class="section-label">Build a small useful kit</p>
+                    <h2>Choose fabric by the job it needs to do</h2>
+                    <p>For hot or humid weather, lightweight linen and technical quick-dry fabrics release heat and recover faster after a shower. Cotton is comfortable for ordinary dry days, but a soaked cotton layer can stay cold against the skin. In cool weather, a light wool or fleece mid-layer adds warmth without requiring a heavy coat.</p>
+                    <p>A compact day bag does not need a second outfit. Pack the one adjustment the forecast suggests: a wind shell for an exposed lookout, a waterproof outer for showers, a warm layer for a late finish or sun protection for a high-UV day.</p>
+                    <ol>
+                        <li><strong>Dress for the coldest fixed part of the day.</strong> Waiting at a station or watching sport feels cooler than walking.</li>
+                        <li><strong>Make the first extra layer removable.</strong> It should fit in your bag once the temperature rises.</li>
+                        <li><strong>Keep rain protection outside the insulation.</strong> A shell protects the useful warmth underneath.</li>
+                        <li><strong>Check UV separately.</strong> A cool temperature does not mean low UV exposure.</li>
+                    </ol>
+                </section>
+
                 <section id="day-planning">
                     <p class="section-label">Use the live tool</p>
                     <h2>Plan morning, afternoon and evening separately</h2>
                     <p>A daily maximum cannot tell you what an early commute or late coastal walk will feel like. OZSNAP’s day kit reads three parts of the selected forecast day, then adjusts each outfit level for whether you run cold, feel neutral or run warm, and whether your day is still, walking or active.</p>
                     <div class="guide-cta"><h2>Build today’s personal day kit</h2><p>Choose your Australian city and comfort profile to get three daypart outfits and a copyable checklist.</p><a href="/#day-kit">Open the day kit <span aria-hidden="true">→</span></a></div>
+                </section>
+
+                <section id="common-questions">
+                    <p class="section-label">Quick answers</p>
+                    <h2>Common what-to-wear questions</h2>
+                    <h3>Should I dress for the maximum or the feels-like temperature?</h3>
+                    <p>Use the feels-like temperature for the time you will be outside. If your plans span the day, check morning, afternoon and evening separately and make the difference removable.</p>
+                    <h3>When should I move one level warmer?</h3>
+                    <p>Move warmer when you run cold, will be standing still, are heading to an exposed or shaded place, or expect to stay out after sunset. Move lighter for sustained walking or active work.</p>
+                    <h3>Does cloudy weather mean I need warmer clothing?</h3>
+                    <p>Not automatically. Cloud can reduce direct solar warmth, but wind, humidity and apparent temperature are better guides. Keep UV protection in mind because cloud does not remove UV risk.</p>
                 </section>
             </article>
         </div>
@@ -129,9 +175,19 @@
     <footer class="site-footer">
         <div class="footer-inner page-shell">
             <div class="footer-brand"><a class="brand footer-logo" href="/" aria-label="OZSNAP home"><img class="brand-logo" src="/assets/brand/ozsnap-logo-light.webp" width="480" height="160" alt="OZSNAP AU"></a><p>Weather, wardrobe and better light across Australia.</p></div>
-            <div class="footer-links"><p>Photography partners</p><a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">Sweetlife Photography <span aria-hidden="true">↗</span></a><a href="https://www.lookylooky.com.au/" target="_blank" rel="noopener noreferrer">LookyLooky <span aria-hidden="true">↗</span></a></div>
             <div class="footer-meta"><p>Forecast data: Open-Meteo</p><p>Guidance, not emergency advice.</p><p>&copy; 2026 OZSNAP</p></div>
         </div>
     </footer>
+    <script>
+    (() => {
+        const button = document.getElementById("menu-toggle");
+        const nav = document.getElementById("site-nav");
+        const close = () => { button.setAttribute("aria-expanded", "false"); button.setAttribute("aria-label", "Open navigation"); nav.classList.remove("open"); document.body.classList.remove("nav-open"); };
+        button.addEventListener("click", () => { const open = button.getAttribute("aria-expanded") !== "true"; button.setAttribute("aria-expanded", String(open)); button.setAttribute("aria-label", open ? "Close navigation" : "Open navigation"); nav.classList.toggle("open", open); document.body.classList.toggle("nav-open", open); });
+        nav.addEventListener("click", event => { if (event.target.closest("a")) close(); });
+        window.addEventListener("resize", () => { if (window.innerWidth > 920) close(); });
+        document.addEventListener("keydown", event => { if (event.key === "Escape" && nav.classList.contains("open")) { close(); button.focus(); } });
+    })();
+    </script>
 </body>
 </html>

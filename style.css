@@ -220,7 +220,8 @@ a {
 }
 
 .site-nav a:hover::after,
-.site-nav a:focus-visible::after {
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after {
     transform: scaleX(1);
 }
 
@@ -1781,7 +1782,7 @@ input[type="date"] {
 
 .footer-inner {
     display: grid;
-    grid-template-columns: 1fr 0.8fr 0.8fr;
+    grid-template-columns: 1fr auto;
     gap: 70px;
 }
 
@@ -2207,6 +2208,87 @@ input[type="date"] {
     background: var(--white);
 }
 
+.guide-directory-section {
+    padding-block: 76px 88px;
+    border-top: 1px solid var(--line);
+    background: var(--paper);
+}
+
+.guide-directory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 34px;
+    border-top: 1px solid var(--line-dark);
+    border-left: 1px solid var(--line);
+}
+
+.guide-directory-grid > a {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    background: var(--white);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+}
+
+.guide-directory-grid > a:hover {
+    background: var(--warm);
+}
+
+.guide-directory-grid > a > span {
+    color: var(--coral-text);
+    font-size: 10px;
+    font-weight: 850;
+    text-transform: uppercase;
+}
+
+.guide-directory-grid h3 {
+    margin-top: 18px;
+    font-size: 31px;
+}
+
+.guide-directory-grid p {
+    max-width: 520px;
+    margin-top: 10px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.guide-directory-grid strong {
+    margin-top: auto;
+    padding-top: 24px;
+    color: var(--forest-2);
+    font-size: 11px;
+}
+
+.photography-resources {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 680px);
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+
+.photography-resources > p:last-child {
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.photography-resources a,
+.guide-article p a,
+.guide-data-grid p a {
+    color: var(--forest-2);
+    font-weight: 750;
+    text-underline-offset: 3px;
+}
+
 .not-found {
     min-height: 100vh;
     display: grid;
@@ -2236,6 +2318,21 @@ input[type="date"] {
 
 .not-found > p:last-of-type {
     color: rgba(255, 255, 255, 0.7);
+}
+
+.not-found-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+}
+
+.not-found-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    color: #f7ce63;
+    font-size: 13px;
+    font-weight: 800;
 }
 
 .not-found > a {
@@ -2669,12 +2766,17 @@ input[type="date"] {
 
     .forecast-grid {
         margin-right: -16px;
+        padding-right: 16px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
         grid-template-columns: repeat(7, 128px);
+        scroll-snap-type: x proximity;
     }
 
     .forecast-card,
     .forecast-skeleton {
         min-height: 282px;
+        scroll-snap-align: start;
     }
 
     .forecast-photo {
@@ -2905,6 +3007,29 @@ input[type="date"] {
 
     .guide-cta {
         padding: 27px 22px;
+    }
+
+    .guide-directory-section {
+        padding-block: 50px 62px;
+    }
+
+    .guide-directory-grid {
+        grid-template-columns: 1fr;
+        margin-top: 26px;
+    }
+
+    .guide-directory-grid > a {
+        min-height: 220px;
+        padding: 24px 20px;
+    }
+
+    .guide-directory-grid h3 {
+        font-size: 27px;
+    }
+
+    .photography-resources {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 }
 

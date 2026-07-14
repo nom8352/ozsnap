@@ -16,7 +16,7 @@
     <link rel="icon" href="/assets/brand/favicon-48.png" sizes="48x48" type="image/png">
     <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/style.min.css?v=20260714-7">
+    <link rel="stylesheet" href="/style.min.css?v=20260715-1">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,7 +26,7 @@
           "@id": "https://ozsnap.com/golden-hour-calculator/#article",
           "headline": "Golden Hour Calculator and Shoot Timing Guide",
           "description": "A practical Australian guide to golden hour, soft daylight, blue hour and session timing.",
-          "dateModified": "2026-07-14",
+          "dateModified": "2026-07-15",
           "inLanguage": "en-AU",
           "image": "https://ozsnap.com/assets/photos/coastal-hero.webp",
           "mainEntityOfPage": "https://ozsnap.com/golden-hour-calculator/",
@@ -48,7 +48,14 @@
     <header class="site-header">
         <div class="header-inner page-shell">
             <a class="brand" href="/" aria-label="OZSNAP home"><img class="brand-logo" src="/assets/brand/ozsnap-logo-320.webp" srcset="/assets/brand/ozsnap-logo-320.webp 320w, /assets/brand/ozsnap-logo.webp 480w" sizes="158px" width="480" height="160" alt="OZSNAP AU"></a>
-            <a class="guide-header-link" href="/#shoot-planner">Open shoot planner <span aria-hidden="true">→</span></a>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+                <a href="/">Home</a>
+                <a href="/what-to-wear-by-temperature/">What to wear</a>
+                <a href="/photography-weather-guide/">Photo weather</a>
+                <a href="/golden-hour-calculator/" class="nav-action" aria-current="page">Shoot planner</a>
+                <a href="/australia-city-guides/">City guides</a>
+            </nav>
         </div>
     </header>
 
@@ -71,14 +78,81 @@
         <div class="guide-content page-shell">
             <nav class="guide-toc" aria-label="On this page">
                 <p>On this page</p>
+                <a href="#calculator">Golden hour calculator</a>
                 <a href="#three-windows">Three light windows</a>
                 <a href="#golden-length">Why length changes</a>
+                <a href="#sunrise-sunset">Sunrise or sunset</a>
                 <a href="#session-timing">Build the session</a>
+                <a href="#session-examples">Session examples</a>
                 <a href="#weather">Add weather</a>
                 <a href="#limitations">Local limitations</a>
+                <a href="#common-questions">Common questions</a>
             </nav>
 
             <article class="guide-article">
+                <section id="calculator">
+                    <p class="section-label">Standalone shoot planner</p>
+                    <h2>Calculate local light and session times</h2>
+                    <p>Choose a supported Australian city, date and photographic look. Times are calculated in that city’s local time and include a 20-minute arrival allowance.</p>
+                    <div class="planner-layout">
+                        <form class="planner-form" id="standalone-planner">
+                            <div class="form-row">
+                                <label for="calculator-city">City</label>
+                                <div class="select-wrap"><select id="calculator-city" name="city" required>
+                                    <option value="sydney">Sydney, NSW</option>
+                                    <option value="melbourne">Melbourne, VIC</option>
+                                    <option value="brisbane" selected>Brisbane, QLD</option>
+                                    <option value="gold-coast">Gold Coast, QLD</option>
+                                    <option value="cairns">Cairns, QLD</option>
+                                    <option value="perth">Perth, WA</option>
+                                    <option value="adelaide">Adelaide, SA</option>
+                                    <option value="hobart">Hobart, TAS</option>
+                                    <option value="canberra">Canberra, ACT</option>
+                                    <option value="darwin">Darwin, NT</option>
+                                </select></div>
+                            </div>
+                            <div class="form-row">
+                                <label for="calculator-date">Date</label>
+                                <input id="calculator-date" name="date" type="date" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="calculator-duration">Session duration</label>
+                                <div class="select-wrap"><select id="calculator-duration" name="duration">
+                                    <option value="30">30 minutes</option>
+                                    <option value="45">45 minutes</option>
+                                    <option value="60" selected>60 minutes</option>
+                                    <option value="75">75 minutes</option>
+                                    <option value="90">90 minutes</option>
+                                    <option value="120">120 minutes</option>
+                                </select></div>
+                            </div>
+                            <fieldset class="light-preference">
+                                <legend>Light look</legend>
+                                <div class="segmented-control">
+                                    <input type="radio" name="calculator-look" id="calculator-golden" value="golden" checked><label for="calculator-golden">Golden</label>
+                                    <input type="radio" name="calculator-look" id="calculator-soft" value="soft"><label for="calculator-soft">Soft</label>
+                                    <input type="radio" name="calculator-look" id="calculator-blue" value="blue"><label for="calculator-blue">Blue</label>
+                                </div>
+                            </fieldset>
+                            <button class="calculate-button" type="submit">Calculate session <span aria-hidden="true">→</span></button>
+                        </form>
+
+                        <div class="planner-result" id="calculator-result" role="status" aria-live="polite">
+                            <div class="result-topline"><p class="section-label" id="calculator-location">Brisbane · Today</p><span id="calculator-type">Golden light</span></div>
+                            <h3>Start at <strong id="calculator-start">--:--</strong></h3>
+                            <p id="calculator-summary">Choose your date and calculate a practical evening schedule.</p>
+                            <div class="schedule-line" role="group" aria-label="Session schedule">
+                                <div><span class="schedule-dot"></span><small>Arrive</small><strong id="calculator-arrival">--:--</strong></div>
+                                <span class="schedule-connector" aria-hidden="true"></span>
+                                <div><span class="schedule-dot shoot"></span><small>Start</small><strong id="calculator-shoot">--:--</strong></div>
+                                <span class="schedule-connector" aria-hidden="true"></span>
+                                <div><span class="schedule-dot finish"></span><small>Finish</small><strong id="calculator-finish">--:--</strong></div>
+                            </div>
+                            <div class="result-note"><span aria-hidden="true">i</span><p><strong id="calculator-milestones">Golden start --:-- · Sunset --:-- · Blue end --:--</strong><br>Astronomical guidance for a clear, level horizon. Local terrain and buildings can shorten visible light.</p></div>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="three-windows">
                     <p class="section-label">Start with intent</p>
                     <h2>Golden, soft or blue-hour light?</h2>
@@ -97,6 +171,18 @@
                     <p>The name is therefore a visual description, not a timer. The light also changes within the window: the beginning has more brightness and direction, while the final minutes are warmer, lower contrast and easier to lose behind buildings or hills.</p>
                 </section>
 
+                <section id="sunrise-sunset">
+                    <p class="section-label">Choose the practical window</p>
+                    <h2>Sunrise and sunset solve different problems</h2>
+                    <p>Morning golden light follows sunrise; evening golden light leads into sunset. Both can produce a low sun angle, but access, weather and the direction of the view often make one much more useful than the other.</p>
+                    <div class="guide-data-grid">
+                        <article><span>Sunrise</span><h3>Quieter places and cleaner air</h3><p>Useful for popular beaches, city viewpoints and still water before crowds and daytime wind build. Allow setup time in darkness and confirm safe access.</p></article>
+                        <article><span>Sunset</span><h3>Easier timing for people</h3><p>Usually more practical for portraits and families. The ground and air may hold daytime warmth, but public locations can be busier.</p></article>
+                        <article><span>East-facing view</span><h3>Use dawn colour or dusk afterglow</h3><p>An eastern subject receives direct low light after sunrise. At sunset, turn east for soft colour and illuminated clouds opposite the sun.</p></article>
+                        <article><span>West-facing view</span><h3>Use sunset direction carefully</h3><p>A clean western horizon supports backlight and direct colour. Check whether hills, buildings or low cloud will hide the sun early.</p></article>
+                    </div>
+                </section>
+
                 <section id="session-timing">
                     <p class="section-label">Work backwards</p>
                     <h2>Build arrival, shoot and finish times</h2>
@@ -107,6 +193,17 @@
                         <li><strong>Check the location.</strong> A western hill or tall building can hide the sun before the astronomical sunset time.</li>
                     </ol>
                     <div class="guide-note"><strong>For portraits, finish before people get cold or tired.</strong>A mathematically ideal final ten minutes is not useful if the subject has already lost comfort, attention or confidence.</div>
+                </section>
+
+                <section id="session-examples">
+                    <p class="section-label">Workable starting points</p>
+                    <h2>Match the schedule to the subject</h2>
+                    <div class="light-comparison">
+                        <article><span>Family portraits</span><h3>60–75 minutes</h3><p>Begin before golden hour for movement and variety, then reserve the warmest final light for a smaller set of backlit frames.</p></article>
+                        <article><span>Couple or solo portrait</span><h3>35–50 minutes</h3><p>Start within the golden window when the location is known and walking time is short. Add an earlier arrival for wardrobe and setup.</p></article>
+                        <article><span>Cityscape or coast</span><h3>75–120 minutes</h3><p>Cover late daylight, sunset and blue hour. Bring stable support when exposure times lengthen and allow a safe return after dark.</p></article>
+                    </div>
+                    <p>These are planning ranges rather than fixed rules. A large group, unfamiliar location, long walk, young children or multiple compositions all need more time before the light reaches its shortest window.</p>
                 </section>
 
                 <section id="weather">
@@ -126,7 +223,18 @@
                     <h2>The mathematical horizon is not your horizon</h2>
                     <p>The calculation assumes a clear, level horizon and standard atmospheric refraction. Mountains, cliffs, buildings, trees, smoke and haze change the light you can actually see. Coastal headlands may keep an open western view; inner-city streets can lose direct sun much earlier.</p>
                     <p>Use the calculated time to organise the session, then arrive early enough to read the location. When a selected date enters the seven-day forecast, compare the weekly light ranking and adjust the day if rain or wind becomes the larger risk.</p>
-                    <div class="guide-cta"><h2>Calculate your next shoot</h2><p>Choose one of ten Australian cities, any date in the next 18 months, a session length and the light you want.</p><a href="/#shoot-planner">Open the shoot planner <span aria-hidden="true">→</span></a></div>
+                    <div class="guide-cta"><h2>Calculate your next shoot</h2><p>Choose one of ten Australian cities, any date in the next 18 months, a session length and the light you want.</p><a href="#calculator">Use the calculator <span aria-hidden="true">↑</span></a></div>
+                </section>
+
+                <section id="common-questions">
+                    <p class="section-label">Quick answers</p>
+                    <h2>Common golden-hour planning questions</h2>
+                    <h3>Is golden hour before or after sunset?</h3>
+                    <p>In the evening, golden hour is before sunset. Blue hour follows sunset. Around sunrise, the sequence is reversed: blue twilight, warm low-angle light, then stronger daylight.</p>
+                    <h3>How early should a photographer arrive?</h3>
+                    <p>Allow at least 20 minutes before the planned start, and more for an unfamiliar location, parking, a walk, tripod setup or a group. Arrival time should not consume the best light.</p>
+                    <h3>Why does the sun disappear before the listed time?</h3>
+                    <p>Published sunset is calculated for a mathematical horizon. Hills, buildings, trees and cliffs can block direct sun earlier from your exact position.</p>
                 </section>
             </article>
         </div>
@@ -135,9 +243,123 @@
     <footer class="site-footer">
         <div class="footer-inner page-shell">
             <div class="footer-brand"><a class="brand footer-logo" href="/" aria-label="OZSNAP home"><img class="brand-logo" src="/assets/brand/ozsnap-logo-light.webp" width="480" height="160" alt="OZSNAP AU"></a><p>Weather, wardrobe and better light across Australia.</p></div>
-            <div class="footer-links"><p>Photography partners</p><a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">Sweetlife Photography <span aria-hidden="true">↗</span></a><a href="https://www.lookylooky.com.au/" target="_blank" rel="noopener noreferrer">LookyLooky <span aria-hidden="true">↗</span></a></div>
             <div class="footer-meta"><p>Forecast data: Open-Meteo</p><p>Times shown in each city’s local time.</p><p>&copy; 2026 OZSNAP</p></div>
         </div>
     </footer>
+    <script>
+    (() => {
+        const cities = {
+            sydney: { name: "Sydney", latitude: -33.8688, longitude: 151.2093, timezone: "Australia/Sydney" },
+            melbourne: { name: "Melbourne", latitude: -37.8136, longitude: 144.9631, timezone: "Australia/Melbourne" },
+            brisbane: { name: "Brisbane", latitude: -27.4698, longitude: 153.0251, timezone: "Australia/Brisbane" },
+            "gold-coast": { name: "Gold Coast", latitude: -28.0167, longitude: 153.4, timezone: "Australia/Brisbane" },
+            cairns: { name: "Cairns", latitude: -16.9186, longitude: 145.7781, timezone: "Australia/Brisbane" },
+            perth: { name: "Perth", latitude: -31.9523, longitude: 115.8613, timezone: "Australia/Perth" },
+            adelaide: { name: "Adelaide", latitude: -34.9285, longitude: 138.6007, timezone: "Australia/Adelaide" },
+            hobart: { name: "Hobart", latitude: -42.8821, longitude: 147.3272, timezone: "Australia/Hobart" },
+            canberra: { name: "Canberra", latitude: -35.2809, longitude: 149.13, timezone: "Australia/Sydney" },
+            darwin: { name: "Darwin", latitude: -12.4634, longitude: 130.8456, timezone: "Australia/Darwin" }
+        };
+
+        const form = document.getElementById("standalone-planner");
+        const cityInput = document.getElementById("calculator-city");
+        const dateInput = document.getElementById("calculator-date");
+        const durationInput = document.getElementById("calculator-duration");
+
+        const dateInZone = timezone => {
+            const parts = new Intl.DateTimeFormat("en-CA", { timeZone: timezone, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+            const values = Object.fromEntries(parts.filter(part => part.type !== "literal").map(part => [part.type, part.value]));
+            return `${values.year}-${values.month}-${values.day}`;
+        };
+        const addMonths = (dateString, months) => {
+            const [year, month, day] = dateString.split("-").map(Number);
+            const target = new Date(Date.UTC(year, month - 1 + months, 1, 12));
+            const finalDay = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
+            target.setUTCDate(Math.min(day, finalDay));
+            return target.toISOString().slice(0, 10);
+        };
+        const addMinutes = (date, minutes) => new Date(date.valueOf() + minutes * 60000);
+        const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
+        const toJulian = date => date.valueOf() / 86400000 - 0.5 + 2440588;
+        const fromJulian = julian => new Date((julian + 0.5 - 2440588) * 86400000);
+        const formatTime = (date, timezone) => new Intl.DateTimeFormat("en-AU", { timeZone: timezone, hour: "numeric", minute: "2-digit", hour12: true }).format(date).replace(" am", "am").replace(" pm", "pm");
+        const formatDate = dateString => new Intl.DateTimeFormat("en-AU", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${dateString}T12:00:00Z`));
+
+        const calculateSolarTimes = (dateString, latitude, longitude) => {
+            const rad = Math.PI / 180;
+            const day = new Date(`${dateString}T12:00:00Z`);
+            const julian2000 = 2451545;
+            const lw = -longitude * rad;
+            const phi = latitude * rad;
+            const d = toJulian(day) - julian2000;
+            const n = Math.round(d - 0.0009 - lw / (2 * Math.PI));
+            const solarApprox = 0.0009 + lw / (2 * Math.PI) + n;
+            const anomaly = rad * (357.5291 + 0.98560028 * solarApprox);
+            const centre = rad * (1.9148 * Math.sin(anomaly) + 0.02 * Math.sin(2 * anomaly) + 0.0003 * Math.sin(3 * anomaly));
+            const eclipticLongitude = anomaly + centre + rad * 102.9372 + Math.PI;
+            const declination = Math.asin(Math.sin(eclipticLongitude) * Math.sin(rad * 23.4397));
+            const eveningTime = altitudeDegrees => {
+                const altitude = altitudeDegrees * rad;
+                const numerator = Math.sin(altitude) - Math.sin(phi) * Math.sin(declination);
+                const denominator = Math.cos(phi) * Math.cos(declination);
+                const hourAngle = Math.acos(clamp(numerator / denominator, -1, 1));
+                const transitApprox = 0.0009 + (hourAngle + lw) / (2 * Math.PI) + n;
+                return fromJulian(julian2000 + transitApprox + 0.0053 * Math.sin(anomaly) - 0.0069 * Math.sin(2 * eclipticLongitude));
+            };
+            return { goldenStart: eveningTime(6), sunset: eveningTime(-0.833), blueEnd: eveningTime(-6) };
+        };
+
+        const setDateRange = () => {
+            const city = cities[cityInput.value];
+            const today = dateInZone(city.timezone);
+            dateInput.min = today;
+            dateInput.max = addMonths(today, 18);
+            if (!dateInput.value || dateInput.value < dateInput.min || dateInput.value > dateInput.max) dateInput.value = today;
+        };
+
+        const calculate = () => {
+            const city = cities[cityInput.value];
+            const duration = Number(durationInput.value);
+            const look = form.querySelector('input[name="calculator-look"]:checked').value;
+            const solar = calculateSolarTimes(dateInput.value, city.latitude, city.longitude);
+            let finish = solar.sunset;
+            let type = "Golden light";
+            let summary = "The session builds through warm evening light and finishes at sunset.";
+            if (look === "soft") {
+                finish = addMinutes(solar.goldenStart, 20);
+                type = "Soft daylight";
+                summary = "Start before golden hour for softer faces, then finish as warm colour arrives.";
+            } else if (look === "blue") {
+                finish = solar.blueEnd;
+                type = "Blue hour transition";
+                summary = "The session crosses sunset and finishes as cool blue light fades.";
+            }
+            const start = addMinutes(finish, -duration);
+            const arrival = addMinutes(start, -20);
+            document.getElementById("calculator-location").textContent = `${city.name} · ${formatDate(dateInput.value)}`;
+            document.getElementById("calculator-type").textContent = type;
+            document.getElementById("calculator-start").textContent = formatTime(start, city.timezone);
+            document.getElementById("calculator-summary").textContent = summary;
+            document.getElementById("calculator-arrival").textContent = formatTime(arrival, city.timezone);
+            document.getElementById("calculator-shoot").textContent = formatTime(start, city.timezone);
+            document.getElementById("calculator-finish").textContent = formatTime(finish, city.timezone);
+            document.getElementById("calculator-milestones").textContent = `Golden start ${formatTime(solar.goldenStart, city.timezone)} · Sunset ${formatTime(solar.sunset, city.timezone)} · Blue end ${formatTime(solar.blueEnd, city.timezone)}`;
+        };
+
+        cityInput.addEventListener("change", () => { setDateRange(); calculate(); });
+        form.addEventListener("submit", event => { event.preventDefault(); calculate(); });
+        form.addEventListener("change", event => { if (event.target.matches('input[name="calculator-look"], #calculator-duration, #calculator-date')) calculate(); });
+        setDateRange();
+        calculate();
+
+        const button = document.getElementById("menu-toggle");
+        const nav = document.getElementById("site-nav");
+        const close = () => { button.setAttribute("aria-expanded", "false"); button.setAttribute("aria-label", "Open navigation"); nav.classList.remove("open"); document.body.classList.remove("nav-open"); };
+        button.addEventListener("click", () => { const open = button.getAttribute("aria-expanded") !== "true"; button.setAttribute("aria-expanded", String(open)); button.setAttribute("aria-label", open ? "Close navigation" : "Open navigation"); nav.classList.toggle("open", open); document.body.classList.toggle("nav-open", open); });
+        nav.addEventListener("click", event => { if (event.target.closest("a")) close(); });
+        window.addEventListener("resize", () => { if (window.innerWidth > 920) close(); });
+        document.addEventListener("keydown", event => { if (event.key === "Escape" && nav.classList.contains("open")) { close(); button.focus(); } });
+    })();
+    </script>
 </body>
 </html>

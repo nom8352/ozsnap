@@ -1,401 +1,1024 @@
-// ========================================
-// OZSNAP - Modern Photography Website
-// JavaScript - Navigation, Blog & Interactions
-// ========================================
-
-// ---------- Blog Post Data ----------
-const blogPosts = {
-    'post-1': {
-        title: 'Welcome to the Reimagined OZSNAP',
-        category: 'The New Era',
-        date: 'March 14, 2026',
-        breadcrumb: 'The Reimagined OZSNAP',
-        content: `
-            <p class="blog-post-lead">After years of capturing the stories of others, I realized it was time to refine my own digital home. The new OZSNAP isn't just a website update; it's a reflection of my growth as both a photographer and a graphic designer. I wanted a space that feels as clean, professional, and emotive as the photos I take.</p>
-
-            <h2>Minimalist Interface</h2>
-            <p>Removing the noise to let the visual portfolios breathe. Every element on this new site has been carefully considered — from the typography to the spacing, from the color palette to the micro-animations. The goal was simple: let the work speak for itself without competing with excessive design flourishes.</p>
-
-            <h2>Enhanced User Experience</h2>
-            <p>A smoother way for clients to browse my design services and snap packages. Navigation is intuitive, pages load seamlessly, and finding the right information takes seconds, not minutes. Whether you're a potential client looking for wedding photography or a business seeking design services, the journey through this site should feel effortless.</p>
-
-            <h2>The Vision</h2>
-            <p>Bridging the gap between timeless photography and modern digital aesthetics. This site represents where I am today — a creator who respects the craft of traditional photography while embracing the tools of tomorrow. It's a digital gallery, a business card, and a creative journal all rolled into one.</p>
-
-            <blockquote>The new OZSNAP isn't just a website update; it's a reflection of my growth as both a photographer and a graphic designer.</blockquote>
-
-            <p>I'm excited to share this new chapter with you. Whether you've been following my work for years or you're discovering OZSNAP for the first time, welcome. I hope this space inspires you as much as building it has inspired me.</p>
-        `
+const CITIES = [
+    {
+        id: "sydney",
+        name: "Sydney",
+        state: "NSW",
+        latitude: -33.8688,
+        longitude: 151.2093,
+        timezone: "Australia/Sydney",
+        note: "Harbour edges can feel cooler in a southerly, especially after sunset."
     },
-    'post-2': {
-        title: 'The Golden Hour in Brisbane: Capturing Magic in the Sun State',
-        category: 'Photography',
-        date: 'March 12, 2026',
-        breadcrumb: 'Golden Hour in Brisbane',
-        content: `
-            <p class="blog-post-lead">Brisbane offers some of the most unique light in Australia, especially in the North Lakes area. As a local photographer, I've spent countless hours tracking how the sun hits the Eucalyptus trees and the waterfront. This post dives into why timing is everything.</p>
-
-            <h2>The Science of Light</h2>
-            <p>Why 30 minutes before sunset is the "sweet spot" for family portraits. During this window, the sun sits low on the horizon, casting a warm, golden glow that flatters every skin tone and creates a natural backlight that adds depth and dimension to portraits. The harsh midday shadows disappear, replaced by soft, directional light that wraps around your subjects beautifully.</p>
-            <p>Understanding this science isn't just academic — it's practical. When I schedule shoots, I work backwards from sunset, ensuring we're in position during those precious minutes when the light transforms from ordinary to extraordinary.</p>
-
-            <h2>Location Spotlight</h2>
-            <p>Why North Lakes and Redcliffe offer the perfect mix of urban and natural backdrops. North Lakes has this wonderful blend of manicured parklands, modern architecture, and natural bushland that provides incredible variety within a short distance. Redcliffe's waterfront, with its pier stretching out over Moreton Bay, offers dramatic backgrounds that catch the golden light reflecting off the water.</p>
-            <p>I've personally scouted dozens of locations across these areas, noting how the light changes with the seasons, the direction of the sun, and even which spots offer wind protection for those perfect hair-in-place shots.</p>
-
-            <h2>Preparation Tips</h2>
-            <p>What colors to wear to complement the warm, Queensland golden tones. I always advise my clients to lean into earthy, neutral palettes — think creams, tans, soft whites, and muted greens. These colors harmonize with the warm light rather than competing with it. Avoid bright whites (they blow out in golden light) and neon colors (they cast unflattering reflected light onto skin).</p>
-            <p>The key is to let the natural beauty of the light do the heavy lifting. When your wardrobe works with the environment rather than against it, the results are consistently stunning.</p>
-        `
+    {
+        id: "melbourne",
+        name: "Melbourne",
+        state: "VIC",
+        latitude: -37.8136,
+        longitude: 144.9631,
+        timezone: "Australia/Melbourne",
+        note: "Keep a light outer layer close; a wind shift can change a mild day quickly."
     },
-    'post-3': {
-        title: 'Photography in the Age of AI: The Human Touch Remains',
-        category: 'Technology',
-        date: 'March 10, 2026',
-        breadcrumb: 'Photography & AI',
-        content: `
-            <p class="blog-post-lead">As a graphic designer who embraces AI tools like Antigravity, I often get asked: "Is traditional photography still relevant?" My answer is always a resounding yes. While AI can generate an image, it cannot capture a memory.</p>
-
-            <h2>Authenticity vs. Generation</h2>
-            <p>The value of a real smile, a genuine tear, and a split-second embrace. These are moments that exist in a single heartbeat — they cannot be predicted, prompted, or generated. When I press the shutter during a wedding ceremony, I'm preserving a microsecond of genuine human emotion that will never occur again in exactly that way.</p>
-            <p>AI-generated images, no matter how photorealistic, lack this fundamental quality: truth. A family portrait captures who you were at that exact moment in time — the way your child held your hand, the pattern of your grandmother's favourite dress, the way the light fell on that particular afternoon. No algorithm can replicate this.</p>
-
-            <h2>AI as a Partner</h2>
-            <p>How I use modern technology to enhance the editing process without losing the "soul" of the photo. AI has become an incredible ally in my workflow. From intelligent noise reduction to smart colour grading suggestions, these tools allow me to spend less time on technical corrections and more time on the creative decisions that truly matter.</p>
-            <p>But here's my line in the sand: AI assists the process; it never replaces the photographer's eye. The decision of when to shoot, what to include in the frame, how to connect with a nervous subject — these remain profoundly human skills.</p>
-
-            <h2>Future-Proofing Memories</h2>
-            <p>Why high-quality, professional snaps are becoming even more precious in a world of filtered, disposable content. In an era where billions of images are generated daily — many of them artificially created — the authentic photograph becomes a rare and valuable artifact. When your grandchildren look at your wedding photos, they'll want to know that the moment was real.</p>
-
-            <blockquote>While AI can generate an image, it cannot capture a memory. The human touch in photography isn't just relevant — it's irreplaceable.</blockquote>
-
-            <p>Investing in professional photography today is investing in genuine memories that will appreciate in significance as the digital landscape becomes increasingly artificial.</p>
-        `
+    {
+        id: "brisbane",
+        name: "Brisbane",
+        state: "QLD",
+        latitude: -27.4698,
+        longitude: 153.0251,
+        timezone: "Australia/Brisbane",
+        note: "Humidity can hold after sunset, so breathable layers usually work best."
     },
-    'post-4': {
-        title: 'Designing for Impact: Why Visual Identity is Your Best Salesman',
-        category: 'Design',
-        date: 'March 8, 2026',
-        breadcrumb: 'Designing for Impact',
-        content: `
-            <p class="blog-post-lead">Graphic design is more than just a logo; it's the silent ambassador of your brand. Drawing from my dual background, I look at design through a lens—focusing on composition, balance, and focus.</p>
-
-            <h2>The First Impression</h2>
-            <p>You have less than 3 seconds to capture a customer's attention online. In those critical moments, your visual identity does all the talking. Before anyone reads your tagline, reviews your services, or checks your pricing, they've already formed a gut reaction based on how your brand looks.</p>
-            <p>This is where my photography background gives me an edge as a designer. I understand the power of visual hierarchy — the way your eye naturally moves through an image, drawn first to the brightest point, then flowing through the composition. I apply these same principles to every design project, ensuring the most important message hits first.</p>
-
-            <h2>Consistency is Key</h2>
-            <p>How a unified color palette and typography build trust over time. Think of the brands you trust most — they're instantly recognizable because every touchpoint feels cohesive. Your business card matches your website, which matches your social media, which matches your storefront signage.</p>
-            <p>This consistency doesn't happen by accident. It's built through a deliberate brand system — a carefully chosen set of colors, typefaces, spacing rules, and graphic elements that work together to create a unified visual language.</p>
-
-            <h2>Strategy First</h2>
-            <p>Why I start every design project by asking about the "feeling" rather than the "look." When a client comes to me saying "I want a blue logo," my first question is always: "Why? What feeling are you trying to create?" Sometimes blue is the right answer. Often, it isn't.</p>
-            <p>Great design starts with strategy. Before a single pixel is placed, we need to understand your audience, your competitive landscape, your values, and the emotional response you want to evoke. Only then can we make design decisions that truly serve your business goals.</p>
-        `
+    {
+        id: "gold-coast",
+        name: "Gold Coast",
+        state: "QLD",
+        latitude: -28.0167,
+        longitude: 153.4,
+        timezone: "Australia/Brisbane",
+        note: "Beachfront wind is often stronger than it feels a few streets inland."
     },
-    'post-5': {
-        title: 'Overcoming "Camera Shyness": A Guide to Natural Portraits',
-        category: 'Tips',
-        date: 'March 6, 2026',
-        breadcrumb: 'Overcoming Camera Shyness',
-        content: `
-            <p class="blog-post-lead">Most people hate being in front of a camera. I've heard "I'm not photogenic" more times than I can count. My job as your photographer isn't just to press a button; it's to create an environment where you feel safe enough to be yourself.</p>
-
-            <h2>The "Candid" Secret</h2>
-            <p>How I use movement and conversation to distract you from the lens. The best portraits happen when people forget they're being photographed. That's why I never start a session by pointing a camera at someone's face and saying "smile." Instead, I start with conversation.</p>
-            <p>I'll ask about your weekend plans, your favorite restaurant, what your kids did this morning. While you're talking and laughing, I'm shooting. These are the moments that produce the most genuine expressions — the ones where you look like yourself.</p>
-            <p>Movement is another powerful tool. Walking together, spinning your partner, throwing your child in the air, adjusting a necklace — all of these create natural, dynamic poses that feel authentic rather than staged.</p>
-
-            <h2>Comfort First</h2>
-            <p>Why wearing something you feel confident in is more important than wearing something "fancy." I've seen it happen dozens of times: someone buys a brand-new outfit specifically for their photoshoot, and they spend the entire session tugging at uncomfortable seams and feeling unlike themselves.</p>
-            <p>My advice is always the same — wear something you've worn before and felt great in. Confidence is the most photogenic quality anyone can have, and it comes from feeling comfortable in your own skin (and clothes).</p>
-
-            <h2>The Result</h2>
-            <p>Portraits that look like you, not a stiff version of you. When I deliver a final gallery, my favorite compliment isn't "these are beautiful" — it's "you really captured us." Because that's the goal. Not to create a fashion editorial, but to create a window into who you are at this moment in your life.</p>
-
-            <blockquote>"I'm not photogenic" is never true. You just haven't had a photographer who knows how to make you feel at ease.</blockquote>
-
-            <p>If you've been putting off family portraits because you dread the experience, I promise: it doesn't have to feel that way. Let's make it fun.</p>
-        `
+    {
+        id: "cairns",
+        name: "Cairns",
+        state: "QLD",
+        latitude: -16.9186,
+        longitude: 145.7781,
+        timezone: "Australia/Brisbane",
+        note: "Tropical humidity and passing showers reward quick-dry, breathable layers."
     },
-    'post-6': {
-        title: 'North Lakes: A Creative\'s Perspective on Our Community',
-        category: 'Community',
-        date: 'March 4, 2026',
-        breadcrumb: 'North Lakes Community',
-        content: `
-            <p class="blog-post-lead">Living in North Lakes for years has deeply influenced my creative style. The suburban tranquility mixed with the vibrant growth of Brisbane creates a unique rhythm. This post is a tribute to the community that supports local artists.</p>
-
-            <h2>Local Inspiration</h2>
-            <p>How the landscape and architecture of our suburb find their way into my design work. North Lakes is a fascinating study in contrasts — modern shopping centres sit alongside pristine nature reserves, and manicured parks border wild bushland. This juxtaposition of the orderly and the organic has profoundly shaped my aesthetic sensibility.</p>
-            <p>When I design, I often find myself reaching for that same balance: clean, modern structure paired with natural, organic elements. The color palette of our environment — the deep greens of the eucalyptus, the warm sandstone tones, the brilliant blue Queensland sky — consistently shows up in my work.</p>
-
-            <h2>Supporting Local</h2>
-            <p>The importance of choosing local creators for family milestones and business branding. When you hire a local photographer or designer, you're doing more than purchasing a service — you're investing in your community. That money circulates locally, supporting the cafes where we meet for consultations, the print shops where we produce materials, and the families who call North Lakes home.</p>
-            <p>But beyond economics, there's a creative advantage too. A local creator understands your environment intuitively. I know which parks have the best light at 4 PM, which walls make perfect backdrops, and which spots offer privacy for intimate family sessions. This local knowledge translates directly into better results.</p>
-
-            <h2>Personal Connection</h2>
-            <p>Why I love meeting clients at local cafes to discuss their vision before a shoot. There's something about sitting across from someone over a flat white at a familiar cafe that breaks down barriers. It's not a formal consultation — it's a conversation between neighbors. These casual meetings are where the best ideas emerge, where I learn what truly matters to my clients, and where trust is built.</p>
-            <p>North Lakes isn't just where I work — it's where I belong. And that sense of belonging infuses every project with a warmth and authenticity that you can't fake.</p>
-        `
+    {
+        id: "perth",
+        name: "Perth",
+        state: "WA",
+        latitude: -31.9523,
+        longitude: 115.8613,
+        timezone: "Australia/Perth",
+        note: "The afternoon sea breeze can arrive quickly along the coast."
     },
-    'post-7': {
-        title: 'The Architecture of a Design Project: From Concept to Completion',
-        category: 'Process',
-        date: 'March 2, 2026',
-        breadcrumb: 'Design Process',
-        content: `
-            <p class="blog-post-lead">Ever wonder what happens after our first meeting? Behind every "simple" logo or "clean" layout is a rigorous process of research, sketching, and refinement. I'm pulling back the curtain on my design studio.</p>
-
-            <h2>Phase 1: Discovery</h2>
-            <p>Understanding your goals and audience. This is where the real work begins — not at the computer, but in conversation. During the discovery phase, I ask the questions that most clients don't expect: Who is your ideal customer? What do your competitors do well (and poorly)? What's the one feeling you want someone to have when they see your brand?</p>
-            <p>I also conduct independent research — analyzing your market, studying design trends in your industry, and identifying opportunities for differentiation. This phase typically takes a week, and it's the most important investment in the entire project.</p>
-
-            <h2>Phase 2: Iteration</h2>
-            <p>Why the first idea is rarely the final one. Armed with discovery insights, I begin exploring — sketching by hand, creating mood boards, testing color combinations, experimenting with typography. I typically develop three distinct creative directions, each solving the design brief in a different way.</p>
-            <p>This is the phase where we collaborate most closely. I present concepts, you provide feedback, and together we push and pull until we land on something that feels right. Great design is never a solo endeavour — it's a dialogue.</p>
-
-            <h2>Phase 3: Refinement</h2>
-            <p>Obsessing over the pixels and the kerning to ensure professional delivery. Once we've chosen a direction, I zoom in — adjusting letter spacing by fractions of a point, ensuring color values are optimised for both screen and print, testing the design across every possible application.</p>
-            <p>This is where my training as a photographer serves me well. Just as I wait for the perfect moment to press the shutter, I wait until every detail is precisely right before delivering the final design. You deserve nothing less.</p>
-
-            <blockquote>Behind every "simple" logo is a rigorous process of research, sketching, and refinement. Simplicity is the ultimate sophistication.</blockquote>
-
-            <p>The final deliverable isn't just a set of files — it's a comprehensive brand toolkit that empowers you to maintain consistency across every touchpoint, from business cards to billboards.</p>
-        `
+    {
+        id: "adelaide",
+        name: "Adelaide",
+        state: "SA",
+        latitude: -34.9285,
+        longitude: 138.6007,
+        timezone: "Australia/Adelaide",
+        note: "Dry warmth can linger, while evenings cool quickly outside summer."
     },
-    'post-8': {
-        title: 'Creative Longevity: Evolving as a Creator at 40 and Beyond',
-        category: 'Personal',
-        date: 'February 28, 2026',
-        breadcrumb: 'Creative Longevity',
-        content: `
-            <p class="blog-post-lead">Starting new ventures like "Insight Lab" or "Fixness" at this stage of life has taught me that experience is a superpower. In this post, I share my journey of staying curious and constantly learning new skills.</p>
+    {
+        id: "hobart",
+        name: "Hobart",
+        state: "TAS",
+        latitude: -42.8821,
+        longitude: 147.3272,
+        timezone: "Australia/Hobart",
+        note: "Wind off the river and mountain can drop the apparent temperature."
+    },
+    {
+        id: "canberra",
+        name: "Canberra",
+        state: "ACT",
+        latitude: -35.2809,
+        longitude: 149.13,
+        timezone: "Australia/Sydney",
+        note: "Clear evenings cool quickly, even after a warm afternoon."
+    },
+    {
+        id: "darwin",
+        name: "Darwin",
+        state: "NT",
+        latitude: -12.4634,
+        longitude: 130.8456,
+        timezone: "Australia/Darwin",
+        note: "Light fabrics and sun protection matter more than extra layers in humid weather."
+    }
+];
 
-            <h2>Growth Mindset</h2>
-            <p>Why I'm not afraid to dive into AI, video generation, and new business models. At 40, some people start winding down their ambitions. I've found the opposite to be true — the combination of decades of experience with fresh, emerging technologies creates a creative sweet spot that simply wasn't available to me at 25.</p>
-            <p>When I explore a tool like AI image generation, I don't approach it as a beginner — I bring 15+ years of understanding composition, colour theory, and visual storytelling. This foundation allows me to use new tools more effectively and more purposefully than someone who's never developed an eye for design.</p>
-            <p>New business ventures like Insight Lab and Fixness aren't distractions from my core creative work — they're extensions of it. Each new project teaches me something that feeds back into everything else I do.</p>
+const QUICK_CITY_IDS = new Set(["sydney", "melbourne", "brisbane", "perth"]);
 
-            <h2>Health & Creativity</h2>
-            <p>How physical mobility and wellness (the core of my Fixness project) fuel my ability to work long hours on design. Here's something nobody talks about in the creative industry: the physical toll of our work. Hours spent hunched over a screen, the mental fatigue of deadline pressure, the isolation of freelance life — these things compound over time.</p>
-            <p>Fixness was born from personal necessity. I discovered that when I prioritize physical movement and wellness, my creative output improves dramatically. A 30-minute walk before a design session generates better ideas than three hours of staring at a blank screen. Proper sleep, regular exercise, and mindful breaks aren't luxuries — they're essential creative tools.</p>
+const WEATHER_CODES = {
+    0: ["Clear sky", "☀"],
+    1: ["Mostly clear", "◑"],
+    2: ["Partly cloudy", "◒"],
+    3: ["Overcast", "☁"],
+    45: ["Foggy", "≋"],
+    48: ["Icy fog", "≋"],
+    51: ["Light drizzle", "↘"],
+    53: ["Drizzle", "↘"],
+    55: ["Heavy drizzle", "↘"],
+    56: ["Freezing drizzle", "↘"],
+    57: ["Freezing drizzle", "↘"],
+    61: ["Light rain", "↘"],
+    63: ["Rain", "↘"],
+    65: ["Heavy rain", "↘"],
+    66: ["Freezing rain", "↘"],
+    67: ["Freezing rain", "↘"],
+    71: ["Light snow", "✦"],
+    73: ["Snow", "✦"],
+    75: ["Heavy snow", "✦"],
+    77: ["Snow grains", "✦"],
+    80: ["Rain showers", "↘"],
+    81: ["Rain showers", "↘"],
+    82: ["Heavy showers", "↘"],
+    85: ["Snow showers", "✦"],
+    86: ["Snow showers", "✦"],
+    95: ["Thunderstorm", "ϟ"],
+    96: ["Storm with hail", "ϟ"],
+    99: ["Storm with hail", "ϟ"]
+};
 
-            <h2>Advice for Peers</h2>
-            <p>It's never too late to pivot or expand your creative horizon. If you're a fellow creator in your 40s feeling the pull to try something new — whether that's adopting AI tools, launching a side project, or completely reinventing your creative practice — here's what I've learned:</p>
-            <ul>
-                <li><strong>Your experience is not a limitation — it's your unfair advantage.</strong> You've developed instincts that can't be taught.</li>
-                <li><strong>Start before you're ready.</strong> Perfectionism is the enemy of progress, and at this stage, you know enough to figure things out along the way.</li>
-                <li><strong>Connect with younger creators.</strong> Their fresh perspectives combined with your depth of experience creates magic.</li>
-                <li><strong>Invest in your health.</strong> Your body is the vehicle for your creativity. Maintain it.</li>
-            </ul>
-
-            <blockquote>Experience is a superpower. At 40, you're not slowing down — you're just getting started with better tools and deeper wisdom.</blockquote>
-
-            <p>The best creative work of your life might still be ahead of you. Mine certainly is.</p>
-        `
+const OUTFIT_ASSETS = {
+    warm: {
+        image: "assets/outfits/warm-day.webp",
+        imageSmall: "assets/outfits/warm-day-400.webp",
+        alt: "Illustrated warm-weather outfit with a white t-shirt, navy shorts and walking shoes",
+        caption: "Breathable pieces keep a warm day comfortable."
+    },
+    mild: {
+        image: "assets/outfits/mild-day.webp",
+        imageSmall: "assets/outfits/mild-day-400.webp",
+        alt: "Illustrated mild-weather outfit with a light overshirt, trousers and walking shoes",
+        caption: "A light layer keeps a changeable day flexible."
+    },
+    cool: {
+        image: "assets/outfits/cool-day.webp",
+        imageSmall: "assets/outfits/cool-day-400.webp",
+        alt: "Illustrated cool-weather outfit with a coat, knit jumper, scarf and boots",
+        caption: "Warm layers make cold starts and late finishes easier."
+    },
+    wet: {
+        image: "assets/outfits/wet-day.webp",
+        imageSmall: "assets/outfits/wet-day-400.webp",
+        alt: "Illustrated wet-weather outfit with a waterproof jacket, trousers and walking shoes",
+        caption: "A waterproof outer layer handles showers and wind."
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    // ---------- Page Navigation ----------
-    const pages = document.querySelectorAll('.page');
-    const navLinks = document.querySelectorAll('[data-page]');
+const state = {
+    cityId: readStoredCity(),
+    weather: null,
+    selectedForecastIndex: 0,
+    loadToken: 0,
+    toastTimer: null
+};
 
-    function showPage(pageId) {
-        // Hide all pages
-        pages.forEach(page => {
-            page.classList.remove('active', 'fade-in');
-        });
+const elements = {};
 
-        // Show target page
-        const target = document.getElementById(`page-${pageId}`);
-        if (target) {
-            target.classList.add('active');
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    target.classList.add('fade-in');
-                });
-            });
-        }
+document.addEventListener("DOMContentLoaded", initialise);
 
-        // Update nav active state
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-page') === pageId) {
-                link.classList.add('active');
-            }
-        });
+function initialise() {
+    cacheElements();
+    populateCityControls();
+    bindEvents();
+    renderForecastSkeletons();
+    configurePlannerDate();
+    elements.copyrightYear.textContent = new Date().getFullYear();
+    selectCity(state.cityId, { syncPlanner: true });
+    updateLocalClock();
+    window.setInterval(updateLocalClock, 60000);
+}
 
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+function cacheElements() {
+    const ids = [
+        "city-select", "planner-city", "city-quick-list", "location-button", "weather-status",
+        "status-text", "today-label", "current-temperature", "condition-name", "feels-like",
+        "outfit-title", "outfit-detail", "outfit-image", "outfit-visual", "outfit-caption",
+        "essential-tip", "local-time", "wind-speed", "cloud-cover", "rain-chance", "uv-index",
+        "humidity", "day-range", "local-note", "forecast-grid", "light-title", "light-intro",
+        "golden-hour-time", "sunset-time", "blue-hour-time", "photo-score-label",
+        "photo-advice-title", "photo-advice-copy", "golden-cloud", "sunset-rain", "photo-condition",
+        "planner-form", "planner-date", "planner-duration", "result-location", "result-light-type",
+        "recommended-start", "result-summary", "arrival-time", "shoot-time", "finish-time",
+        "result-note", "menu-toggle", "site-nav", "copyright-year", "toast"
+    ];
 
-        // Close mobile menu
-        const navLinksContainer = document.getElementById('nav-links');
-        const menuToggle = document.getElementById('menu-toggle');
-        navLinksContainer.classList.remove('open');
-        menuToggle.classList.remove('active');
+    ids.forEach((id) => {
+        elements[toCamel(id)] = document.getElementById(id);
+    });
+}
 
-        // Re-trigger scroll animations
-        setTimeout(() => {
-            initScrollAnimations();
-        }, 100);
-    }
+function toCamel(value) {
+    return value.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+}
 
-    // Attach click handlers to all navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pageId = link.getAttribute('data-page');
-            showPage(pageId);
-        });
+function populateCityControls() {
+    const options = CITIES.map((city) => (
+        `<option value="${city.id}">${city.name}, ${city.state}</option>`
+    )).join("");
+
+    elements.citySelect.innerHTML = options;
+    elements.plannerCity.innerHTML = options;
+    elements.cityQuickList.innerHTML = CITIES.filter((city) => QUICK_CITY_IDS.has(city.id)).map((city) => (
+        `<button class="city-chip" type="button" data-city="${city.id}">${city.name}</button>`
+    )).join("");
+}
+
+function bindEvents() {
+    elements.citySelect.addEventListener("change", (event) => {
+        selectCity(event.target.value, { syncPlanner: true });
     });
 
-    // ---------- Blog Post Navigation ----------
-    function showBlogPost(postId) {
-        const post = blogPosts[postId];
-        if (!post) return;
-
-        // Populate the blog post page
-        document.getElementById('blog-post-title').textContent = post.title;
-        document.getElementById('blog-post-breadcrumb').textContent = post.breadcrumb;
-        document.getElementById('blog-post-category').textContent = post.category;
-        document.getElementById('blog-post-date').textContent = post.date;
-        document.getElementById('blog-post-body').innerHTML = post.content;
-
-        // Populate related posts (all posts except current)
-        const relatedList = document.getElementById('blog-post-related');
-        relatedList.innerHTML = '';
-        Object.keys(blogPosts).forEach(key => {
-            if (key !== postId) {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = '#';
-                a.textContent = blogPosts[key].title;
-                a.setAttribute('data-blog', key);
-                a.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showBlogPost(key);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-                li.appendChild(a);
-                relatedList.appendChild(li);
-            }
-        });
-
-        // Show blog-post page
-        pages.forEach(page => {
-            page.classList.remove('active', 'fade-in');
-        });
-        const target = document.getElementById('page-blog-post');
-        target.classList.add('active');
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                target.classList.add('fade-in');
-            });
-        });
-
-        // Update nav: highlight Blog link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-page') === 'blog') {
-                link.classList.add('active');
-            }
-        });
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // Close mobile menu
-        document.getElementById('nav-links').classList.remove('open');
-        document.getElementById('menu-toggle').classList.remove('active');
-    }
-
-    // Attach blog post click handlers
-    function attachBlogPostLinks() {
-        document.querySelectorAll('[data-blog]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const postId = link.getAttribute('data-blog');
-                showBlogPost(postId);
-            });
-        });
-    }
-    attachBlogPostLinks();
-
-    // ---------- Mobile Menu Toggle ----------
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinksContainer = document.getElementById('nav-links');
-
-    menuToggle.addEventListener('click', () => {
-        navLinksContainer.classList.toggle('open');
-        menuToggle.classList.toggle('active');
+    elements.cityQuickList.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-city]");
+        if (button) selectCity(button.dataset.city, { syncPlanner: true });
     });
 
-    // ---------- Navbar Scroll Effect ----------
-    const navbar = document.getElementById('navbar');
+    elements.locationButton.addEventListener("click", useCurrentLocation);
+    elements.forecastGrid.addEventListener("click", selectForecastDay);
+    elements.plannerForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        calculatePlanner();
+    });
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+    elements.menuToggle.addEventListener("click", toggleNavigation);
+    elements.siteNav.addEventListener("click", (event) => {
+        if (event.target.closest("a")) closeNavigation();
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 820) closeNavigation();
+    });
+}
+
+function selectCity(cityId, options = {}) {
+    const city = getCity(cityId) || CITIES[2];
+    state.cityId = city.id;
+    state.selectedForecastIndex = 0;
+    state.weather = null;
+
+    try {
+        localStorage.setItem("ozsnap-city", city.id);
+    } catch (_) {
+        // The app still works when storage is blocked.
+    }
+
+    elements.citySelect.value = city.id;
+    elements.todayLabel.textContent = `Today in ${city.name}`;
+    elements.localNote.textContent = city.note;
+    updateActiveCityChip();
+    updateLocalClock();
+
+    if (options.syncPlanner) {
+        elements.plannerCity.value = city.id;
+        elements.plannerDate.value = getTodayInZone(city.timezone);
+    }
+
+    calculatePlanner();
+    loadWeather(city);
+}
+
+async function loadWeather(city) {
+    const token = ++state.loadToken;
+    setStatus("", `Checking live conditions for ${city.name}...`);
+    elements.outfitVisual.classList.add("loading");
+    elements.outfitVisual.setAttribute("aria-busy", "true");
+
+    const cache = readWeatherCache(city.id);
+    if (cache && Date.now() - cache.fetchedAt < 30 * 60 * 1000) {
+        if (token !== state.loadToken) return;
+        state.weather = cache.data;
+        renderWeather(cache.data);
+        setStatus("live", `Live forecast for ${city.name} · refreshed ${formatTime(new Date(cache.fetchedAt), city.timezone)}`);
+        elements.outfitVisual.classList.remove("loading");
+        elements.outfitVisual.setAttribute("aria-busy", "false");
+        return;
+    }
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 12000);
+
+    try {
+        const response = await fetch(buildWeatherUrl(city), { signal: controller.signal });
+        if (!response.ok) throw new Error(`Weather request failed with ${response.status}`);
+
+        const data = await response.json();
+        validateWeatherData(data);
+        if (token !== state.loadToken) return;
+
+        state.weather = data;
+        writeWeatherCache(city.id, data);
+        renderWeather(data);
+        setStatus("live", `Live forecast for ${city.name} · updated ${formatTime(new Date(), city.timezone)}`);
+    } catch (error) {
+        if (token !== state.loadToken) return;
+
+        if (cache?.data) {
+            state.weather = cache.data;
+            renderWeather(cache.data);
+            setStatus("saved", `Showing the latest saved forecast for ${city.name}`);
         } else {
-            navbar.classList.remove('scrolled');
+            renderWeatherUnavailable(city);
+            setStatus("error", "Live weather is temporarily unavailable. Light calculations still work.");
+        }
+    } finally {
+        window.clearTimeout(timeout);
+        elements.outfitVisual.classList.remove("loading");
+        elements.outfitVisual.setAttribute("aria-busy", "false");
+    }
+}
+
+function buildWeatherUrl(city) {
+    const url = new URL("https://api.open-meteo.com/v1/forecast");
+    url.searchParams.set("latitude", city.latitude);
+    url.searchParams.set("longitude", city.longitude);
+    url.searchParams.set("timezone", city.timezone);
+    url.searchParams.set("forecast_days", "7");
+    url.searchParams.set("wind_speed_unit", "kmh");
+    url.searchParams.set("current", [
+        "temperature_2m",
+        "apparent_temperature",
+        "relative_humidity_2m",
+        "precipitation",
+        "weather_code",
+        "cloud_cover",
+        "wind_speed_10m",
+        "wind_gusts_10m"
+    ].join(","));
+    url.searchParams.set("hourly", "cloud_cover,precipitation_probability");
+    url.searchParams.set("daily", [
+        "weather_code",
+        "temperature_2m_max",
+        "temperature_2m_min",
+        "apparent_temperature_max",
+        "apparent_temperature_min",
+        "precipitation_probability_max",
+        "wind_speed_10m_max",
+        "uv_index_max",
+        "sunrise",
+        "sunset"
+    ].join(","));
+    return url.toString();
+}
+
+function validateWeatherData(data) {
+    if (!data?.current || !Array.isArray(data?.daily?.time) || data.daily.time.length < 1) {
+        throw new Error("Weather response is incomplete");
+    }
+}
+
+function renderWeather(data) {
+    const city = getCity(state.cityId);
+    const current = data.current;
+    const today = dailyAt(data, 0);
+    const outfit = getOutfitAdvice({
+        apparent: current.apparent_temperature,
+        maximum: today.maximum,
+        minimum: today.minimum,
+        rain: today.rain,
+        wind: current.wind_speed_10m,
+        uv: today.uv,
+        humidity: current.relative_humidity_2m,
+        weatherCode: current.weather_code
+    });
+
+    elements.currentTemperature.textContent = formatDegrees(current.temperature_2m);
+    elements.conditionName.textContent = getWeatherLabel(current.weather_code);
+    elements.feelsLike.textContent = `Feels like ${formatDegrees(current.apparent_temperature)}`;
+    elements.outfitTitle.textContent = outfit.title;
+    elements.outfitDetail.textContent = outfit.detail;
+    elements.outfitImage.srcset = `${OUTFIT_ASSETS[outfit.type].imageSmall} 400w, ${OUTFIT_ASSETS[outfit.type].image} 800w`;
+    elements.outfitImage.src = OUTFIT_ASSETS[outfit.type].image;
+    elements.outfitImage.alt = OUTFIT_ASSETS[outfit.type].alt;
+    elements.outfitVisual.dataset.outfit = outfit.type;
+    elements.outfitCaption.textContent = OUTFIT_ASSETS[outfit.type].caption;
+    elements.essentialTip.textContent = getEssentialTip({
+        rain: today.rain,
+        uv: today.uv,
+        wind: current.wind_speed_10m,
+        apparent: current.apparent_temperature,
+        maximum: today.maximum,
+        minimum: today.minimum,
+        humidity: current.relative_humidity_2m
+    });
+
+    elements.windSpeed.textContent = `${formatWhole(current.wind_speed_10m)} km/h`;
+    elements.cloudCover.textContent = formatPercent(current.cloud_cover);
+    elements.rainChance.textContent = formatPercent(today.rain);
+    elements.uvIndex.textContent = formatOneDecimal(today.uv);
+    elements.humidity.textContent = formatPercent(current.relative_humidity_2m);
+    elements.dayRange.textContent = `${formatDegrees(today.maximum)} / ${formatDegrees(today.minimum)}`;
+    elements.localNote.textContent = city.note;
+
+    renderForecast(data);
+    renderLightForecast();
+    calculatePlanner();
+}
+
+function renderWeatherUnavailable(city) {
+    state.weather = null;
+    elements.currentTemperature.textContent = "--°";
+    elements.conditionName.textContent = "Weather unavailable";
+    elements.feelsLike.textContent = "Try again shortly";
+    elements.outfitTitle.textContent = "Check local conditions before heading out.";
+    elements.outfitDetail.textContent = "Golden hour and shoot planning remain available while the live forecast reconnects.";
+    elements.outfitImage.srcset = `${OUTFIT_ASSETS.mild.imageSmall} 400w, ${OUTFIT_ASSETS.mild.image} 800w`;
+    elements.outfitImage.src = OUTFIT_ASSETS.mild.image;
+    elements.outfitImage.alt = OUTFIT_ASSETS.mild.alt;
+    elements.outfitVisual.dataset.outfit = "mild";
+    elements.outfitCaption.textContent = OUTFIT_ASSETS.mild.caption;
+    elements.essentialTip.textContent = "Take a flexible outer layer until the live forecast returns.";
+    elements.windSpeed.textContent = "-- km/h";
+    elements.cloudCover.textContent = "--%";
+    elements.rainChance.textContent = "--%";
+    elements.uvIndex.textContent = "--";
+    elements.humidity.textContent = "--%";
+    elements.dayRange.textContent = "--° / --°";
+    elements.localNote.textContent = city.note;
+    elements.forecastGrid.innerHTML = `<div class="forecast-error">The seven-day forecast could not be loaded. Your saved city and shoot planner are still available.</div>`;
+    renderLightForecast();
+}
+
+function renderForecast(data) {
+    elements.forecastGrid.innerHTML = data.daily.time.map((date, index) => {
+        const day = dailyAt(data, index);
+        const outfit = getOutfitAdvice({
+            apparent: average(day.apparentMaximum, day.apparentMinimum),
+            maximum: day.maximum,
+            minimum: day.minimum,
+            rain: day.rain,
+            wind: day.wind,
+            uv: day.uv,
+            weatherCode: day.weatherCode
+        });
+        const selected = index === state.selectedForecastIndex;
+        const dayName = index === 0 ? "Today" : formatWeekday(date);
+        return `
+            <button class="forecast-card${selected ? " selected" : ""}" type="button" data-forecast-index="${index}" aria-pressed="${selected}">
+                <span class="forecast-day">${dayName}</span>
+                <span class="visually-hidden">${getWeatherLabel(day.weatherCode)}</span>
+                <span class="forecast-icon" aria-hidden="true">${getWeatherSymbol(day.weatherCode)}</span>
+                <strong class="forecast-temp">${formatDegrees(day.maximum)} <small>${formatDegrees(day.minimum)}</small></strong>
+                <span class="forecast-outfit">${outfit.short}</span>
+                <p class="forecast-rain">Rain ${formatPercent(day.rain)}</p>
+            </button>
+        `;
+    }).join("");
+}
+
+function renderForecastSkeletons() {
+    elements.forecastGrid.innerHTML = Array.from({ length: 7 }, () => (
+        `<div class="forecast-skeleton" aria-hidden="true"></div>`
+    )).join("");
+}
+
+function selectForecastDay(event) {
+    const card = event.target.closest("[data-forecast-index]");
+    if (!card || !state.weather) return;
+
+    state.selectedForecastIndex = Number(card.dataset.forecastIndex);
+    renderForecast(state.weather);
+    renderLightForecast();
+
+    const selectedDate = state.weather.daily.time[state.selectedForecastIndex];
+    elements.plannerCity.value = state.cityId;
+    elements.plannerDate.value = selectedDate;
+    calculatePlanner();
+    showToast(`${state.selectedForecastIndex === 0 ? "Today’s" : `${formatWeekday(selectedDate)}’s`} light forecast selected.`);
+}
+
+function renderLightForecast() {
+    const city = getCity(state.cityId);
+    const date = state.weather?.daily?.time?.[state.selectedForecastIndex] || getTodayInZone(city.timezone);
+    const solar = calculateSolarTimes(date, city.latitude, city.longitude);
+    const selectedDay = state.weather ? dailyAt(state.weather, state.selectedForecastIndex) : null;
+    const goldenMidpoint = midpoint(solar.goldenStart, solar.sunset);
+    const cloud = state.weather
+        ? getHourlyValue(state.weather, date, goldenMidpoint, "cloud_cover", city.timezone)
+        : null;
+    const sunsetRain = state.weather
+        ? getHourlyValue(state.weather, date, solar.sunset, "precipitation_probability", city.timezone)
+        : null;
+    const advice = getPhotoAdvice(cloud, sunsetRain, selectedDay?.wind);
+
+    const dayName = state.selectedForecastIndex === 0 ? "Today’s" : `${formatWeekday(date)}’s`;
+    elements.lightTitle.textContent = `${dayName} best light`;
+    elements.goldenHourTime.textContent = `${formatTime(solar.goldenStart, city.timezone)}–${formatTime(solar.sunset, city.timezone)}`;
+    elements.sunsetTime.textContent = formatTime(solar.sunset, city.timezone);
+    elements.blueHourTime.textContent = formatTime(solar.blueEnd, city.timezone);
+    elements.lightIntro.textContent = `${advice.lead} Golden light begins at ${formatTime(solar.goldenStart, city.timezone)} in ${city.name}.`;
+    elements.photoScoreLabel.textContent = advice.label;
+    elements.photoAdviceTitle.textContent = advice.title;
+    elements.photoAdviceCopy.textContent = advice.copy;
+    elements.goldenCloud.textContent = cloud === null ? "Forecast pending" : formatPercent(cloud);
+    elements.sunsetRain.textContent = sunsetRain === null ? "Forecast pending" : formatPercent(sunsetRain);
+
+    const cloudAmount = cloud === null ? 45 : clamp(cloud, 0, 100);
+    const cloudOne = document.querySelector(".cloud-one");
+    const cloudTwo = document.querySelector(".cloud-two");
+    const sun = document.querySelector(".sun-shape");
+    cloudOne.style.opacity = String(0.25 + cloudAmount / 135);
+    cloudTwo.style.opacity = String(0.15 + cloudAmount / 180);
+    sun.style.opacity = String(1 - cloudAmount / 150);
+}
+
+function calculatePlanner() {
+    if (!elements.plannerDate.value) return;
+
+    const city = getCity(elements.plannerCity.value) || getCity(state.cityId);
+    const date = elements.plannerDate.value;
+    const duration = Number(elements.plannerDuration.value);
+    const look = document.querySelector('input[name="light-look"]:checked')?.value || "golden";
+    const solar = calculateSolarTimes(date, city.latitude, city.longitude);
+
+    let start;
+    let finish;
+    let typeLabel;
+    let summary;
+
+    if (look === "blue") {
+        finish = solar.blueEnd;
+        start = addMinutes(finish, -duration);
+        typeLabel = "Blue hour transition";
+        summary = "This schedule crosses sunset and finishes as the cool blue light fades.";
+    } else if (look === "soft") {
+        finish = addMinutes(solar.goldenStart, 20);
+        start = addMinutes(finish, -duration);
+        typeLabel = "Soft daylight";
+        summary = "Start before golden hour for softer faces, then finish as the warm colour arrives.";
+    } else {
+        finish = solar.sunset;
+        start = addMinutes(finish, -duration);
+        typeLabel = "Golden light";
+        summary = "The session builds through warm evening light and finishes at sunset.";
+    }
+
+    const arrival = addMinutes(start, -20);
+    elements.resultLocation.textContent = `${city.name} · ${formatLongDate(date)}`;
+    elements.resultLightType.textContent = typeLabel;
+    elements.recommendedStart.textContent = formatTime(start, city.timezone);
+    elements.resultSummary.textContent = summary;
+    elements.arrivalTime.textContent = formatTime(arrival, city.timezone);
+    elements.shootTime.textContent = formatTime(start, city.timezone);
+    elements.finishTime.textContent = formatTime(finish, city.timezone);
+
+    const matchingIndex = city.id === state.cityId && state.weather
+        ? state.weather.daily.time.indexOf(date)
+        : -1;
+
+    if (matchingIndex >= 0) {
+        const cloud = getHourlyValue(state.weather, date, midpoint(solar.goldenStart, solar.sunset), "cloud_cover", city.timezone);
+        const rain = getHourlyValue(state.weather, date, solar.sunset, "precipitation_probability", city.timezone);
+        const advice = getPhotoAdvice(cloud, rain, dailyAt(state.weather, matchingIndex).wind);
+        elements.resultNote.querySelector("p").textContent = `${advice.title} ${advice.copy}`;
+    } else {
+        elements.resultNote.querySelector("p").textContent = "Light times are astronomical estimates. A weather-based sky read appears when the date enters the seven-day forecast.";
+    }
+}
+
+function getOutfitAdvice(values) {
+    const apparent = numberOr(values.apparent, average(values.maximum, values.minimum));
+    const rain = numberOr(values.rain, 0);
+    const wind = numberOr(values.wind, 0);
+    const uv = numberOr(values.uv, 0);
+    const wetWeather = rain >= 45 || isRainCode(values.weatherCode);
+
+    if (wetWeather && apparent <= 24) {
+        return {
+            type: "wet",
+            title: apparent <= 14 ? "A waterproof jacket over warm layers." : "A light rain jacket with grippy shoes.",
+            detail: wind >= 30
+                ? "Choose a hood or secure umbrella; gusts may make a loose umbrella awkward."
+                : "Keep the outer layer packable and choose shoes that can handle wet pavement.",
+            short: apparent <= 14 ? "Warm rain layers" : "Light rain layer"
+        };
+    }
+
+    if (apparent < 10) {
+        return {
+            type: "cool",
+            title: "A warm coat, knit layer and closed shoes.",
+            detail: wind >= 25
+                ? "Add a scarf or wind-resistant outer layer, especially near open water."
+                : "Layering will cover the cold start and the drop after sunset.",
+            short: "Coat + knit layer"
+        };
+    }
+
+    if (apparent < 17) {
+        return {
+            type: "cool",
+            title: "A jumper with a light structured jacket.",
+            detail: wetWeather
+                ? "Make the outer layer water-resistant and keep your shoes weather-ready."
+                : "Long trousers and a removable outer layer will handle the cooler edges of the day.",
+            short: "Jumper + jacket"
+        };
+    }
+
+    if (apparent < 25) {
+        return {
+            type: "mild",
+            title: wind >= 30 ? "A light windproof layer over everyday clothes." : "A tee with a light overshirt or jumper.",
+            detail: "Keep the outer layer easy to carry so you can adjust between sun, shade and evening air.",
+            short: wind >= 30 ? "Light wind layer" : "Easy light layers"
+        };
+    }
+
+    if (wetWeather) {
+        return {
+            type: "warm",
+            title: "Breathable clothes with a compact rain shell.",
+            detail: "Skip heavy waterproof layers in the humidity; quick-dry fabrics will feel more comfortable.",
+            short: "Cool + quick-dry"
+        };
+    }
+
+    return {
+        type: "warm",
+        title: "Breathable clothes, comfortable shoes and shade.",
+        detail: uv >= 7
+            ? "Add a hat, sunnies and sunscreen; choose a light layer only for air-conditioned spaces."
+            : "Light fabrics will keep the day comfortable, with a thin layer only if you are out late.",
+        short: "Breathable warm-weather kit"
+    };
+}
+
+function getEssentialTip(values) {
+    const rain = numberOr(values.rain, 0);
+    const uv = numberOr(values.uv, 0);
+    const wind = numberOr(values.wind, 0);
+    const apparent = numberOr(values.apparent, 20);
+    const humidity = numberOr(values.humidity, 50);
+    const dayRange = numberOr(values.maximum, apparent) - numberOr(values.minimum, apparent);
+
+    if (rain >= 60) return "Pack a compact umbrella and wear shoes that can handle wet ground.";
+    if (uv >= 8) return "UV will be very high. Add sunscreen, a hat and sunnies before heading out.";
+    if (wind >= 35) return "Open and coastal areas will feel cooler. A windproof outer layer will help.";
+    if (apparent >= 32) return "Carry water and plan shade breaks through the hottest part of the day.";
+    if (dayRange >= 10) return "The temperature swings sharply today, so keep one removable layer close.";
+    if (humidity >= 75 && apparent >= 23) return "Humidity will hold the warmth. Choose loose, breathable fabrics.";
+    return "Conditions are fairly settled; a small layer keeps the evening flexible.";
+}
+
+function getPhotoAdvice(cloudValue, rainValue, windValue) {
+    const cloud = cloudValue === null ? null : numberOr(cloudValue, 0);
+    const rain = rainValue === null ? null : numberOr(rainValue, 0);
+    const wind = windValue === null ? 0 : numberOr(windValue, 0);
+
+    if (rain !== null && rain >= 55) {
+        return {
+            label: "Weather watch",
+            title: "Look for the break after rain.",
+            lead: "Showers may interrupt the evening window.",
+            copy: "Shelter first, then use wet pavement for reflections. Keep a dry cloth ready for the lens."
+        };
+    }
+
+    if (cloud === null) {
+        return {
+            label: "Light times ready",
+            title: "Sky detail arrives with the forecast.",
+            lead: "The sun-angle calculation is ready.",
+            copy: "Check back inside the seven-day window for cloud and rain advice."
+        };
+    }
+
+    if (cloud < 20) {
+        return {
+            label: "High contrast",
+            title: "Use the sun behind your subject.",
+            lead: "A clear sky should produce clean, direct colour.",
+            copy: wind >= 35
+                ? "Backlight portraits and use a sheltered edge to reduce both glare and wind."
+                : "Wait for the late window, backlight portraits, or find open shade until the sun drops."
+        };
+    }
+
+    if (cloud < 60) {
+        return {
+            label: "Sunset potential",
+            title: "Broken cloud could catch colour.",
+            lead: "A mixed sky gives you the best chance of texture and warm breaks.",
+            copy: "Watch the western horizon. A clear gap beneath higher cloud can produce a short, vivid sunset."
+        };
+    }
+
+    if (cloud < 88) {
+        return {
+            label: "Soft portraits",
+            title: "Even light should flatter faces.",
+            lead: "Cloud should soften the direct light through the evening.",
+            copy: "You can shoot in more directions with fewer harsh shadows. Use colour or a clean background for separation."
+        };
+    }
+
+    return {
+        label: "Flat, even light",
+        title: "Prioritise portraits over the sky.",
+        lead: "Heavy cloud should make the light soft but reduce sunset colour.",
+        copy: "Expose carefully for skin, move closer to your subject and look for strong foreground colour."
+    };
+}
+
+function calculateSolarTimes(dateString, latitude, longitude) {
+    const rad = Math.PI / 180;
+    const day = new Date(`${dateString}T12:00:00Z`);
+    const julian2000 = 2451545;
+    const lw = -longitude * rad;
+    const phi = latitude * rad;
+    const d = toJulian(day) - julian2000;
+    const n = Math.round(d - 0.0009 - lw / (2 * Math.PI));
+    const solarApprox = 0.0009 + lw / (2 * Math.PI) + n;
+    const anomaly = rad * (357.5291 + 0.98560028 * solarApprox);
+    const centre = rad * (
+        1.9148 * Math.sin(anomaly) +
+        0.02 * Math.sin(2 * anomaly) +
+        0.0003 * Math.sin(3 * anomaly)
+    );
+    const eclipticLongitude = anomaly + centre + rad * 102.9372 + Math.PI;
+    const declination = Math.asin(Math.sin(eclipticLongitude) * Math.sin(rad * 23.4397));
+
+    function eveningTime(altitudeDegrees) {
+        const altitude = altitudeDegrees * rad;
+        const numerator = Math.sin(altitude) - Math.sin(phi) * Math.sin(declination);
+        const denominator = Math.cos(phi) * Math.cos(declination);
+        const hourAngle = Math.acos(clamp(numerator / denominator, -1, 1));
+        const transitApprox = 0.0009 + (hourAngle + lw) / (2 * Math.PI) + n;
+        const julian = julian2000 + transitApprox + 0.0053 * Math.sin(anomaly) - 0.0069 * Math.sin(2 * eclipticLongitude);
+        return fromJulian(julian);
+    }
+
+    return {
+        goldenStart: eveningTime(6),
+        sunset: eveningTime(-0.833),
+        blueEnd: eveningTime(-6)
+    };
+}
+
+function dailyAt(data, index) {
+    return {
+        date: data.daily.time[index],
+        weatherCode: data.daily.weather_code?.[index],
+        maximum: data.daily.temperature_2m_max?.[index],
+        minimum: data.daily.temperature_2m_min?.[index],
+        apparentMaximum: data.daily.apparent_temperature_max?.[index],
+        apparentMinimum: data.daily.apparent_temperature_min?.[index],
+        rain: data.daily.precipitation_probability_max?.[index],
+        wind: data.daily.wind_speed_10m_max?.[index],
+        uv: data.daily.uv_index_max?.[index],
+        sunrise: data.daily.sunrise?.[index],
+        sunset: data.daily.sunset?.[index]
+    };
+}
+
+function getHourlyValue(data, date, targetDate, key, timezone) {
+    const values = data.hourly?.[key];
+    const times = data.hourly?.time;
+    if (!Array.isArray(values) || !Array.isArray(times)) return null;
+
+    const targetMinutes = getMinutesInZone(targetDate, timezone);
+    let bestIndex = -1;
+    let bestDistance = Infinity;
+
+    times.forEach((time, index) => {
+        if (!time.startsWith(date)) return;
+        const hour = Number(time.slice(11, 13));
+        const minute = Number(time.slice(14, 16) || 0);
+        const distance = Math.abs(hour * 60 + minute - targetMinutes);
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
         }
     });
 
-    // ---------- Scroll Animations ----------
-    function initScrollAnimations() {
-        const elements = document.querySelectorAll('[data-aos]');
+    return bestIndex >= 0 && Number.isFinite(values[bestIndex]) ? values[bestIndex] : null;
+}
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+function getMinutesInZone(date, timezone) {
+    const parts = new Intl.DateTimeFormat("en-AU", {
+        timeZone: timezone,
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23"
+    }).formatToParts(date);
+    const hour = Number(parts.find((part) => part.type === "hour")?.value || 0);
+    const minute = Number(parts.find((part) => part.type === "minute")?.value || 0);
+    return hour * 60 + minute;
+}
 
-        elements.forEach(el => {
-            el.classList.remove('visible');
-            observer.observe(el);
-        });
+function updateLocalClock() {
+    if (!elements.localTime) return;
+    const city = getCity(state.cityId);
+    elements.localTime.textContent = formatTime(new Date(), city.timezone);
+}
+
+function configurePlannerDate() {
+    const city = getCity(state.cityId);
+    const today = getTodayInZone(city.timezone);
+    const maximum = new Date();
+    maximum.setUTCMonth(maximum.getUTCMonth() + 18);
+    elements.plannerDate.min = today;
+    elements.plannerDate.max = maximum.toISOString().slice(0, 10);
+    elements.plannerDate.value = today;
+}
+
+function useCurrentLocation() {
+    if (!navigator.geolocation) {
+        showToast("Location is not available in this browser.");
+        return;
     }
 
-    initScrollAnimations();
+    elements.locationButton.disabled = true;
+    elements.locationButton.lastChild.textContent = " Locating...";
 
-    // ---------- Contact Form ----------
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('.btn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Message Sent!';
-            btn.style.background = 'linear-gradient(135deg, #00cec9, #55efc4)';
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                contactForm.reset();
-            }, 3000);
-        });
-    }
+    navigator.geolocation.getCurrentPosition((position) => {
+        const nearest = CITIES.reduce((closest, city) => {
+            const distance = haversineDistance(
+                position.coords.latitude,
+                position.coords.longitude,
+                city.latitude,
+                city.longitude
+            );
+            return !closest || distance < closest.distance ? { city, distance } : closest;
+        }, null);
 
-    // ---------- Filter Buttons ----------
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
+        selectCity(nearest.city.id, { syncPlanner: true });
+        showToast(`${nearest.city.name} is the nearest supported city.`);
+        resetLocationButton();
+    }, () => {
+        showToast("Location permission was not available. Choose a city instead.");
+        resetLocationButton();
+    }, { timeout: 8000, maximumAge: 10 * 60 * 1000 });
+}
+
+function resetLocationButton() {
+    elements.locationButton.disabled = false;
+    elements.locationButton.lastChild.textContent = " Use my location";
+}
+
+function haversineDistance(lat1, lon1, lat2, lon2) {
+    const toRadians = (value) => value * Math.PI / 180;
+    const earthRadius = 6371;
+    const dLat = toRadians(lat2 - lat1);
+    const dLon = toRadians(lon2 - lon1);
+    const a = Math.sin(dLat / 2) ** 2 +
+        Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) * Math.sin(dLon / 2) ** 2;
+    return earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function updateActiveCityChip() {
+    elements.cityQuickList.querySelectorAll("[data-city]").forEach((button) => {
+        const active = button.dataset.city === state.cityId;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
     });
+}
 
-    // ---------- Initialize home page ----------
-    const homePage = document.getElementById('page-home');
-    if (homePage) {
-        homePage.classList.add('fade-in');
+function setStatus(type, text) {
+    elements.weatherStatus.className = `weather-status page-shell${type ? ` ${type}` : ""}`;
+    elements.statusText.textContent = text;
+    elements.weatherStatus.setAttribute("aria-busy", String(!type));
+}
+
+function toggleNavigation() {
+    const open = elements.menuToggle.getAttribute("aria-expanded") !== "true";
+    elements.menuToggle.setAttribute("aria-expanded", String(open));
+    elements.menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    elements.siteNav.classList.toggle("open", open);
+    document.body.classList.toggle("nav-open", open);
+}
+
+function closeNavigation() {
+    elements.menuToggle.setAttribute("aria-expanded", "false");
+    elements.menuToggle.setAttribute("aria-label", "Open navigation");
+    elements.siteNav.classList.remove("open");
+    document.body.classList.remove("nav-open");
+}
+
+function showToast(message) {
+    window.clearTimeout(state.toastTimer);
+    elements.toast.textContent = message;
+    elements.toast.classList.add("visible");
+    state.toastTimer = window.setTimeout(() => {
+        elements.toast.classList.remove("visible");
+    }, 2800);
+}
+
+function readStoredCity() {
+    try {
+        const cityId = localStorage.getItem("ozsnap-city");
+        return CITIES.some((city) => city.id === cityId) ? cityId : "brisbane";
+    } catch (_) {
+        return "brisbane";
     }
-});
+}
+
+function readWeatherCache(cityId) {
+    try {
+        const cached = JSON.parse(localStorage.getItem(`ozsnap-weather-${cityId}`));
+        return cached?.data && cached?.fetchedAt ? cached : null;
+    } catch (_) {
+        return null;
+    }
+}
+
+function writeWeatherCache(cityId, data) {
+    try {
+        localStorage.setItem(`ozsnap-weather-${cityId}`, JSON.stringify({
+            fetchedAt: Date.now(),
+            data
+        }));
+    } catch (_) {
+        // Weather still renders when storage is full or unavailable.
+    }
+}
+
+function getCity(cityId) {
+    return CITIES.find((city) => city.id === cityId);
+}
+
+function getWeatherLabel(code) {
+    return WEATHER_CODES[code]?.[0] || "Changeable conditions";
+}
+
+function getWeatherSymbol(code) {
+    return WEATHER_CODES[code]?.[1] || "○";
+}
+
+function isRainCode(code) {
+    return Number.isFinite(code) && ((code >= 51 && code <= 67) || (code >= 80 && code <= 99));
+}
+
+function formatDegrees(value) {
+    return Number.isFinite(Number(value)) ? `${Math.round(Number(value))}°` : "--°";
+}
+
+function formatPercent(value) {
+    return Number.isFinite(Number(value)) ? `${Math.round(Number(value))}%` : "--%";
+}
+
+function formatWhole(value) {
+    return Number.isFinite(Number(value)) ? Math.round(Number(value)) : "--";
+}
+
+function formatOneDecimal(value) {
+    return Number.isFinite(Number(value)) ? Number(value).toFixed(1).replace(".0", "") : "--";
+}
+
+function formatTime(date, timezone) {
+    if (!(date instanceof Date) || Number.isNaN(date.valueOf())) return "--:--";
+    return new Intl.DateTimeFormat("en-AU", {
+        timeZone: timezone,
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+    }).format(date).replace(" am", "am").replace(" pm", "pm");
+}
+
+function formatWeekday(dateString) {
+    return new Intl.DateTimeFormat("en-AU", {
+        weekday: "short",
+        timeZone: "UTC"
+    }).format(new Date(`${dateString}T12:00:00Z`));
+}
+
+function formatLongDate(dateString) {
+    return new Intl.DateTimeFormat("en-AU", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC"
+    }).format(new Date(`${dateString}T12:00:00Z`));
+}
+
+function getTodayInZone(timezone) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: timezone,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+}
+
+function toJulian(date) {
+    return date.valueOf() / 86400000 - 0.5 + 2440588;
+}
+
+function fromJulian(julian) {
+    return new Date((julian + 0.5 - 2440588) * 86400000);
+}
+
+function addMinutes(date, minutes) {
+    return new Date(date.valueOf() + minutes * 60000);
+}
+
+function midpoint(first, second) {
+    return new Date((first.valueOf() + second.valueOf()) / 2);
+}
+
+function average(first, second) {
+    const a = Number(first);
+    const b = Number(second);
+    if (Number.isFinite(a) && Number.isFinite(b)) return (a + b) / 2;
+    if (Number.isFinite(a)) return a;
+    if (Number.isFinite(b)) return b;
+    return 20;
+}
+
+function numberOr(value, fallback) {
+    if (value === null || value === undefined || value === "") return fallback;
+    return Number.isFinite(Number(value)) ? Number(value) : fallback;
+}
+
+function clamp(value, minimum, maximum) {
+    return Math.min(Math.max(value, minimum), maximum);
+}

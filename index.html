@@ -1,751 +1,445 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OZSNAP - Photography</title>
-    <meta name="description" content="OZSNAP - Capturing the beauty of photography. Pre-wedding photoshoots, landscape photography, nature trails, and more.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Plan what to wear and when to shoot across Australia with live city weather, 7-day outfit advice, golden hour times and cloud-aware photography tips.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#17332c">
+    <link rel="canonical" href="https://ozsnap.com/">
+    <meta property="og:title" content="OZSNAP | Australia Outfit &amp; Golden Hour Guide">
+    <meta property="og:description" content="Live outfit advice, golden hour times and cloud-aware photo tips for cities across Australia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ozsnap.com/">
+    <meta property="og:site_name" content="OZSNAP">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:image" content="https://ozsnap.com/assets/brand/ozsnap-social-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="OZSNAP Australian outfit and golden hour guide">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OZSNAP | Australia Outfit &amp; Golden Hour Guide">
+    <meta name="twitter:description" content="Live outfit advice, golden hour times and cloud-aware photo tips across Australia.">
+    <meta name="twitter:image" content="https://ozsnap.com/assets/brand/ozsnap-social-card.jpg">
+    <meta name="twitter:image:alt" content="OZSNAP Australian outfit and golden hour guide">
+    <title>OZSNAP | Australia Outfit &amp; Golden Hour Guide</title>
+    <link rel="icon" href="assets/brand/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="assets/brand/ozsnap-mark-192.png">
+    <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/outfits/mild-day.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="assets/brand/ozsnap-logo.webp" as="image" type="image/webp">
+    <link rel="stylesheet" href="style.min.css?v=20260714-5">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://ozsnap.com/#website",
+          "url": "https://ozsnap.com/",
+          "name": "OZSNAP",
+          "description": "Australian outfit, weather and golden hour planning guide.",
+          "inLanguage": "en-AU"
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://ozsnap.com/#app",
+          "url": "https://ozsnap.com/",
+          "name": "OZSNAP",
+          "description": "Plan what to wear and when to shoot across Australia with live city weather, 7-day outfit advice, golden hour times and cloud-aware photo tips.",
+          "applicationCategory": "WeatherApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "inLanguage": "en-AU",
+          "isAccessibleForFree": true,
+          "image": "https://ozsnap.com/assets/brand/ozsnap-social-card.jpg",
+          "logo": "https://ozsnap.com/assets/brand/ozsnap-logo.png",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "AUD"
+          },
+          "isPartOf": { "@id": "https://ozsnap.com/#website" }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo" data-page="home">
-                <span class="logo-text">OZ</span><span class="logo-accent">SNAP</span>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" id="top">
+        <div class="header-inner">
+            <a class="brand" href="#today" aria-label="OZSNAP home">
+                <img class="brand-logo" src="assets/brand/ozsnap-logo.webp" width="480" height="160" alt="OZSNAP AU">
             </a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
-                <li><a href="#" class="nav-link" data-page="party-photography">Party Photography</a></li>
-                <li><a href="#" class="nav-link" data-page="traveling">Traveling</a></li>
-                <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
-            </ul>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span><span></span><span></span>
             </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+                <a href="#today">Today</a>
+                <a href="#forecast">7-day</a>
+                <a href="#best-light">Best light</a>
+                <a href="#shoot-planner" class="nav-action">Plan a shoot</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- ==================== HOME PAGE ==================== -->
-    <main id="page-home" class="page active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg">
-                <div class="hero-grain"></div>
-                <div class="hero-gradient"></div>
-            </div>
-            <div class="hero-content">
-                <p class="hero-tagline">Welcome to OZSNAP</p>
-                <h1 class="hero-title">The Beauty of <br><span class="gradient-text">Photography</span></h1>
-                <p class="hero-subtitle">Capturing moments that last forever</p>
-                <a href="#" class="btn btn-primary" data-page="contact">Get in Touch</a>
-            </div>
-            <div class="hero-scroll-indicator">
-                <span>Scroll</span>
-                <div class="scroll-line"></div>
-            </div>
-        </section>
-
-        <!-- The Beauty of Photography Section -->
-        <section class="section section-concepts">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Our Philosophy</span>
-                    <h2 class="section-title">The Beauty of Photography</h2>
+    <main id="main-content">
+        <section class="weather-app" id="today" aria-labelledby="page-title">
+            <div class="app-intro page-shell">
+                <div class="intro-copy">
+                    <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Live conditions across Australia</p>
+                    <h1 id="page-title">What to wear in Australia.<br><span>When to shoot.</span></h1>
+                    <p class="intro-text">Weather-led outfit advice and honest light forecasts for everyday plans, weekend trips and better photos.</p>
                 </div>
-                <div class="card-grid three-col">
-                    <div class="card glass-card" data-aos="fade-up">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="8" x2="12" y2="12"></line>
-                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                            </svg>
+
+                <div class="city-picker" role="group" aria-labelledby="city-picker-label">
+                    <label id="city-picker-label" for="city-select">Your city</label>
+                    <div class="picker-row">
+                        <div class="select-wrap">
+                            <select id="city-select" name="city"></select>
                         </div>
-                        <h3 class="card-title">Idea or a concept</h3>
-                        <p class="card-text">Photography is an art, to create a beautiful art you should have an idea or a concept in your mind to turn your imagination into a reality.</p>
+                        <button class="location-button" id="location-button" type="button">
+                            <span class="location-target" aria-hidden="true"></span>
+                            Use my location
+                        </button>
                     </div>
-                    <div class="card glass-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                                <circle cx="12" cy="13" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Equipment, location and timing</h3>
-                        <p class="card-text">These are the three most important things to create a beautiful photo. You need a perfect equipment to capture an image apart from that location and timing is also important for creating a beauty.</p>
-                    </div>
-                    <div class="card glass-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Good Photo</h3>
-                        <p class="card-text">To click a delightful photo you need some great lens and camera, If you a perfect set of tools you can create a beautiful image.</p>
-                    </div>
+                    <div class="city-quick-list" id="city-quick-list" role="group" aria-label="Popular cities"></div>
                 </div>
             </div>
-        </section>
 
-        <!-- On Location Photography Section -->
-        <section class="section section-location dark-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Explore</span>
-                    <h2 class="section-title">On Location Photography</h2>
-                </div>
-                <div class="card-grid three-col">
-                    <div class="feature-card" data-aos="fade-up">
-                        <div class="feature-number">01</div>
-                        <h3 class="feature-title">Landscape Photography</h3>
-                        <p class="feature-text">Landscape Photography typically captures the presence of nature but it also focuses on the man-made features of a landscape. Many landscape photos are created within the pursuit of nature such as landforms, weather, and ambient light.</p>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-number">02</div>
-                        <h3 class="feature-title">Nature Trail</h3>
-                        <p class="feature-text">Nature photography is a wide range of outdoor photography and devoted to displaying natural elements such as landscapes, wildlife, plants, and close-ups of natural scenes and textures.</p>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-number">03</div>
-                        <h3 class="feature-title">Keep Calm and Shoot On</h3>
-                        <p class="feature-text">There is some photographer who always carries their camera to capture the beautiful things arccos the world. These outdoor freaks are click each and everything a would like to add to their gallery.</p>
-                    </div>
-                </div>
+            <div class="weather-status page-shell" id="weather-status" role="status" aria-live="polite" aria-busy="true">
+                <span class="status-indicator"></span>
+                <span id="status-text">Loading live conditions...</span>
             </div>
-        </section>
 
-        <!-- Photography Services Section -->
-        <section class="section section-services">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">What We Offer</span>
-                    <h2 class="section-title">Photography Services</h2>
-                    <p class="section-subtitle">Experience the magic of capturing life's most precious moments with OZSNAP. For more creative inspiration, visit <a href="https://sweetlifephotography.com.au/" target="_blank" class="accent-link">sweetlife photography</a> and <a href="https://www.lookylooky.com.au/" target="_blank" class="accent-link">lookylooky</a>.</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card" data-aos="fade-right">
-                        <div class="service-badge">Premium</div>
-                        <h3 class="service-title">Pre-wedding Photoshoot</h3>
-                        <p class="service-text">It became a new trend in every wedding occasion, it often referred as an engagement shoot which is planned before the wedding. Pre-wedding photos help you to gather all the memory a beautiful occasion which happens once in a lifetime</p>
-                        <a href="#" class="btn btn-outline" data-page="contact">Learn More</a>
-                    </div>
-                    <div class="service-card" data-aos="fade-left">
-                        <div class="service-badge">Special</div>
-                        <h3 class="service-title">Picture Perfect Moment</h3>
-                        <p class="service-text">In every wedding there are some moments which have to be captured in the camera, Some pictures speak a thousand words and we can't agree more. we cherish all these moments for the lifetime</p>
-                        <a href="#" class="btn btn-outline" data-page="contact">Learn More</a>
-                    </div>
+            <div class="current-band">
+                <div class="current-layout page-shell">
+                    <section class="outfit-panel" aria-labelledby="outfit-title">
+                        <div class="outfit-copy">
+                            <p class="section-label" id="today-label">Today in Brisbane</p>
+                            <div class="current-temperature-row">
+                                <strong class="current-temperature" id="current-temperature">--°</strong>
+                                <div>
+                                    <p class="condition-name" id="condition-name">Loading weather</p>
+                                    <p class="feels-like" id="feels-like">Feels like --°</p>
+                                </div>
+                            </div>
+                            <div class="outfit-recommendation">
+                                <p class="recommendation-label">Wear this</p>
+                                <h2 id="outfit-title">Checking the forecast...</h2>
+                                <p id="outfit-detail">Your practical outfit recommendation will appear here.</p>
+                            </div>
+                        </div>
+
+                        <figure class="outfit-visual" id="outfit-visual" data-outfit="mild">
+                            <img id="outfit-image" src="assets/outfits/mild-day.webp" srcset="assets/outfits/mild-day-400.webp 400w, assets/outfits/mild-day.webp 800w" sizes="(max-width: 560px) 100vw, (max-width: 1080px) 50vw, 430px" width="800" height="1200" alt="Illustrated mild-weather outfit with a light overshirt and trousers" decoding="async" fetchpriority="high">
+                            <figcaption id="outfit-caption">A light layer keeps the day flexible.</figcaption>
+                        </figure>
+
+                        <div class="essential-tip">
+                            <span class="tip-number" aria-hidden="true">01</span>
+                            <div>
+                                <p>Essential tip</p>
+                                <strong id="essential-tip">Checking today's most useful detail...</strong>
+                            </div>
+                        </div>
+                    </section>
+
+                    <aside class="conditions-panel" aria-labelledby="conditions-title">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="section-label">Right now</p>
+                                <h2 id="conditions-title">Local conditions</h2>
+                            </div>
+                            <time id="local-time">--:--</time>
+                        </div>
+
+                        <dl class="condition-grid">
+                            <div>
+                                <dt>Wind</dt>
+                                <dd id="wind-speed">-- km/h</dd>
+                            </div>
+                            <div>
+                                <dt>Cloud</dt>
+                                <dd id="cloud-cover">--%</dd>
+                            </div>
+                            <div>
+                                <dt>Rain</dt>
+                                <dd id="rain-chance">--%</dd>
+                            </div>
+                            <div>
+                                <dt>UV peak</dt>
+                                <dd id="uv-index">--</dd>
+                            </div>
+                            <div>
+                                <dt>Humidity</dt>
+                                <dd id="humidity">--%</dd>
+                            </div>
+                            <div>
+                                <dt>Day range</dt>
+                                <dd id="day-range">--° / --°</dd>
+                            </div>
+                        </dl>
+
+                        <div class="local-note">
+                            <span aria-hidden="true">+</span>
+                            <div>
+                                <p>Local note</p>
+                                <strong id="local-note">Conditions can shift throughout the day.</strong>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </section>
 
-        <!-- We Captures / Blog Preview Section -->
-        <section class="section section-captures">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Latest Posts</span>
-                    <h2 class="section-title">We Captures</h2>
+        <section class="forecast-section page-shell" id="forecast" aria-labelledby="forecast-title">
+            <div class="section-heading-row">
+                <div>
+                    <p class="section-label">The week ahead</p>
+                    <h2 id="forecast-title">Seven days, seven outfits</h2>
                 </div>
-                <div class="blog-preview-grid three-col">
-                    <article class="blog-preview-card" data-aos="fade-up">
-                        <div class="blog-preview-meta">
-                            <span class="blog-category">The New Era</span>
-                            <span class="blog-author">admin</span>
-                        </div>
-                        <h3 class="blog-preview-title">Welcome to the Reimagined OZSNAP</h3>
-                        <p class="blog-preview-excerpt">After years of capturing the stories of others, I realized it was time to refine my own digital home...</p>
-                        <a href="#" class="read-more-link" data-blog="post-1">Read more →</a>
-                    </article>
-                    <article class="blog-preview-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="blog-preview-meta">
-                            <span class="blog-category">Photography</span>
-                            <span class="blog-author">admin</span>
-                        </div>
-                        <h3 class="blog-preview-title">The Golden Hour in Brisbane</h3>
-                        <p class="blog-preview-excerpt">Brisbane offers some of the most unique light in Australia, especially in the North Lakes area...</p>
-                        <a href="#" class="read-more-link" data-blog="post-2">Read more →</a>
-                    </article>
-                    <article class="blog-preview-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="blog-preview-meta">
-                            <span class="blog-category">Technology</span>
-                            <span class="blog-author">admin</span>
-                        </div>
-                        <h3 class="blog-preview-title">Photography in the Age of AI</h3>
-                        <p class="blog-preview-excerpt">As a graphic designer who embraces AI tools, I often get asked: "Is traditional photography still relevant?"...</p>
-                        <a href="#" class="read-more-link" data-blog="post-3">Read more →</a>
-                    </article>
-                </div>
-                <div style="text-align:center; margin-top:48px;">
-                    <a href="#" class="btn btn-outline" data-page="blog">View All Posts →</a>
-                </div>
+                <p>Forecast clothing is based on apparent temperature, rain, wind and UV.</p>
             </div>
+            <div class="forecast-grid" id="forecast-grid" aria-live="polite"></div>
         </section>
-    </main>
 
-    <!-- ==================== BLOG PAGE ==================== -->
-    <main id="page-blog" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <span>Blog</span></nav>
-                <h1 class="page-hero-title">Blog</h1>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container blog-layout">
-                <div class="blog-main">
-                    <div class="blog-filter-bar">
-                        <span class="filter-label">Filter by</span>
-                        <button class="filter-btn active">All</button>
-                        <button class="filter-btn">Categories</button>
-                        <button class="filter-btn">Tags</button>
-                        <button class="filter-btn">Authors</button>
-                    </div>
-                    <div class="blog-grid">
-                        <article class="blog-card" data-aos="fade-up">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">The New Era</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">Welcome to the Reimagined OZSNAP</h2>
-                                <p class="blog-card-excerpt">After years of capturing the stories of others, I realized it was time to refine my own digital home.</p>
-                                <a href="#" class="read-more-link" data-blog="post-1">Read more →</a>
+        <section class="light-section" id="best-light" aria-labelledby="light-title">
+            <div class="light-layout page-shell">
+                <div class="light-overview">
+                    <p class="section-label">Photography forecast</p>
+                    <h2 id="light-title">Today’s best light</h2>
+                    <p class="light-intro" id="light-intro">We are reading the sky for your selected city.</p>
+
+                    <div class="light-timeline" role="img" aria-label="Evening photography light timeline">
+                        <div class="timeline-track" aria-hidden="true">
+                            <span class="timeline-daylight"></span>
+                            <span class="timeline-golden"></span>
+                            <span class="timeline-blue"></span>
+                            <span class="timeline-sunset"></span>
+                        </div>
+                        <div class="timeline-labels">
+                            <div>
+                                <span>Golden hour</span>
+                                <strong id="golden-hour-time">--</strong>
                             </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Photography</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">The Golden Hour in Brisbane: Capturing Magic in the Sun State</h2>
-                                <p class="blog-card-excerpt">Brisbane offers some of the most unique light in Australia, especially in the North Lakes area.</p>
-                                <a href="#" class="read-more-link" data-blog="post-2">Read more →</a>
+                            <div>
+                                <span>Sunset</span>
+                                <strong id="sunset-time">--</strong>
                             </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Technology</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">Photography in the Age of AI: The Human Touch Remains</h2>
-                                <p class="blog-card-excerpt">As a graphic designer who embraces AI tools like Antigravity, I often get asked: "Is traditional photography still relevant?"</p>
-                                <a href="#" class="read-more-link" data-blog="post-3">Read more →</a>
+                            <div>
+                                <span>Blue hour ends</span>
+                                <strong id="blue-hour-time">--</strong>
                             </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="150">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Design</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">Designing for Impact: Why Visual Identity is Your Best Salesman</h2>
-                                <p class="blog-card-excerpt">Graphic design is more than just a logo; it's the silent ambassador of your brand.</p>
-                                <a href="#" class="read-more-link" data-blog="post-4">Read more →</a>
-                            </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Tips</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">Overcoming "Camera Shyness": A Guide to Natural Portraits</h2>
-                                <p class="blog-card-excerpt">Most people hate being in front of a camera. My job is to create an environment where you feel safe enough to be yourself.</p>
-                                <a href="#" class="read-more-link" data-blog="post-5">Read more →</a>
-                            </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="250">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Community</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">North Lakes: A Creative's Perspective on Our Community</h2>
-                                <p class="blog-card-excerpt">Living in North Lakes for years has deeply influenced my creative style.</p>
-                                <a href="#" class="read-more-link" data-blog="post-6">Read more →</a>
-                            </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Process</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">The Architecture of a Design Project: From Concept to Completion</h2>
-                                <p class="blog-card-excerpt">Behind every "simple" logo or "clean" layout is a rigorous process of research, sketching, and refinement.</p>
-                                <a href="#" class="read-more-link" data-blog="post-7">Read more →</a>
-                            </div>
-                        </article>
-                        <article class="blog-card" data-aos="fade-up" data-aos-delay="350">
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-category">Personal</span>
-                                    <span class="blog-author">admin</span>
-                                </div>
-                                <h2 class="blog-card-title">Creative Longevity: Evolving as a Creator at 40 and Beyond</h2>
-                                <p class="blog-card-excerpt">Starting new ventures like "Insight Lab" or "Fixness" at this stage of life has taught me that experience is a superpower.</p>
-                                <a href="#" class="read-more-link" data-blog="post-8">Read more →</a>
-                            </div>
-                        </article>
+                        </div>
                     </div>
                 </div>
-                <aside class="blog-sidebar">
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Search</h3>
-                        <div class="search-box">
-                            <input type="text" placeholder="Search posts..." class="search-input">
+
+                <aside class="photo-condition" id="photo-condition" aria-labelledby="photo-advice-title">
+                    <div class="photo-condition-topline">
+                        <p class="section-label">Sky read</p>
+                        <strong id="photo-score-label">Loading</strong>
+                    </div>
+                    <div class="cloud-visual" aria-hidden="true">
+                        <span class="cloud-shape cloud-one"></span>
+                        <span class="cloud-shape cloud-two"></span>
+                        <span class="sun-shape"></span>
+                    </div>
+                    <h3 id="photo-advice-title">Reading the cloud cover...</h3>
+                    <p id="photo-advice-copy">Your city-specific photography advice will appear here.</p>
+                    <dl class="photo-facts">
+                        <div>
+                            <dt>Cloud at golden hour</dt>
+                            <dd id="golden-cloud">--%</dd>
                         </div>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Recent Posts</h3>
-                        <ul class="recent-posts-list">
-                            <li><a href="#" data-blog="post-1">Welcome to the Reimagined OZSNAP</a></li>
-                            <li><a href="#" data-blog="post-2">The Golden Hour in Brisbane</a></li>
-                            <li><a href="#" data-blog="post-3">Photography in the Age of AI</a></li>
-                            <li><a href="#" data-blog="post-4">Designing for Impact</a></li>
-                            <li><a href="#" data-blog="post-5">Overcoming "Camera Shyness"</a></li>
-                        </ul>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Categories</h3>
-                        <ul class="categories-list">
-                            <li><a href="#">The New Era</a></li>
-                            <li><a href="#">Photography</a></li>
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Tips</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Process</a></li>
-                            <li><a href="#">Personal</a></li>
-                        </ul>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Newsletter</h3>
-                        <p class="sidebar-text">Subscribe to stay updated.</p>
-                        <div class="newsletter-box">
-                            <input type="email" placeholder="Your email" class="newsletter-input">
-                            <button class="btn btn-sm">Subscribe</button>
+                        <div>
+                            <dt>Rain around sunset</dt>
+                            <dd id="sunset-rain">--%</dd>
                         </div>
-                    </div>
+                    </dl>
                 </aside>
             </div>
         </section>
-    </main>
 
-    <!-- ==================== BLOG POST DETAIL PAGE ==================== -->
-    <main id="page-blog-post" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <a href="#" data-page="blog">Blog</a> / <span id="blog-post-breadcrumb">Post</span></nav>
-                <div class="blog-post-hero-meta">
-                    <span class="blog-category" id="blog-post-category"></span>
-                    <span class="blog-post-date" id="blog-post-date"></span>
+        <section class="planner-section page-shell" id="shoot-planner" aria-labelledby="planner-title">
+            <div class="section-heading-row planner-heading">
+                <div>
+                    <p class="section-label">Shoot planner</p>
+                    <h2 id="planner-title">Find your start time</h2>
                 </div>
-                <h1 class="page-hero-title" id="blog-post-title"></h1>
+                <p>Built from the sun’s position for the exact city and date.</p>
             </div>
-        </section>
-        <section class="section">
-            <div class="container blog-post-layout">
-                <article class="blog-post-content content-body" id="blog-post-body">
-                    <!-- Content is injected by JS -->
-                </article>
-                <aside class="blog-post-sidebar">
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">About the Author</h3>
-                        <div class="author-card">
-                            <div class="author-avatar">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            </div>
-                            <div class="author-info">
-                                <h4>OZSNAP</h4>
-                                <p>Photographer & Graphic Designer based in North Lakes, Brisbane.</p>
-                            </div>
+
+            <div class="planner-layout">
+                <form class="planner-form" id="planner-form">
+                    <div class="form-row">
+                        <label for="planner-city">City</label>
+                        <div class="select-wrap">
+                            <select id="planner-city" name="planner-city"></select>
                         </div>
                     </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">More Posts</h3>
-                        <ul class="recent-posts-list" id="blog-post-related">
-                            <!-- Populated by JS -->
-                        </ul>
+
+                    <div class="form-row">
+                        <label for="planner-date">Date</label>
+                        <input id="planner-date" name="planner-date" type="date" required>
                     </div>
-                    <div class="sidebar-widget">
-                        <a href="#" class="btn btn-outline btn-full" data-page="blog">← Back to All Posts</a>
-                    </div>
-                </aside>
-            </div>
-        </section>
-    </main>
 
-    <!-- ==================== PARTY PHOTOGRAPHY PAGE ==================== -->
-    <main id="page-party-photography" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <span>Party Photography</span></nav>
-                <p class="page-hero-tagline">Your Best Moments, Captured Forever.</p>
-                <h1 class="page-hero-title">Party Photography</h1>
-            </div>
-        </section>
-
-        <!-- Main Header Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Celebrate</span>
-                    <h2 class="section-title">Celebrate the Moment. We'll Handle the Memories.</h2>
-                </div>
-                <div class="content-intro">
-                    <p class="intro-text">A great party is made of thousands of split-second emotions: the roar of laughter during a toast, the surprised look on a birthday girl's face, and the energy of the dance floor. At <strong>OZSNAP</strong>, we specialize in high-energy event coverage that captures the "vibe" as much as the people.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Philosophy Section -->
-        <section class="section dark-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Our Approach</span>
-                    <h2 class="section-title">Core Philosophy</h2>
-                </div>
-                <div class="card-grid three-col">
-                    <div class="glass-card" data-aos="fade-up">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
+                    <div class="form-row">
+                        <label for="planner-duration">Session length</label>
+                        <div class="select-wrap">
+                            <select id="planner-duration" name="planner-duration">
+                                <option value="30">30 minutes</option>
+                                <option value="60" selected>1 hour</option>
+                                <option value="90">1.5 hours</option>
+                                <option value="120">2 hours</option>
+                            </select>
                         </div>
-                        <h3 class="card-title">The Art of the Candid</h3>
-                        <p class="card-text">We don't just line people up for stiff poses. We move through the crowd like guests with cameras, capturing the authentic, unscripted joy of your celebration.</p>
                     </div>
-                    <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="5"></circle>
-                                <line x1="12" y1="1" x2="12" y2="3"></line>
-                                <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                            </svg>
+
+                    <fieldset class="form-row light-preference">
+                        <legend>Look</legend>
+                        <div class="segmented-control">
+                            <input type="radio" name="light-look" id="look-golden" value="golden" checked>
+                            <label for="look-golden">Golden</label>
+                            <input type="radio" name="light-look" id="look-soft" value="soft">
+                            <label for="look-soft">Soft</label>
+                            <input type="radio" name="light-look" id="look-blue" value="blue">
+                            <label for="look-blue">Blue hour</label>
                         </div>
-                        <h3 class="card-title">Low-Light Mastery</h3>
-                        <p class="card-text">Parties often happen in challenging environments—dim restaurants, neon-lit clubs, or backyard sunsets. We use professional-grade sensors and fast lenses to ensure every shot is crisp, vibrant, and noise-free.</p>
+                    </fieldset>
+
+                    <button class="calculate-button" type="submit">
+                        Calculate shoot time
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </form>
+
+                <section class="planner-result" id="planner-result" aria-live="polite" aria-labelledby="result-title">
+                    <div class="result-topline">
+                        <p class="section-label" id="result-location">Brisbane · Today</p>
+                        <span id="result-light-type">Golden light</span>
                     </div>
-                    <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                            </svg>
+                    <h3 id="result-title">Start shooting at <strong id="recommended-start">--:--</strong></h3>
+                    <p id="result-summary">Your recommended schedule will appear here.</p>
+
+                    <div class="schedule-line" role="group" aria-label="Recommended shoot schedule">
+                        <div>
+                            <span class="schedule-dot arrive"></span>
+                            <small>Arrive</small>
+                            <strong id="arrival-time">--:--</strong>
                         </div>
-                        <h3 class="card-title">Graphic Edge</h3>
-                        <p class="card-text">Leveraging our design background, every photo is color-graded and cropped with a cinematic eye, making your event look like a high-end editorial spread.</p>
+                        <span class="schedule-connector"></span>
+                        <div>
+                            <span class="schedule-dot shoot"></span>
+                            <small>Shoot</small>
+                            <strong id="shoot-time">--:--</strong>
+                        </div>
+                        <span class="schedule-connector"></span>
+                        <div>
+                            <span class="schedule-dot finish"></span>
+                            <small>Finish</small>
+                            <strong id="finish-time">--:--</strong>
+                        </div>
                     </div>
+
+                    <div class="result-note" id="result-note">
+                        <span aria-hidden="true">i</span>
+                        <p>Light times are astronomical estimates. Hills, buildings and weather can shorten the visible light.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="field-guide-section" aria-labelledby="field-guide-title">
+            <div class="page-shell">
+                <div class="section-heading-row">
+                    <div>
+                        <p class="section-label">Read the sky</p>
+                        <h2 id="field-guide-title">Cloud is not bad weather</h2>
+                    </div>
+                    <p>Different skies make different photographs. Choose the light that suits the subject.</p>
+                </div>
+
+                <div class="field-guide-grid">
+                    <article class="field-card clear-card">
+                        <span class="field-icon" aria-hidden="true">☀</span>
+                        <p>Clear sky</p>
+                        <h3>Strong shape and colour</h3>
+                        <p>Wait for late light, use open shade for faces, or place the sun behind your subject.</p>
+                    </article>
+                    <article class="field-card broken-card">
+                        <span class="field-icon" aria-hidden="true">◒</span>
+                        <p>Broken cloud</p>
+                        <h3>Texture in the sunset</h3>
+                        <p>Gaps near the horizon can catch colour while higher cloud adds depth to the frame.</p>
+                    </article>
+                    <article class="field-card overcast-card">
+                        <span class="field-icon" aria-hidden="true">☁</span>
+                        <p>Overcast</p>
+                        <h3>Soft portrait light</h3>
+                        <p>Faces are evenly lit with fewer harsh shadows. Look for colour and clean backgrounds.</p>
+                    </article>
+                    <article class="field-card rain-card">
+                        <span class="field-icon" aria-hidden="true">↘</span>
+                        <p>After rain</p>
+                        <h3>Reflections and mood</h3>
+                        <p>Wet pavement reflects signs and sky. Keep the lens dry and shoot from a sheltered edge.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Services Provided Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">What We Cover</span>
-                    <h2 class="section-title">Services Provided</h2>
-                </div>
-                <div class="card-grid three-col">
-                    <div class="feature-card" data-aos="fade-up">
-                        <div class="feature-number">01</div>
-                        <h3 class="feature-title">Milestone Birthdays</h3>
-                        <p class="feature-text">From 1st "Cake Smashes" to elegant 50th galas. We capture the joy, the tears, and every unforgettable moment in between.</p>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-number">02</div>
-                        <h3 class="feature-title">Engagement & Private Soirées</h3>
-                        <p class="feature-text">Capturing the intimacy and elegance of your inner circle. Every glance, every toast, every heartfelt moment preserved forever.</p>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-number">03</div>
-                        <h3 class="feature-title">Corporate Functions</h3>
-                        <p class="feature-text">Professional imagery for brand launches, award ceremonies, and networking events. Elevate your brand's visual identity with editorial-quality coverage.</p>
-                    </div>
-                </div>
-                <div style="text-align:center; margin-top:64px;">
-                    <a href="#" class="btn btn-primary" data-page="contact">Book Your Event →</a>
-                </div>
+        <section class="questions-section page-shell" aria-labelledby="questions-title">
+            <div class="questions-intro">
+                <p class="section-label">Good to know</p>
+                <h2 id="questions-title">About the light forecast</h2>
             </div>
-        </section>
-    </main>
-
-    <!-- ==================== TRAVELING PAGE ==================== -->
-    <main id="page-traveling" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <span>Traveling</span></nav>
-                <p class="page-hero-tagline">Exploring the World Through a Creative Lens.</p>
-                <h1 class="page-hero-title">Traveling</h1>
-            </div>
-        </section>
-
-        <!-- Main Header Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Wanderlust</span>
-                    <h2 class="section-title">Wanderlust & Visual Storytelling</h2>
-                </div>
-                <div class="content-intro">
-                    <p class="intro-text">For <strong>OZSNAP</strong>, traveling is the ultimate source of creative oxygen. Whether it's the rugged coastline of the Australian Outback or the neon-soaked streets of a global metropolis, we travel to find the "soul" of a location. Our travel photography is a dialogue between nature's grandeur and the human spirit.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Perspectives Section -->
-        <section class="section dark-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Perspectives</span>
-                    <h2 class="section-title">Gallery Perspectives</h2>
-                </div>
-                <div class="card-grid three-col">
-                    <div class="glass-card" data-aos="fade-up">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">The Great Outdoors</h3>
-                        <p class="card-text">From the sun-drenched beaches of Queensland to the misty mountains abroad, we capture the scale and serenity of the natural world.</p>
-                    </div>
-                    <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="3" y1="9" x2="21" y2="9"></line>
-                                <line x1="9" y1="21" x2="9" y2="9"></line>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Architectural Geometry</h3>
-                        <p class="card-text">As a graphic designer, I am drawn to the lines, shadows, and symmetry of urban environments. Our travel shots often highlight the beauty of man-made structures.</p>
-                    </div>
-                    <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">Cultural Portraits</h3>
-                        <p class="card-text">Documenting the faces and traditions that make every destination unique. We believe every portrait tells a story of heritage and humanity.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Photography Philosophy Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Philosophy</span>
-                    <h2 class="section-title">Photography Philosophy</h2>
-                </div>
-                <div class="philosophy-quote-block">
-                    <div class="quote-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" opacity="0.15">
-                            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
-                        </svg>
-                    </div>
-                    <blockquote class="philosophy-quote">
-                        "Travel photography is more than just a postcard. It's about capturing the feeling of the wind, the heat of the sun, and the rhythm of a foreign city. Our goal is to transport the viewer to that exact moment in time."
-                    </blockquote>
-                    <p class="quote-author">— OZSNAP</p>
-                </div>
-                <div style="text-align:center; margin-top:64px;">
-                    <a href="#" class="btn btn-primary" data-page="contact">Plan a Travel Shoot →</a>
-                </div>
+            <div class="question-list">
+                <details>
+                    <summary>Is golden hour always exactly one hour?</summary>
+                    <p>No. Its length changes with latitude and season. OZSNAP calculates the evening window from the sun’s angle for the selected city and date.</p>
+                </details>
+                <details>
+                    <summary>Why can cloudy weather be better for portraits?</summary>
+                    <p>Cloud scatters direct sunlight, reducing hard shadows under the eyes and nose. Heavy cloud can soften colour, so stronger clothing or background colour often helps.</p>
+                </details>
+                <details>
+                    <summary>How fresh is the weather?</summary>
+                    <p>Live conditions are checked when the page opens and refreshed after 30 minutes. A recent saved forecast is used if the weather service is temporarily unavailable.</p>
+                </details>
             </div>
         </section>
     </main>
 
-    <!-- ==================== PRIVACY POLICY PAGE ==================== -->
-    <main id="page-privacy" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <span>Privacy Policy</span></nav>
-                <h1 class="page-hero-title">Privacy Policy</h1>
+    <footer class="site-footer">
+        <div class="footer-inner page-shell">
+            <div class="footer-brand">
+                <a class="brand footer-logo" href="#top" aria-label="Back to top">
+                    <img class="brand-logo" src="assets/brand/ozsnap-logo-light.webp" width="480" height="160" alt="OZSNAP AU">
+                </a>
+                <p>Weather, wardrobe and better light across Australia.</p>
             </div>
-        </section>
-        <section class="section">
-            <div class="container content-page">
-                <div class="content-body">
-                    <p>At OZSNAP, the privacy of our visitors is of extreme importance to us. This privacy policy document outlines the types of personal information is received and collected by OZSNAP and how it is used.</p>
 
-                    <h2>Log Files</h2>
-                    <p>Like many other Web sites, OZSNAP makes use of log files. The information inside the log files includes internet protocol (IP) addresses, type of browser, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and number of clicks to analyze trends, administer the site, track user's movement around the site, and gather demographic information. IP addresses, and other such information are not linked to any information that is personally identifiable.</p>
+            <div class="footer-links">
+                <p>Photography partners</p>
+                <a href="https://sweetlifephotography.com.au/" target="_blank" rel="noopener noreferrer">Sweetlife Photography <span aria-hidden="true">↗</span></a>
+                <a href="https://www.lookylooky.com.au/" target="_blank" rel="noopener noreferrer">LookyLooky <span aria-hidden="true">↗</span></a>
+            </div>
 
-                    <h2>Cookies and Web Beacons</h2>
-                    <p>OZSNAP does use cookies to store information about visitors preferences, record user-specific information on which pages the user access or visit, customize Web page content based on visitors browser type or other information that the visitor sends via their browser.</p>
-
-                    <h2>DoubleClick DART Cookie</h2>
-                    <ul>
-                        <li>Google, as a third party vendor, uses cookies to serve ads on OZSNAP.</li>
-                        <li>Google's use of the DART cookie enables it to serve ads to users based on their visit to OZSNAP and other sites on the Internet.</li>
-                        <li>Users may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy at the following URL - <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">https://www.google.com/policies/privacy/</a>.</li>
-                    </ul>
-                    <p>These third-party ad servers or ad networks use technology to the advertisements and links that appear on OZSNAP send directly to your browsers. They automatically receive your IP address when this occurs. Other technologies ( such as cookies, JavaScript, or Web Beacons ) may also be used by the third-party ad networks to measure the effectiveness of their advertisements and / or to personalize the advertising content that you see.</p>
-                    <p>OZSNAP has no access to or control over these cookies that are used by third-party advertisers.</p>
-                    <p>You should consult the respective privacy policies of these third-party ad servers for more detailed information on their practices as well as for instructions about how to opt-out of certain practices. OZSNAP's privacy policy does not apply to, and we cannot control the activities of, such other advertisers or web sites.</p>
-                    <p>If you wish to disable cookies, you may do so through your individual browser options. More detailed information about cookie management with specific web browsers can be found at the browser's respective websites.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==================== TERMS AND CONDITIONS PAGE ==================== -->
-    <main id="page-terms" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <span>Terms and Conditions</span></nav>
-                <h1 class="page-hero-title">Terms and Conditions</h1>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container content-page">
-                <div class="content-body">
-                    <p>Welcome to OZSNAP. If you continue to browse and use this website you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern OZSNAP's relationship with you in relation to this website.</p>
-                    <p>The term OZSNAP or 'us' or 'we' refers to the owner of the website. The term 'you' refers to the user or viewer of our website. The use of this website is subject to the following terms of use:</p>
-                    <ul>
-                        <li>The content of the pages of this website is for your general information and use only. It is subject to change without notice.</li>
-                        <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</li>
-                        <li>Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your specific requirements.</li>
-                        <li>This website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.</li>
-                        <li>All trademarks reproduced in this website, which are not the property of, or licensed to the operator, are acknowledged on the website.</li>
-                        <li>Unauthorized use of this website may give rise to a claim for damages and/or be a criminal offense.</li>
-                        <li>From time to time this website may also include links to other websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).</li>
-                        <li>You may not create a link to this website from another website or document without OZSNAP's prior written consent.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==================== CONTACT PAGE ==================== -->
-    <main id="page-contact" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="#" data-page="home">Home</a> / <span>Contact Us</span></nav>
-                <h1 class="page-hero-title">Contact Us</h1>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <h2>Let's Connect</h2>
-                        <p>Have a question or want to book a session? Reach out and we'll get back to you shortly.</p>
-                        <div class="contact-detail">
-                            <h4>Please follow & like us :)</h4>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" class="social-link" aria-label="Facebook">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Instagram">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Twitter">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Your Name (required)</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email (required)</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo" data-page="home">
-                        <span class="logo-text">OZ</span><span class="logo-accent">SNAP</span>
-                    </a>
-                    <p class="footer-tagline">Capturing the beauty of photography</p>
-                    <h4 class="footer-social-heading">Please follow & like us :)</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-links-group">
-                    <h4 class="footer-heading">Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" data-page="home">Home</a></li>
-                        <li><a href="#" data-page="blog">Blog</a></li>
-                        <li><a href="#" data-page="party-photography">Party Photography</a></li>
-                        <li><a href="#" data-page="traveling">Traveling</a></li>
-                        <li><a href="#" data-page="contact">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-group">
-                    <h4 class="footer-heading">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-page="terms">Terms and Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-group">
-                    <h4 class="footer-heading">Metro Social Media</h4>
-                    <p class="footer-text">Stay connected with us on social media for the latest updates and captures.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 OZSNAP. All rights reserved.</p>
+            <div class="footer-meta">
+                <p>Forecast data: Open-Meteo</p>
+                <p>Times shown in each city’s local time.</p>
+                <p>&copy; <span id="copyright-year"></span> OZSNAP</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.min.js?v=20260714-5" defer></script>
 </body>
 </html>

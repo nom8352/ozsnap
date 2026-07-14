@@ -29,7 +29,7 @@
     <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/outfits/mild-day.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="assets/brand/ozsnap-logo.webp" as="image" type="image/webp">
-    <link rel="stylesheet" href="style.min.css?v=20260714-5">
+    <link rel="stylesheet" href="style.min.css?v=20260714-6">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -131,6 +131,14 @@
                             </div>
                             <div class="outfit-recommendation">
                                 <p class="recommendation-label">Wear this</p>
+                                <div class="outfit-level-row">
+                                    <span id="outfit-level">Outfit level -- of 10</span>
+                                    <span id="outfit-range">Feels like --°</span>
+                                </div>
+                                <div class="outfit-meter" id="outfit-meter" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
                                 <h2 id="outfit-title">Checking the forecast...</h2>
                                 <p id="outfit-detail">Your practical outfit recommendation will appear here.</p>
                             </div>
@@ -440,6 +448,6 @@
     </footer>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="script.min.js?v=20260714-5" defer></script>
+    <script src="script.min.js?v=20260714-6" defer></script>
 </body>
 </html>

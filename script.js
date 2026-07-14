@@ -125,23 +125,65 @@ const WEATHER_CODES = {
 };
 
 const OUTFIT_ASSETS = {
-    warm: {
-        image: "assets/outfits/warm-day.webp",
-        imageSmall: "assets/outfits/warm-day-400.webp",
-        alt: "Illustrated warm-weather outfit with a white t-shirt, navy shorts and walking shoes",
-        caption: "Breathable pieces keep a warm day comfortable."
+    deepCold: {
+        image: "assets/outfits/cool-day.webp",
+        imageSmall: "assets/outfits/cool-day-400.webp",
+        alt: "Illustrated level 1 winter outfit with a warm coat, knit jumper, scarf, beanie and boots",
+        caption: "Full winter layers are reserved for genuinely cold conditions."
+    },
+    coldCoat: {
+        image: "assets/outfits/cold-coat-day.webp",
+        imageSmall: "assets/outfits/cold-coat-day-400.webp",
+        alt: "Illustrated level 2 cold-weather outfit with a medium wool coat, knit jumper, trousers and boots",
+        caption: "A proper coat handles cold mornings without heavy accessories."
+    },
+    jacketLayer: {
+        image: "assets/outfits/jacket-layer-day.webp",
+        imageSmall: "assets/outfits/jacket-layer-day-400.webp",
+        alt: "Illustrated level 3 outfit with a warm jumper, lightweight jacket, trousers and closed shoes",
+        caption: "Two practical layers cover a cold start and a milder afternoon."
+    },
+    lightJumper: {
+        image: "assets/outfits/light-jumper-day.webp",
+        imageSmall: "assets/outfits/light-jumper-day-400.webp",
+        alt: "Illustrated level 4 outfit with one light jumper, long trousers and walking shoes",
+        caption: "One light jumper is enough for a cool Brisbane evening."
     },
     mild: {
         image: "assets/outfits/mild-day.webp",
         imageSmall: "assets/outfits/mild-day-400.webp",
-        alt: "Illustrated mild-weather outfit with a light overshirt, trousers and walking shoes",
-        caption: "A light layer keeps a changeable day flexible."
+        alt: "Illustrated level 5 outfit with a t-shirt, light overshirt, trousers and walking shoes",
+        caption: "A light overshirt keeps a changeable day flexible."
     },
-    cool: {
-        image: "assets/outfits/cool-day.webp",
-        imageSmall: "assets/outfits/cool-day-400.webp",
-        alt: "Illustrated cool-weather outfit with a coat, knit jumper, scarf and boots",
-        caption: "Warm layers make cold starts and late finishes easier."
+    longSleeve: {
+        image: "assets/outfits/long-sleeve-day.webp",
+        imageSmall: "assets/outfits/long-sleeve-day-400.webp",
+        alt: "Illustrated level 6 outfit with a lightweight long-sleeve top, light trousers and sneakers",
+        caption: "Long sleeves work without an extra outer layer in mild air."
+    },
+    warmTrousers: {
+        image: "assets/outfits/warm-trousers-day.webp",
+        imageSmall: "assets/outfits/warm-trousers-day-400.webp",
+        alt: "Illustrated level 7 outfit with a breathable t-shirt, lightweight trousers and sneakers",
+        caption: "A breathable tee and light trousers suit a warm, settled day."
+    },
+    summer: {
+        image: "assets/outfits/warm-day.webp",
+        imageSmall: "assets/outfits/warm-day-400.webp",
+        alt: "Illustrated level 8 summer outfit with a white t-shirt, navy shorts and walking shoes",
+        caption: "Shorts and breathable basics keep a summer day comfortable."
+    },
+    hotSun: {
+        image: "assets/outfits/hot-sun-day.webp",
+        imageSmall: "assets/outfits/hot-sun-day-400.webp",
+        alt: "Illustrated level 9 hot-weather outfit with a loose top, shorts, cap, sunglasses and sneakers",
+        caption: "Loose summer pieces and a cap add practical sun protection."
+    },
+    extremeHeat: {
+        image: "assets/outfits/extreme-heat-day.webp",
+        imageSmall: "assets/outfits/extreme-heat-day-400.webp",
+        alt: "Illustrated level 10 extreme-heat outfit with loose linen, shorts, broad hat, airy shoes and water bottle",
+        caption: "Maximum airflow, shade and water matter in extreme heat."
     },
     wet: {
         image: "assets/outfits/wet-day.webp",
@@ -150,6 +192,109 @@ const OUTFIT_ASSETS = {
         caption: "A waterproof outer layer handles showers and wind."
     }
 };
+
+const OUTFIT_BANDS = [
+    {
+        level: 1,
+        max: 5,
+        type: "deepCold",
+        name: "Deep cold",
+        range: "5°C or below",
+        title: "A warm coat, knit layer, scarf and closed shoes.",
+        detail: "Add a beanie for early starts, exposed lookouts or long periods outside.",
+        short: "Winter coat + layers"
+    },
+    {
+        level: 2,
+        max: 9,
+        type: "coldCoat",
+        name: "Cold",
+        range: "6-9°C",
+        title: "A medium-weight coat over a warm knit.",
+        detail: "Closed shoes and warm socks should cover most city plans without a scarf or beanie.",
+        short: "Coat + warm knit"
+    },
+    {
+        level: 3,
+        max: 12,
+        type: "jacketLayer",
+        name: "Layered",
+        range: "10-12°C",
+        title: "A warm jumper with a lightweight jacket.",
+        detail: "Two removable layers handle a cold start without moving into heavy winter clothing.",
+        short: "Jumper + light jacket"
+    },
+    {
+        level: 4,
+        max: 15,
+        type: "lightJumper",
+        name: "Light jumper",
+        range: "13-15°C",
+        title: "One light jumper should be enough.",
+        detail: "Wear long trousers and closed shoes; skip the coat, scarf and beanie.",
+        short: "One light jumper"
+    },
+    {
+        level: 5,
+        max: 18,
+        type: "mild",
+        name: "Light layer",
+        range: "16-18°C",
+        title: "A tee with a light overshirt or jacket.",
+        detail: "Keep the outer layer easy to remove when the sun is out or you move indoors.",
+        short: "Tee + light layer"
+    },
+    {
+        level: 6,
+        max: 21,
+        type: "longSleeve",
+        name: "Mild",
+        range: "19-21°C",
+        title: "A lightweight long-sleeve top.",
+        detail: "Light trousers and walking shoes work without an additional jacket for most plans.",
+        short: "Light long sleeves"
+    },
+    {
+        level: 7,
+        max: 24,
+        type: "warmTrousers",
+        name: "Warm",
+        range: "22-24°C",
+        title: "A breathable tee with light trousers.",
+        detail: "Choose airy fabrics and comfortable shoes; an outer layer is unlikely to be useful.",
+        short: "Tee + light trousers"
+    },
+    {
+        level: 8,
+        max: 27,
+        type: "summer",
+        name: "Summer",
+        range: "25-27°C",
+        title: "A tee, shorts and comfortable walking shoes.",
+        detail: "Use breathable fabrics and carry sun protection if you will be outside around midday.",
+        short: "Tee + shorts"
+    },
+    {
+        level: 9,
+        max: 31,
+        type: "hotSun",
+        name: "Hot",
+        range: "28-31°C",
+        title: "Loose summer clothes, a cap and sunnies.",
+        detail: "Prioritise airflow, sunscreen and shade during the strongest part of the day.",
+        short: "Loose summer kit"
+    },
+    {
+        level: 10,
+        max: Number.POSITIVE_INFINITY,
+        type: "extremeHeat",
+        name: "Extreme heat",
+        range: "32°C or above",
+        title: "Loose linen, a broad hat and plenty of water.",
+        detail: "Minimise time in direct afternoon sun and plan regular shade or indoor breaks.",
+        short: "Heat + sun protection"
+    }
+];
 
 const state = {
     cityId: readStoredCity(),
@@ -179,7 +324,8 @@ function cacheElements() {
     const ids = [
         "city-select", "planner-city", "city-quick-list", "location-button", "weather-status",
         "status-text", "today-label", "current-temperature", "condition-name", "feels-like",
-        "outfit-title", "outfit-detail", "outfit-image", "outfit-visual", "outfit-caption",
+        "outfit-title", "outfit-detail", "outfit-level", "outfit-range", "outfit-meter",
+        "outfit-image", "outfit-visual", "outfit-caption",
         "essential-tip", "local-time", "wind-speed", "cloud-cover", "rain-chance", "uv-index",
         "humidity", "day-range", "local-note", "forecast-grid", "light-title", "light-intro",
         "golden-hour-time", "sunset-time", "blue-hour-time", "photo-score-label",
@@ -373,6 +519,7 @@ function renderWeather(data) {
     elements.feelsLike.textContent = `Feels like ${formatDegrees(current.apparent_temperature)}`;
     elements.outfitTitle.textContent = outfit.title;
     elements.outfitDetail.textContent = outfit.detail;
+    renderOutfitLevel(outfit);
     elements.outfitImage.srcset = `${OUTFIT_ASSETS[outfit.type].imageSmall} 400w, ${OUTFIT_ASSETS[outfit.type].image} 800w`;
     elements.outfitImage.src = OUTFIT_ASSETS[outfit.type].image;
     elements.outfitImage.alt = OUTFIT_ASSETS[outfit.type].alt;
@@ -408,6 +555,7 @@ function renderWeatherUnavailable(city) {
     elements.feelsLike.textContent = "Try again shortly";
     elements.outfitTitle.textContent = "Check local conditions before heading out.";
     elements.outfitDetail.textContent = "Golden hour and shoot planning remain available while the live forecast reconnects.";
+    renderOutfitLevel(null);
     elements.outfitImage.srcset = `${OUTFIT_ASSETS.mild.imageSmall} 400w, ${OUTFIT_ASSETS.mild.image} 800w`;
     elements.outfitImage.src = OUTFIT_ASSETS.mild.image;
     elements.outfitImage.alt = OUTFIT_ASSETS.mild.alt;
@@ -423,6 +571,17 @@ function renderWeatherUnavailable(city) {
     elements.localNote.textContent = city.note;
     elements.forecastGrid.innerHTML = `<div class="forecast-error">The seven-day forecast could not be loaded. Your saved city and shoot planner are still available.</div>`;
     renderLightForecast();
+}
+
+function renderOutfitLevel(outfit) {
+    const level = outfit?.level || 0;
+    elements.outfitLevel.textContent = outfit
+        ? `Outfit level ${level} of 10 · ${outfit.name}`
+        : "Outfit level unavailable";
+    elements.outfitRange.textContent = outfit ? `${outfit.range} feels-like` : "Live reading required";
+    elements.outfitMeter.querySelectorAll("span").forEach((segment, index) => {
+        segment.classList.toggle("active", index < level);
+    });
 }
 
 function renderForecast(data) {
@@ -445,7 +604,7 @@ function renderForecast(data) {
                 <span class="visually-hidden">${getWeatherLabel(day.weatherCode)}</span>
                 <span class="forecast-icon" aria-hidden="true">${getWeatherSymbol(day.weatherCode)}</span>
                 <strong class="forecast-temp">${formatDegrees(day.maximum)} <small>${formatDegrees(day.minimum)}</small></strong>
-                <span class="forecast-outfit">${outfit.short}</span>
+                <span class="forecast-outfit">L${outfit.level} · ${outfit.short}</span>
                 <p class="forecast-rain">Rain ${formatPercent(day.rain)}</p>
             </button>
         `;
@@ -563,70 +722,44 @@ function calculatePlanner() {
 }
 
 function getOutfitAdvice(values) {
-    const apparent = numberOr(values.apparent, average(values.maximum, values.minimum));
+    const apparent = Math.round(numberOr(values.apparent, average(values.maximum, values.minimum)));
     const rain = numberOr(values.rain, 0);
     const wind = numberOr(values.wind, 0);
     const uv = numberOr(values.uv, 0);
     const wetWeather = rain >= 45 || isRainCode(values.weatherCode);
-
-    if (wetWeather && apparent <= 24) {
-        return {
-            type: "wet",
-            title: apparent <= 14 ? "A waterproof jacket over warm layers." : "A light rain jacket with grippy shoes.",
-            detail: wind >= 30
-                ? "Choose a hood or secure umbrella; gusts may make a loose umbrella awkward."
-                : "Keep the outer layer packable and choose shoes that can handle wet pavement.",
-            short: apparent <= 14 ? "Warm rain layers" : "Light rain layer"
-        };
-    }
-
-    if (apparent < 10) {
-        return {
-            type: "cool",
-            title: "A warm coat, knit layer and closed shoes.",
-            detail: wind >= 25
-                ? "Add a scarf or wind-resistant outer layer, especially near open water."
-                : "Layering will cover the cold start and the drop after sunset.",
-            short: "Coat + knit layer"
-        };
-    }
-
-    if (apparent < 17) {
-        return {
-            type: "cool",
-            title: "A jumper with a light structured jacket.",
-            detail: wetWeather
-                ? "Make the outer layer water-resistant and keep your shoes weather-ready."
-                : "Long trousers and a removable outer layer will handle the cooler edges of the day.",
-            short: "Jumper + jacket"
-        };
-    }
-
-    if (apparent < 25) {
-        return {
-            type: "mild",
-            title: wind >= 30 ? "A light windproof layer over everyday clothes." : "A tee with a light overshirt or jumper.",
-            detail: "Keep the outer layer easy to carry so you can adjust between sun, shade and evening air.",
-            short: wind >= 30 ? "Light wind layer" : "Easy light layers"
-        };
-    }
+    const band = OUTFIT_BANDS.find((candidate) => apparent <= candidate.max) || OUTFIT_BANDS.at(-1);
+    let type = band.type;
+    let title = band.title;
+    let detail = band.detail;
+    let short = band.short;
 
     if (wetWeather) {
-        return {
-            type: "warm",
-            title: "Breathable clothes with a compact rain shell.",
-            detail: "Skip heavy waterproof layers in the humidity; quick-dry fabrics will feel more comfortable.",
-            short: "Cool + quick-dry"
-        };
+        if (band.level >= 3 && band.level <= 7) {
+            type = "wet";
+            title = band.level <= 4
+                ? "A light waterproof jacket over warm basics."
+                : "A light rain shell over breathable basics.";
+            short = band.level <= 4 ? "Warm rain layer" : "Light rain layer";
+        }
+
+        detail = band.level >= 8
+            ? "Keep the base outfit breathable and add only a compact rain shell; avoid heavy waterproof layers."
+            : "Make the outer layer water-resistant and choose shoes that can handle wet ground.";
+    } else if (wind >= 35) {
+        detail = `Choose a wind-resistant version of the outermost layer. ${band.detail}`;
+    } else if (uv >= 7 && band.level >= 7) {
+        detail = `Add sunscreen, sunnies and reliable shade. ${band.detail}`;
     }
 
     return {
-        type: "warm",
-        title: "Breathable clothes, comfortable shoes and shade.",
-        detail: uv >= 7
-            ? "Add a hat, sunnies and sunscreen; choose a light layer only for air-conditioned spaces."
-            : "Light fabrics will keep the day comfortable, with a thin layer only if you are out late.",
-        short: "Breathable warm-weather kit"
+        level: band.level,
+        name: band.name,
+        range: band.range,
+        apparent,
+        type,
+        title,
+        detail,
+        short
     };
 }
 

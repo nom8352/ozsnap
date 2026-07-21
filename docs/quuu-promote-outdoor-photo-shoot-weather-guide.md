@@ -17,18 +17,18 @@ Recommended slug: `/outdoor-photo-shoot-weather-checklist/`
 - **Primary audience:** Outdoor portrait, family, travel and landscape photographers
 - **Primary Quuu category:** Photography
 - **Secondary category if available:** Travel Photography
-- **Selected hero image:** `https://ozsnap.com/assets/photos/outdoor-weather-hero.webp` - a photographer choosing between golden evening light and an approaching rain cloud at an Australian coastal location.
+- **Selected hero image:** `https://ozsnap.com/assets/photos/golden-hour-couple-hero.webp` - a young adult influencer couple in swimwear at golden hour, led by direct eye contact from the woman.
 - **Selected comparison image:** `https://ozsnap.com/assets/photos/weather-light-comparison.webp` - the same coastal portrait under clear sun, broken cloud, overcast light and after rain.
 - **Selected supporting image:** `https://ozsnap.com/assets/photos/cloud-photographer.webp` - portrait photograph showing broken cloud, an open horizon and a photographer on location.
-- **OG image:** `https://ozsnap.com/assets/photos/outdoor-weather-og.jpg` - dedicated 1200 x 630 crop without text.
+- **OG image:** `https://ozsnap.com/assets/photos/golden-hour-couple-og.jpg` - dedicated 1200 x 630 crop without text.
 
 ---
 
 # Will the weather work for your photos? Use this 5-minute plan
 
-![Outdoor photographer choosing between golden evening light and an approaching rain cloud](https://ozsnap.com/assets/photos/outdoor-weather-hero.webp)
+![Young adult influencer couple in swimwear at golden hour, with the woman smiling towards the camera](https://ozsnap.com/assets/photos/golden-hour-couple-hero.webp)
 
-*Golden light on one side, rain on the other: the useful question is which frame the conditions can support.*
+*Warm low sun, textured cloud and comfortable people: weather planning should lead to photographs that feel this effortless.*
 
 A useful photography forecast does not tell you whether the weather is simply good or bad. It tells you what kind of photograph the conditions can support, what could disrupt the session and when you need to arrive.
 

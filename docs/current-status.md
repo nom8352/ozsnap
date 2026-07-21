@@ -47,11 +47,11 @@ Detailed implementation decisions, research methodology, verification commands a
 ## Current release state
 
 - The family-photographer search cluster is released from GitHub `main` and deployed by Cloudflare Pages.
-- The Sweetlife anchor update is prepared as an HTML-only release; minified assets do not require regeneration.
+- The Sweetlife anchor update is live as an HTML-only release; minified assets did not require regeneration.
 - Minified CSS and JavaScript are current at query version `20260715-2`.
 - Generated photos live under `assets/photos/`.
 - Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.
-- All ten canonical routes are represented in the sitemap; the outdoor-shoot article is prepared for the next Cloudflare Pages deployment.
+- All ten canonical routes are represented in the sitemap; the outdoor-shoot article is live on Cloudflare Pages and returns `200` with both images available.
 - Cloudflare Managed Content prepends search/AI content signals to `robots.txt`; search remains allowed and the OZSNAP sitemap declaration remains present.
 
 ## Next practical step

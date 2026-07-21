@@ -1,8 +1,10 @@
 # Quuu Promote content draft: outdoor photo shoot weather planning
 
-Status: Content prepared and converted to production HTML locally, not submitted  
-Prepared: 2026-07-22  
-Project: OZSNAP  
+Status: Published on OZSNAP, not submitted to Quuu
+
+Prepared: 2026-07-22
+
+Project: OZSNAP
 Recommended slug: `/outdoor-photo-shoot-weather-checklist/`
 
 ## Publishing metadata
@@ -257,7 +259,7 @@ You do not need perfect weather. You need conditions that support the photograph
 ## Quuu Promote submission package
 
 - **Project/brand:** OZSNAP
-- **Live article URL:** `https://ozsnap.com/outdoor-photo-shoot-weather-checklist/` (pending deployment verification)
+- **Live article URL:** `https://ozsnap.com/outdoor-photo-shoot-weather-checklist/`
 - **Canonical URL:** `https://ozsnap.com/outdoor-photo-shoot-weather-checklist/`
 - **Category:** Photography
 - **Secondary category if unavailable:** Travel Photography
@@ -266,7 +268,7 @@ You do not need perfect weather. You need conditions that support the photograph
 - **Tangible value:** Original LIGHT framework, weather-to-photo decision table, worked example and copyable field checklist
 - **Internal next steps:** Photography weather guide, golden hour calculator, seven-day light comparison, outfit guide and Australian city guides
 - **External sources checked:** 2026-07-22
-- **Submission status:** Prepared, not published, not submitted
+- **Submission status:** Published, not submitted
 
 ### Share text A
 
@@ -296,5 +298,5 @@ Better outdoor photos start with better decisions, not perfect weather. Use this
 - [x] Article converted to production HTML
 - [x] Article schema, canonical and OG metadata implemented
 - [x] Sitemap and internal discovery link added
-- [ ] Desktop/mobile live QA completed
+- [x] Desktop/mobile live QA completed
 - [ ] Quuu submission completed

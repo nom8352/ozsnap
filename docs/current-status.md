@@ -31,6 +31,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Updated WebApplication schema, added Organization and WebPage nodes, expanded the sitemap, added HSTS and fixed root-relative 404 assets.
 - Kept Sweetlife Photography and LookyLooky as contextual editorial resources, while the new city comparisons link visibly to the 30 independent sites recorded in their dated search snapshots.
 - Refined the three Sweetlife references around the priority services: two links point to the main site (`Brisbane newborn photography` and the branded `Sweetlife newborn and baby studio`, with Chermside in its surrounding copy), while `Sweetlife maternity photography in North Lakes` points to the relevant service page.
+- Added the Quuu-ready evergreen article `/outdoor-photo-shoot-weather-checklist/` with the original LIGHT framework, two OZSNAP images, practical decision cards, a worked example, a copyable field checklist, official sources and contextual links into five OZSNAP tools and guides.
 
 ## Verification
 
@@ -50,7 +51,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Minified CSS and JavaScript are current at query version `20260715-2`.
 - Generated photos live under `assets/photos/`.
 - Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.
-- All nine local canonical routes return `200`; all four family-photographer routes also return `200` in production.
+- All ten canonical routes are represented in the sitemap; the outdoor-shoot article is prepared for the next Cloudflare Pages deployment.
 - Cloudflare Managed Content prepends search/AI content signals to `robots.txt`; search remains allowed and the OZSNAP sitemap declaration remains present.
 
 ## Next practical step

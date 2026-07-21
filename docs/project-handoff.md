@@ -31,7 +31,7 @@ Do not add a framework or build-time dependency unless the deployment architectu
 
 ## 3. Complete page inventory
 
-The repository contains 10 HTML files: nine indexable pages and one system error page.
+The repository contains 11 HTML files: ten indexable pages and one system error page.
 
 ### Indexable canonical pages
 
@@ -44,6 +44,7 @@ The repository contains 10 HTML files: nine indexable pages and one system error
 7. `/family-photographers/brisbane/` - Brisbane search snapshot and comparison
 8. `/family-photographers/sydney/` - Sydney search snapshot and comparison
 9. `/family-photographers/melbourne/` - Melbourne search snapshot and comparison
+10. `/outdoor-photo-shoot-weather-checklist/` - evergreen LIGHT framework, worked example and outdoor photography field checklist
 
 ### Non-indexable page
 

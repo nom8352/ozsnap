@@ -31,7 +31,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Updated WebApplication schema, added Organization and WebPage nodes, expanded the sitemap, added HSTS and fixed root-relative 404 assets.
 - Kept Sweetlife Photography and LookyLooky as contextual editorial resources, while the new city comparisons link visibly to the 30 independent sites recorded in their dated search snapshots.
 - Refined the three Sweetlife references around the priority services: two links point to the main site (`Brisbane newborn photography` and the branded `Sweetlife newborn and baby studio`, with Chermside in its surrounding copy), while `Sweetlife maternity photography in North Lakes` points to the relevant service page.
-- Added the Quuu-ready evergreen article `/outdoor-photo-shoot-weather-checklist/` with the original LIGHT framework, three OZSNAP images, practical decision cards, a worked example, a copyable field checklist, official sources and contextual links into five OZSNAP tools and guides. Its opening now pairs a dramatic golden-light-versus-rain hero with a four-condition portrait comparison, plus a dedicated social-sharing crop.
+- Added the Quuu-ready evergreen article `/outdoor-photo-shoot-weather-checklist/` with the original LIGHT framework, three OZSNAP images, two responsive explanatory infographics, practical decision cards, a worked example, a copyable field checklist, official sources and contextual links into five OZSNAP tools and guides. Its opening pairs a dramatic golden-light-versus-rain hero with a four-condition portrait comparison; the lower article visualises field-condition responses and the Primary-Shelter-Fallback-Exit route.
 
 ## Verification
 
@@ -48,7 +48,7 @@ Detailed implementation decisions, research methodology, verification commands a
 
 - The family-photographer search cluster is released from GitHub `main` and deployed by Cloudflare Pages.
 - The Sweetlife anchor update is live as an HTML-only release; minified assets did not require regeneration.
-- Minified CSS is current at query version `20260722-1`; minified JavaScript remains current at its existing query version.
+- Minified CSS is current at query version `20260722-2`; minified JavaScript remains current at its existing query version.
 - Generated photos live under `assets/photos/`.
 - Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.
 - All ten canonical routes are represented in the sitemap; the outdoor-shoot article is live on Cloudflare Pages and returns `200` with its article imagery available.

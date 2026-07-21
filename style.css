@@ -1969,6 +1969,162 @@ input[type="date"] {
     margin-top: 8px;
 }
 
+.guide-infographic {
+    margin-block: 30px;
+    padding: 26px;
+    border: 1px solid rgba(23, 51, 44, 0.18);
+    border-radius: 7px;
+    background: #f7f8f5;
+}
+
+.infographic-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(23, 51, 44, 0.18);
+}
+
+.infographic-heading span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--forest);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.infographic-heading h3 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.infographic-heading > p {
+    max-width: 180px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: right;
+}
+
+.conditions-grid,
+.route-track {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.conditions-grid article {
+    min-width: 0;
+    padding: 4px 18px 8px;
+    border-left: 1px solid rgba(23, 51, 44, 0.16);
+}
+
+.conditions-grid article:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+.conditions-grid article:last-child {
+    padding-right: 0;
+}
+
+.infographic-number {
+    color: #db5b45;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.conditions-grid h4,
+.route-track h4 {
+    margin: 9px 0 10px;
+    color: var(--forest);
+    font-family: var(--font-display);
+    font-size: 21px;
+}
+
+.conditions-grid p,
+.route-track p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.conditions-grid .infographic-signal {
+    min-height: 56px;
+    margin-bottom: 12px;
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.conditions-grid strong {
+    display: block;
+    color: var(--forest);
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.guide-infographic figcaption {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(23, 51, 44, 0.14);
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.route-infographic {
+    background: #eef4f3;
+}
+
+.route-track {
+    position: relative;
+    gap: 18px;
+}
+
+.route-track::before {
+    position: absolute;
+    top: 17px;
+    right: 8%;
+    left: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, #e8a928, #db5b45, #4b8795, var(--forest));
+    content: "";
+}
+
+.route-track article {
+    position: relative;
+    min-width: 0;
+}
+
+.route-marker {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 2px solid var(--forest);
+    border-radius: 50%;
+    color: var(--forest);
+    background: #eef4f3;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.route-rule {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 15px 18px;
+    border-left: 4px solid #e8a928;
+    color: var(--white);
+    background: var(--forest);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
 .outfit-collage {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2773,6 +2929,37 @@ input[type="date"] {
         height: 400px;
     }
 
+    .conditions-grid,
+    .route-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .conditions-grid article {
+        padding: 18px;
+        border: 0;
+        background: var(--white);
+    }
+
+    .conditions-grid article:first-child,
+    .conditions-grid article:last-child {
+        padding: 18px;
+    }
+
+    .conditions-grid .infographic-signal {
+        min-height: 0;
+    }
+
+    .route-track::before {
+        display: none;
+    }
+
+    .route-track article {
+        padding: 16px;
+        border-top: 2px solid rgba(23, 51, 44, 0.24);
+        background: rgba(255, 255, 255, 0.66);
+    }
+
     .guide-content {
         grid-template-columns: 1fr;
         gap: 38px;
@@ -3135,6 +3322,47 @@ input[type="date"] {
     .guide-hero-visual,
     .outfit-collage img {
         height: 330px;
+    }
+
+    .guide-infographic {
+        padding: 20px;
+    }
+
+    .infographic-heading {
+        display: block;
+    }
+
+    .infographic-heading h3 {
+        font-size: 25px;
+    }
+
+    .infographic-heading > p {
+        max-width: none;
+        margin-top: 8px;
+        text-align: left;
+    }
+
+    .conditions-grid,
+    .route-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .conditions-grid article,
+    .conditions-grid article:first-child,
+    .conditions-grid article:last-child,
+    .route-track article {
+        padding: 14px;
+    }
+
+    .conditions-grid h4,
+    .route-track h4 {
+        font-size: 18px;
+    }
+
+    .route-rule {
+        grid-template-columns: 1fr;
+        gap: 5px;
     }
 
     .guide-content {

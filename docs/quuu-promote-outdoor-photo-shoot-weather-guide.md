@@ -137,6 +137,8 @@ Check the temperature at the actual shooting hour, not only the daily maximum. C
 
 UV also matters outside the hottest part of summer. ARPANSA advises sun protection when the [UV Index reaches 3 or above](https://www.arpansa.gov.au/understanding-radiation/radiation-sources/more-radiation-sources/sun-exposure). For longer daylight sessions, bring shade, water and suitable protection even when the photographic light appears gentle.
 
+> **On-page infographic: What changes the shoot?** Four field-condition panels connect wind, rain, temperature and UV to a visible warning sign and a practical response. The graphic remains live HTML text for mobile readability and accessibility.
+
 Use the [what-to-wear by temperature guide](https://ozsnap.com/what-to-wear-by-temperature/) to translate apparent temperature into a practical starting layer, then adjust for standing still, walking, wind and rain.
 
 ## 4. Hunt for shelter and a fallback frame
@@ -153,6 +155,8 @@ Record these notes on your phone:
 - **Shelter:** where people and equipment can move within two minutes.
 - **Fallback frame:** the photograph that works without direct sun.
 - **Exit:** the safest and easiest route after dark or in worsening weather.
+
+> **On-page infographic: Four points before you start.** A connected planning sequence turns Primary, Shelter, Fallback and Exit into a compact field workflow, followed by the two-minute shelter rule.
 
 This small map is more useful than saving a long list of visually impressive locations. It turns changing conditions into a planned transition rather than a failed session.
 
@@ -299,6 +303,7 @@ Better outdoor photos start with better decisions, not perfect weather. Use this
 - [x] Natural anchor text without repeated exact-match phrases
 - [x] Quuu category and three share-text options prepared
 - [x] Three original OZSNAP images selected and placed in the draft
+- [x] Two responsive HTML/CSS infographics added to the lower article
 - [x] Dedicated 1200 x 630 OG crop created during HTML production
 - [x] Article converted to production HTML
 - [x] Article schema, canonical and OG metadata implemented

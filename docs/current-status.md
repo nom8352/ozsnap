@@ -30,7 +30,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Added `?city=` support so links from the city comparison pages open the homepage with Brisbane, Sydney or Melbourne already selected.
 - Updated WebApplication schema, added Organization and WebPage nodes, expanded the sitemap, added HSTS and fixed root-relative 404 assets.
 - Kept Sweetlife Photography and LookyLooky as contextual editorial resources, while the new city comparisons link visibly to the 30 independent sites recorded in their dated search snapshots.
-- Refined the three Sweetlife references around the priority services: two links point to the main site (`Brisbane newborn photography` and `newborn and baby photography near Chermside`), while one contextual maternity link points to the relevant service page.
+- Refined the three Sweetlife references around the priority services: two links point to the main site (`Brisbane newborn photography` and the branded `Sweetlife newborn and baby studio`, with Chermside in its surrounding copy), while `Sweetlife maternity photography in North Lakes` points to the relevant service page.
 
 ## Verification
 

@@ -9,8 +9,8 @@
 | 위치 | 앵커 텍스트 | 목적지 |
 | --- | --- | --- |
 | 홈페이지 스튜디오 자료 | `Brisbane newborn photography` | `https://sweetlifephotography.com.au/` |
-| 사진 날씨 가이드 | `newborn and baby photography near Chermside` | `https://sweetlifephotography.com.au/` |
-| 호주 도시 가이드 | `maternity photography in Brisbane` | `https://sweetlifephotography.com.au/maternity-photography-brisbane-north-lakes/` |
+| 사진 날씨 가이드 | `Sweetlife newborn and baby studio` (주변 문장에 Chermside 표시) | `https://sweetlifephotography.com.au/` |
+| 호주 도시 가이드 | `Sweetlife maternity photography in North Lakes` | `https://sweetlifephotography.com.au/maternity-photography-brisbane-north-lakes/` |
 
 Sweetlife 링크 중 가장 중요한 홈페이지 뉴본 링크와 Chermside 지역 문맥 링크는 메인으로 연결한다. 매터니티 링크 하나만 관련 서브페이지로 연결한다. 홈페이지에는 별도로 LookyLooky 공식 사이트 링크 1개가 있다.
 

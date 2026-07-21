@@ -1,6 +1,6 @@
 # OZSNAP current status
 
-Last updated: 2026-07-15
+Last updated: 2026-07-21
 
 Detailed implementation decisions, research methodology, verification commands and the release process are preserved in `docs/project-handoff.md`.
 
@@ -30,6 +30,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Added `?city=` support so links from the city comparison pages open the homepage with Brisbane, Sydney or Melbourne already selected.
 - Updated WebApplication schema, added Organization and WebPage nodes, expanded the sitemap, added HSTS and fixed root-relative 404 assets.
 - Kept Sweetlife Photography and LookyLooky as contextual editorial resources, while the new city comparisons link visibly to the 30 independent sites recorded in their dated search snapshots.
+- Refined the three Sweetlife references around the priority services: two links point to the main site (`Brisbane newborn photography` and `newborn and baby photography near Chermside`), while one contextual maternity link points to the relevant service page.
 
 ## Verification
 
@@ -45,6 +46,7 @@ Detailed implementation decisions, research methodology, verification commands a
 ## Current release state
 
 - The family-photographer search cluster is released from GitHub `main` and deployed by Cloudflare Pages.
+- The Sweetlife anchor update is prepared as an HTML-only release; minified assets do not require regeneration.
 - Minified CSS and JavaScript are current at query version `20260715-2`.
 - Generated photos live under `assets/photos/`.
 - Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.

@@ -17,21 +17,26 @@ Recommended slug: `/outdoor-photo-shoot-weather-checklist/`
 - **Primary audience:** Outdoor portrait, family, travel and landscape photographers
 - **Primary Quuu category:** Photography
 - **Secondary category if available:** Travel Photography
-- **Selected hero image:** `https://ozsnap.com/assets/photos/coastal-hero.webp` - landscape photograph of an outdoor photographer reading the light at an Australian coastal location.
+- **Selected hero image:** `https://ozsnap.com/assets/photos/outdoor-weather-hero.webp` - a photographer choosing between golden evening light and an approaching rain cloud at an Australian coastal location.
+- **Selected comparison image:** `https://ozsnap.com/assets/photos/weather-light-comparison.webp` - the same coastal portrait under clear sun, broken cloud, overcast light and after rain.
 - **Selected supporting image:** `https://ozsnap.com/assets/photos/cloud-photographer.webp` - portrait photograph showing broken cloud, an open horizon and a photographer on location.
-- **OG production note:** Create a dedicated 1200 x 630 crop from the selected hero when the article is converted to HTML. Do not add text to the image.
+- **OG image:** `https://ozsnap.com/assets/photos/outdoor-weather-og.jpg` - dedicated 1200 x 630 crop without text.
 
 ---
 
 # Will the weather work for your photos? Use this 5-minute plan
 
-![Outdoor photographer checking the evening light above an Australian coastline](https://ozsnap.com/assets/photos/coastal-hero.webp)
+![Outdoor photographer choosing between golden evening light and an approaching rain cloud](https://ozsnap.com/assets/photos/outdoor-weather-hero.webp)
 
-*The forecast becomes useful when it changes the location, timing or frame you plan to make.*
+*Golden light on one side, rain on the other: the useful question is which frame the conditions can support.*
 
 A useful photography forecast does not tell you whether the weather is simply good or bad. It tells you what kind of photograph the conditions can support, what could disrupt the session and when you need to arrive.
 
 Clear sky can produce clean colour and strong shape. Broken cloud can add texture and catch late light. Overcast conditions can soften faces. A shower can create reflections, while wind can make an otherwise beautiful portrait location difficult to use. The right decision depends on the subject, not on chasing one perfect weather icon.
+
+![The same coastal portrait under clear sun, broken cloud, overcast light and after rain](https://ozsnap.com/assets/photos/weather-light-comparison.webp)
+
+*Left to right: clear sun creates shape, broken cloud adds colour and texture, overcast softens faces, and rain leaves reflective mood.*
 
 Use the **LIGHT framework** before an outdoor shoot:
 
@@ -293,8 +298,8 @@ Better outdoor photos start with better decisions, not perfect weather. Use this
 - [x] Four official or primary external sources
 - [x] Natural anchor text without repeated exact-match phrases
 - [x] Quuu category and three share-text options prepared
-- [x] Two original OZSNAP images selected and placed in the draft
-- [ ] Dedicated 1200 x 630 OG crop created during HTML production
+- [x] Three original OZSNAP images selected and placed in the draft
+- [x] Dedicated 1200 x 630 OG crop created during HTML production
 - [x] Article converted to production HTML
 - [x] Article schema, canonical and OG metadata implemented
 - [x] Sitemap and internal discovery link added

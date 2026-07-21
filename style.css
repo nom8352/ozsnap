@@ -1950,6 +1950,25 @@ input[type="date"] {
     object-fit: cover;
 }
 
+.guide-hero-visual.weather-comparison-visual {
+    height: auto;
+    overflow: visible;
+    margin-block: 28px;
+    background: transparent;
+}
+
+.weather-comparison-visual > img {
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-position: center;
+    border-radius: 7px;
+}
+
+.weather-comparison-visual .guide-visual-caption {
+    position: static;
+    margin-top: 8px;
+}
+
 .outfit-collage {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

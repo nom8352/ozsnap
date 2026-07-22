@@ -17,8 +17,8 @@ Project: OZSNAP
 - **Main audience:** Commuters, parents, travellers, walkers, outdoor diners, event planners and casual photographers
 - **Primary category:** Lifestyle
 - **Secondary category if available:** Travel
-- **Hero image:** `https://ozsnap.com/assets/photos/weather-app-mistakes-hero.webp`
-- **OG image:** `https://ozsnap.com/assets/photos/weather-app-mistakes-og.jpg`
+- **Hero image:** `https://ozsnap.com/assets/photos/weather-app-mistakes-hero-v2.webp`
+- **OG image:** `https://ozsnap.com/assets/photos/weather-app-mistakes-og-v2.jpg`
 
 ## Why this topic fits OZSNAP
 
@@ -57,7 +57,7 @@ The daily forecast is a headline, not a plan. Here is the one-minute weather che
 - [x] Contextual links into five relevant OZSNAP destinations
 - [x] Three official or primary external sources
 - [x] Dedicated article title, description, canonical and Article schema
-- [x] Dedicated 1200 x 630 OG image and responsive hero
+- [x] Dedicated 1200 x 630 OG image and responsive, high-reaction hero
 - [x] Homepage discovery link and sitemap entry
 - [x] Production URL and 1200 x 630 social preview verified
 - [ ] Submitted to Quuu Promote

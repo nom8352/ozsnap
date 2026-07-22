@@ -34,6 +34,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Added the Quuu-ready evergreen article `/outdoor-photo-shoot-weather-checklist/` with the original LIGHT framework, three OZSNAP images, two responsive explanatory infographics, practical decision cards, a worked example, a copyable field checklist, official sources and contextual links into five OZSNAP tools and guides. Its opening pairs a bright golden-hour swimwear couple hero with a four-condition portrait comparison; the lower article visualises field-condition responses and the Primary-Shelter-Fallback-Exit route.
 - Added the broad Quuu-ready article `/weather-app-mistakes/` for commuters, families, travellers and outdoor planners. The article uses the share-led headline "Your weather app is not wrong. You're reading it wrong.", explains seven common forecast-reading mistakes, supplies a copyable 60-second check and links each next decision to the relevant OZSNAP tool or guide.
 - Added a dedicated 1200 x 630 social image plus responsive hero assets for the weather-app article and made the article the first guide promoted from the homepage directory.
+- Replaced the weather-app article's calm group-planning image with a higher-reaction sun-shower scene: direct eye contact, a phone, an inside-out coral umbrella, wet pavement and sharply contrasting sun and cloud. Versioned `v2` filenames prevent the earlier hero and social preview from remaining in CDN or social caches.
 
 ## Verification
 

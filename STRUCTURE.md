@@ -12,6 +12,7 @@
 - `https://ozsnap.com/family-photographers/sydney/` - documented Sydney Google search snapshot and comparison guide
 - `https://ozsnap.com/family-photographers/melbourne/` - documented Melbourne Google search snapshot and comparison guide
 - `https://ozsnap.com/outdoor-photo-shoot-weather-checklist/` - evergreen LIGHT framework, weather decision guide and pre-shoot checklist
+- `https://ozsnap.com/weather-app-mistakes/` - broad evergreen guide to seven forecast-reading mistakes and the 60-second pre-departure check
 
 ## Homepage sections
 
@@ -25,7 +26,7 @@ Hash sections are interaction states, not separate indexable URLs.
 
 ## Search files
 
-- `sitemap.xml` lists the ten canonical pages.
+- `sitemap.xml` lists the eleven canonical pages.
 - `robots.txt` allows crawling and declares the sitemap.
 - `404.html` is excluded from search with `noindex`.
 - Live forecast containers use `data-nosnippet` so volatile values are not favoured as search snippets.

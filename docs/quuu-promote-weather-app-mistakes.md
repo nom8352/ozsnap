@@ -1,6 +1,6 @@
 # Quuu Promote package: weather app mistakes
 
-Status: Published in source, not submitted to Quuu
+Status: Published on OZSNAP, not submitted to Quuu
 
 Prepared: 2026-07-23
 
@@ -59,5 +59,5 @@ The daily forecast is a headline, not a plan. Here is the one-minute weather che
 - [x] Dedicated article title, description, canonical and Article schema
 - [x] Dedicated 1200 x 630 OG image and responsive hero
 - [x] Homepage discovery link and sitemap entry
-- [ ] Production URL and social preview verified
+- [x] Production URL and 1200 x 630 social preview verified
 - [ ] Submitted to Quuu Promote

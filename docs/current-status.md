@@ -44,6 +44,8 @@ Detailed implementation decisions, research methodology, verification commands a
 - External-link check: no external links remain in any footer; all three Sweetlife body links and the one LookyLooky body link are visibly rendered.
 - Family-photographer cluster: 10 visible official-site links per city, zero external footer links, 10 cards per page, no mobile horizontal overflow and no console errors.
 - Mobile menu: Escape closes and returns focus to the menu button.
+- Weather-app article: local and production routes return `200`; canonical, Article schema, all images, homepage discovery and the sitemap entry passed. Desktop and 375 px mobile have no horizontal overflow or console errors, and the mobile menu opens, closes with Escape and returns focus.
+- Weather-app article Lighthouse mobile: Performance 97, Accessibility 100, Best Practices 100, SEO 100, CLS 0.
 - Lighthouse mobile: Performance 85, Accessibility 100, Best Practices 100, SEO 100, CLS 0.
 
 ## Current release state
@@ -54,6 +56,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Generated photos live under `assets/photos/`.
 - Production mobile verification passed at `https://ozsnap.com/` with live weather, three daypart outfits and seven ranked photo days.
 - All eleven canonical routes are represented in the sitemap; the outdoor-shoot article is live on Cloudflare Pages and returns `200` with its article imagery available.
+- The broad weather-app article is live at `https://ozsnap.com/weather-app-mistakes/`; its responsive hero assets and dedicated 1200 x 630 OG image return `200` from production.
 - Cloudflare Managed Content prepends search/AI content signals to `robots.txt`; search remains allowed and the OZSNAP sitemap declaration remains present.
 
 ## Next practical step

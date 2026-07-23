@@ -1,8 +1,8 @@
 # OZSNAP project handoff
 
-Last updated: 2026-07-15
+Last updated: 2026-07-23
 
-This document preserves the decisions, implementation process and release checks needed to continue OZSNAP without relying on chat history. Read `CLAUDE.md`, `STRUCTURE.md` and `docs/current-status.md` with this file before making changes.
+This document preserves the decisions, implementation process and release checks needed to continue OZSNAP without relying on chat history. Read `CLAUDE.md`, `STRUCTURE.md` and `docs/current-status.md` with this file before making changes. For Quuu content work, also read `docs/quuu-promote-universal-playbook.md` and the relevant article-specific Quuu draft.
 
 ## 1. Product direction
 
@@ -24,8 +24,8 @@ The current content strategy combines useful interactive tools with durable edit
 - Application type: static HTML, CSS and vanilla JavaScript
 - Runtime data: Open-Meteo only; no private API key is required
 - Source assets: locally hosted under `assets/`
-- Current asset query version: `20260715-2`
-- Latest verified Git commit at this handoff: `c0b67c0`
+- Current CSS query version: `20260722-2`
+- For the latest verified release commit, routes and live checks, use `docs/current-status.md`.
 
 Do not add a framework or build-time dependency unless the deployment architecture is intentionally changed. Source files are `style.css` and `script.js`; production HTML loads their minified counterparts.
 

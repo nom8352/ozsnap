@@ -4,6 +4,8 @@ Last updated: 2026-07-23
 
 Detailed implementation decisions, research methodology, verification commands and the release process are preserved in `docs/project-handoff.md`.
 
+Reusable Quuu Promote planning, production, visual, SEO, release and submission procedures are preserved in `docs/quuu-promote-universal-playbook.md`.
+
 ## Completed
 
 - Rebuilt the homepage as an Australian editorial decision guide using generated coastal photography.
@@ -35,6 +37,7 @@ Detailed implementation decisions, research methodology, verification commands a
 - Added the broad Quuu-ready article `/weather-app-mistakes/` for commuters, families, travellers and outdoor planners. The article uses the share-led headline "Your weather app is not wrong. You're reading it wrong.", explains seven common forecast-reading mistakes, supplies a copyable 60-second check and links each next decision to the relevant OZSNAP tool or guide.
 - Added a dedicated 1200 x 630 social image plus responsive hero assets for the weather-app article and made the article the first guide promoted from the homepage directory.
 - Replaced the weather-app article's calm group-planning image with a higher-reaction sun-shower scene: direct eye contact, a phone, an inside-out coral umbrella, wet pavement and sharply contrasting sun and cloud. Versioned `v2` filenames prevent the earlier hero and social preview from remaining in CDN or social caches.
+- Added `docs/quuu-promote-universal-playbook.md`, a reusable cross-project workflow covering topic scoring, category selection, article packaging, cover versus explanatory visuals, HTML/CSS infographics, SEO, Cloudflare cache handling, local/live QA, submission states and reusable prompts.
 
 ## Verification
 
